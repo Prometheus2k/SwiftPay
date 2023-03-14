@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "bank_details")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "bank_details")
-public class Bank {
+public class BankDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bankId;
-    @Column(name = "bank_name")
+    @Column(name = "bank_name", nullable = false)
     private String bankName;
-    @Column(name = "bank_swift_code")
+    @Column(name = "bank_swift_code", nullable = false)
     private String bankSwiftCode;
 }
