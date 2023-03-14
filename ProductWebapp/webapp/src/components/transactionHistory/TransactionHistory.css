@@ -1,0 +1,51 @@
+h1 {
+  color: #005555;
+  font-size: 4em;
+
+  border-bottom: 2px solid black;
+}
+.tableDiv {
+  display: flex;
+  flex-direction: column;
+}
+.filterDiv {
+  margin: 5vh;
+}
+table {
+  border-color: rgb(255, 240, 240);
+}
+.hrow {
+  color: rgb(252, 252, 252);
+  background-color: #005555;
+}
+.brow {
+  border-bottom: 2px solid rgb(0, 0, 0);
+  padding: 8px;
+  font-size: 1em;
+  margin: px;
+  width: 25%;
+  height: 50px;
+}
+
+th {
+  border: 5px solid rgb(247, 245, 245);
+  border-bottom: 0px;
+  padding: 12px;
+  font-size: 1.15em;
+  margin: 8px;
+  width: 25%;
+  height: 30px;
+}
+
+#dropdown-basic {
+  background-color: #005555;
+  border-width: 0;
+  size: 20px;
+}
+#dropdown-men {
+  font-size: 1.5em;
+}
+
+input {
+  margin-right: 40px;
+}
