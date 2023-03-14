@@ -5,13 +5,14 @@ import SignUp from './components/SignUp/SignUp';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import SideBar from './components/SideBar/SideBar';
 
-
+import Transfer from './Pages/Transfer';
 
 function App() {
   return (
-   <SignUp/>
-    
- 
+    <div className="App">
+      <Transfer />
+      
+    </div>
   );
 }
 

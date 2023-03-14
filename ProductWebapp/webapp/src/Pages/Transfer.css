@@ -1,0 +1,63 @@
+.transfer > h1{
+    color: #005555;
+}
+
+.transferForm{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10rem;
+    align-items: center;
+}
+
+.transferForm > .transferForm_Left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.transferForm > .transferForm_Right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+
+.row{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.row  > input {
+    height: 4vh;
+    width: 30vw;
+}
+
+.row > select {
+    width: 30.5vw;
+    font-size: medium;
+    height: 4vh;
+}
+
+.row > textarea {
+    width: 30.5vw;
+    height: 8vh;
+}
+Button {
+    margin-top: 5vh;
+    background-color: #005555;
+    height: 6vh;
+    color: white;
+    padding: 0 1rem;
+    right: 33rem;
+    cursor: pointer;
+}
+
+.transferForm > img{
+    height: 20vh;
+    width: 20vh;
+    color: #005555 ;
+}
