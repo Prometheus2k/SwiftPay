@@ -18,17 +18,32 @@ const Transfer = () => {
         branchName: ""
     })
 
+    const [recieverAccNumber, setRecieverAccNumber] = useState("")
+
     /*function to handle change in the input description and select field changed the values in the object according to the key defined*/
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
+
+    }
+
+    const handleRecieverAccount = (e) => {
+        setRecieverAccNumber(e.target.value)
+        
     }
 
     /* after submit shows the data stored in the form in alert and console */
     const submitButton = (e) => {
         e.preventDefault();
-        console.log(form.account);
-        alert(form);
-        resetButton()
+        console.log(recieverAccNumber, form.recieverAccNumber)
+        if (recieverAccNumber !== form.recieverAccNumber) {
+            alert("Provide correct Benefiatiary Account Number")
+            throw console.error("Wrong confirm account number");
+        } else {
+            console.log(form.account);
+            alert(form);
+            resetButton()
+        }
+
     }
 
     /*after submiting the form the values in the form is reset */
@@ -42,6 +57,7 @@ const Transfer = () => {
             bankName: "",
             branchName: ""
         });
+        setRecieverAccNumber()
     }
 
     return (
@@ -63,7 +79,7 @@ const Transfer = () => {
 
                         <div className='row'>
                             <label>Amount</label>
-                            <input type="number" name="amount" onChange={handleChange} value={form.amount} />
+                            <input type="number" name="amount" onChange={handleChange} value={form.amount} required/>
 
                         </div>
                         <div className='row'>
@@ -77,22 +93,27 @@ const Transfer = () => {
                     <div className='transferForm_Right'>
                         <div className='row'>
                             <label>Benefiatiary Account Number</label>
-                            <input type="number" name="recieverAccNumber" onChange={handleChange} value={form.recieverAccNumber} />
+                            <input type="number" name="recieverAccNumber" onChange={handleChange} value={form.recieverAccNumber} required/>
+                        </div>
+
+                        <div className='row'>
+                            <label>Confirm Benefiatiary Account Number</label>
+                            <input type="number" name="recieverAccNumber" onChange={handleRecieverAccount} value={recieverAccNumber} required/>
                         </div>
 
                         <div className='row'>
                             <label>Swift Code</label>
-                            <input type="text" name="swiftCode" onChange={handleChange} value={form.swiftCode} />
+                            <input type="text" name="swiftCode" onChange={handleChange} value={form.swiftCode} required/>
                         </div>
 
                         <div className='row'>
                             <label>Bank Name</label>
-                            <input type="text" name="bankName" onChange={handleChange} value={form.bankName} />
+                            <input type="text" name="bankName" onChange={handleChange} value={form.bankName} required/>
                         </div>
 
                         <div className='row'>
                             <label>Bank branch name</label>
-                            <input type="text" name="branchName" onChange={handleChange} value={form.branchName} />
+                            <input type="text" name="branchName" onChange={handleChange} value={form.branchName} required/>
                         </div>
                     </div>
                 </div>

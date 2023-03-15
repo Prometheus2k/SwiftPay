@@ -11,7 +11,6 @@ const SideBar = () => {
             <li className='myrow'>
                 <div id='myicon'><CurrencyBitcoinIcon/></div>
                 <div id="mytext">SwiftPay</div>
-                <></>
             </li>
         </ul> <br /><br /><br />
         <ul className='sidebarList'>

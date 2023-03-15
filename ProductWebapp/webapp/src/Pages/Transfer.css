@@ -1,5 +1,14 @@
+.transfer {
+    width: 100%;
+}
+
 .transfer > h1{
     color: #005555;
+    text-align: center;
+}
+
+.transfer > hr{
+    width: 100%;
 }
 
 .transferForm{
