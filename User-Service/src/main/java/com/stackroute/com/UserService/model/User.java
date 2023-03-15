@@ -9,16 +9,20 @@ public class User {
     @Id
     @Column(name="email_id",length=30)
     private String emailId;
-    @Column(length=30)
+    @Column(name="password",length=30)
     private String password;
     @Column(name="user_name",length=30)
-    private String nameOftheUser;
+    private String nameOfTheUser;
     @Column(name="mobile_number",length=10)
     private String mobileNumber;
+    @Column(name="location", length=30)
+    private String location;
+    @Column(name="pan_number",length=30)
+    private String panNumber;
+    @Column(name="profile_password",length=10)
+    private String profilePassword;
 
-    public String getEmailId() {
-        return emailId;
-    }
+    public String getEmailId(){ return emailId; }
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
@@ -28,11 +32,11 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getNameOftheUser() {
-        return nameOftheUser;
+    public String getNameOfTheUser() {
+        return nameOfTheUser;
     }
-    public void setNameOftheUser(String nameOftheUser) {
-        this.nameOftheUser = nameOftheUser;
+    public void setNameOfTheUser(String nameOfTheUser) {
+        this.nameOfTheUser = nameOfTheUser;
     }
     public String getMobileNumber() {
         return mobileNumber;
@@ -40,15 +44,39 @@ public class User {
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
-    @Override
-    public String toString() {
-        return "User [emailId=" + emailId + ", password=" + password + ", nameOftheUser=" + nameOftheUser
-                + ", mobileNumber=" + mobileNumber + "]";
+
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPanNumber() {
+        return panNumber;
+    }
+    public void setPanNumber(String panNumber) {
+        this.panNumber = panNumber;
+    }
+
+    public String getProfilePassword() {
+        return profilePassword;
+    }
+    public void setProfilePassword(String profilePassword) {
+        this.profilePassword = profilePassword;
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "emailId='" + emailId + '\'' +
+                ", password='" + password + '\'' +
+                ", nameOfTheUser='" + nameOfTheUser + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", location='" + location + '\'' +
+                ", panNumber='" + panNumber + '\'' +
+                ", profilePassword='" + profilePassword + '\'' +
+                '}';
+    }
 }
