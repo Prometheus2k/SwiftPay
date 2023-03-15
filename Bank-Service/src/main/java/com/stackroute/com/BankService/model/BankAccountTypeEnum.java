@@ -1,5 +1,5 @@
 package com.stackroute.com.BankService.model;
 
-public enum BankAccountType {
+public enum BankAccountTypeEnum {
     CURRENT, SAVINGS
 }
