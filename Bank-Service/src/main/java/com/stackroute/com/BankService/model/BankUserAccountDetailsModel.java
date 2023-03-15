@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BankUserAccountDetails {
+public class BankUserAccountDetailsModel {
     @Id
     private String accountNumber;
     @Column(name = "user_email_id", nullable = false)
@@ -20,7 +20,7 @@ public class BankUserAccountDetails {
     @Column(name = "bank_account_type", nullable = false)
     private BankAccountTypeEnum bankAccountTypeEnum;
     @ManyToOne
-    private BankDetails bankDetails;
+    private BankDetailsModel bankDetailsModel;
     @Column(name = "bank_swift_code", nullable = false)
     private String branchSwiftCode;
     @Column

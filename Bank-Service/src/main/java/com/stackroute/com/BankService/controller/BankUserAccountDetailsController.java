@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("bank_user_account")
 public class BankUserAccountDetailsController {
     @Autowired
-    private BankUserAccountDetailsServiceInterface bankUserAccountDetailsServiceInterface;
+    private BankUserAccountDetailsServiceInterface bankUserAccountDetailsService;
 
     @GetMapping("/")
     public ResponseEntity<?> home() {
