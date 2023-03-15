@@ -1,4 +1,4 @@
 package com.stackroute.com.BankService.service;
 
-public interface BankService {
+public interface BankDetailsServiceInterface {
 }
