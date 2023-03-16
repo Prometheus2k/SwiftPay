@@ -8,4 +8,6 @@ import java.util.List;
 public interface BankDetailsServiceInterface {
     public void addBankDetails(BankDetailsModel bankDetailsModel) throws BankAlreadyExistsException;
     public List<BankDetailsModel> getAllBankDetails();
+
+    public BankDetailsModel getBankById(int bankId);
 }

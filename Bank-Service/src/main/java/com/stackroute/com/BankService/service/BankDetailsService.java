@@ -28,4 +28,14 @@ public class BankDetailsService implements BankDetailsServiceInterface {
     public List<BankDetailsModel> getAllBankDetails() {
         return repository.findAll();
     }
+
+    @Override
+    public BankDetailsModel getBankById(int bankId) {
+        Optional<BankDetailsModel> optional = repository.findByBankId(bankId);
+        BankDetailsModel model = optional.isEmpty() ? null : optional.get();
+        return model;
+    }
+
+
+
 }

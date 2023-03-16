@@ -39,4 +39,20 @@ public class BankDetailsController {
         ResponseEntity<?> entity = new ResponseEntity<List<BankDetailsModel>>(allBankList, HttpStatus.OK);
         return entity;
     }
+
+    @GetMapping("/view/{bankId}")
+    public ResponseEntity<?> getBankById(@PathVariable("bankId") int bankId) {
+        ResponseEntity<?> entity = null;
+        BankDetailsModel model = service.getBankById(bankId);
+        if(model == null) {
+            entity = new ResponseEntity<String>("Bank does not exist", HttpStatus.OK);
+        }
+        else {
+            entity = new ResponseEntity<BankDetailsModel>(model, HttpStatus.OK);
+        }
+        return entity;
+    }
+
+
+
 }
