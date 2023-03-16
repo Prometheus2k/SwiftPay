@@ -12,7 +12,7 @@ export default function TransactionHistory() {
 
 
     return (
-        <div>
+        <div className='ooo'>
             <h1>Transaction History</h1>
             <div className='filterDiv'>
                 <form action="/from_date_selected">

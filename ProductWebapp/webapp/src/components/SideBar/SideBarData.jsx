@@ -13,7 +13,7 @@ export const SideBarData = [
   {
     title: "Transfer",
     icon: <ReplyIcon />,
-    link: "/home"
+    link: "/transfer"
   },
   {
     title: "Transactions",

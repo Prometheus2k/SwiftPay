@@ -1,7 +1,10 @@
+.ooo{
+  width: 100%;
+}
 h1 {
   color: #005555;
   font-size: 4em;
-
+text-align: center;
   border-bottom: 2px solid black;
 }
 .tableDiv {

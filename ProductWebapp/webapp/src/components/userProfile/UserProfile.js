@@ -10,10 +10,11 @@ import {
   MDBBtn,
   MDBCardTitle
 } from 'mdb-react-ui-kit';
+import "./UserProfile.css"
 
 const UserProfile = () => {
   return (
-    <section>
+    <section className='user'>
       <MDBContainer className="py-5">
         <MDBRow>
           <MDBCol lg="7">

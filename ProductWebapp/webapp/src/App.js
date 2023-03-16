@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <SideBar />
       <Routes>
-        <Route path="/" element={<Transfer />} />
+        <Route path="/transfer" element={<Transfer />} />
         <Route path="/transactionhistory" element={<TransactionHistory />} />
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/addbankacc" element={<AddBankAccount />} />
