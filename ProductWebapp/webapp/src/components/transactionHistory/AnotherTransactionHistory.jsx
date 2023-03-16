@@ -9,7 +9,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -18,6 +17,7 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import TableHead from '@mui/material/TableHead';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './TransactionHistory.css'
+import { DataGrid } from '@mui/x-data-grid';
 
 
 function TablePaginationActions(props) {
@@ -86,17 +86,16 @@ function createData(transactionId, timeStamp, description, fromAccountNumber, to
 }
 
 const rows = [
+    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 6000, 'fail'),
+    createData('2321345341132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 104500, 'success'),
+    createData('232134s2132132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 10040, 'success'),
+    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 100230, 'success'),
+    createData('2123434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 100330, 'success'),
     createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
+    createData('34341434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
     createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
-    createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
+    createData('123234132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
+    createData('23213434353134332', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
     createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
     createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
     createData('23213434132132', '24/3/2001  2:15 am', 'Upi payment', '123456789', '987654321', 1000, 'success'),
@@ -110,43 +109,34 @@ export default function CustomPageTable() {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const columns = [
-        { id: 'transactionId', label: 'Transaction ID', align: 'center', maxWidth: 60 },
-        { id: 'timeStamp', label: 'Date and Time', align: 'center', minWidth: 60 },
+        { id: 'transactionId', label: 'Transaction ID', align: 'center' },
+        { id: 'timeStamp', label: 'Date and Time', align: 'center' },
         {
             id: 'description',
             label: 'Description',
-            minWidth: 1,
             align: 'center',
-            format: (value) => value.toLocaleString('en-US'),
+
         },
         {
             id: 'fromAccountNumber',
             label: 'From Account Number',
-            minWidth: 40,
             align: 'center',
-            format: (value) => value.toLocaleString('en-US'),
+
         },
         {
             id: 'toAccountNumber',
             label: 'To Account Number',
-            minWidth: 40,
             align: 'center',
-            format: (value) => value.toLocaleString('en-US')
-
         },
         {
             id: 'amount',
             label: 'Amount',
-            minWidth: 50,
             align: 'center',
-
         },
         {
             id: 'status',
             label: 'Status',
-            minWidth: 40,
             align: 'center',
-            format: (value) => value.toLocaleString('en-US'),
         },
     ];
     const emptyRows =
@@ -173,32 +163,36 @@ export default function CustomPageTable() {
                     <input type="date" id="endDate" name="endDate" />
                 </form>
             </div>
-            <TableContainer component={Paper}>
-                <Table sx={{ border: '2px solid black' }} borderAxis="both" aria-label="custom pagination table">
+
+
+            <TableContainer  >
+                <Table fixedHeader="false"
+                    borderAxis="both" aria-label="custom pagination table">
                     <TableHead >
-                        <TableRow style={{ backgroundColor: '#005555', color: 'white', fontSize: '1.5em' }} >
+                        <TableRow >
                             {columns.map((column) => (
                                 <TableCell
                                     key={column.id}
                                     align={column.align}
-                                    style={{ color: 'white', fontSize: '1em' }}
+                                    padding="10px"
+
                                 >
                                     {column.label}
                                 </TableCell>
+
                             ))}
                         </TableRow>
                     </TableHead>
-
-                    <TableBody>
+                    <TableBody >
                         {(rowsPerPage > 0
                             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             : rows
                         ).map((row) => (
-                            <TableRow key={row.name} >
-                                <TableCell style={{ width: 10, border: '2px  solid black' }} align="center">
+                            <TableRow key={row.name}  >
+                                <TableCell style={{ width: 10, border: '2px  solid black', padding: "", flex: "1" }} align="center" >
                                     {row.transactionId}
                                 </TableCell>
-                                <TableCell style={{ width: 10, border: '2px solid black' }} align="center">
+                                <TableCell style={{ width: 10, border: '2px solid black', margin: "10px" }} align="center">
                                     {row.timeStamp}
                                 </TableCell>
                                 <TableCell style={{ width: 10, border: '2px solid black' }} align="center">
@@ -207,7 +201,7 @@ export default function CustomPageTable() {
                                 <TableCell style={{ width: 10, border: '2px solid black' }} align="center">
                                     {row.fromAccountNumber}
                                 </TableCell>
-                                <TableCell style={{ width: 10, border: '2px solid black' }} align="center">
+                                <TableCell style={{ width: 10, border: '2px solid black', flex: "1" }} align="center">
                                     {row.toAccountNumber}
                                 </TableCell>
                                 <TableCell style={{ width: 10, border: '2px solid black' }} align="center">
@@ -248,5 +242,9 @@ export default function CustomPageTable() {
                 </Table>
             </TableContainer>
         </>
+
+
     );
 }
+
+// style = {{ display: "flex", justifyContent: 'space-evenly', flexDirection: 'column', margin: "10px" }}

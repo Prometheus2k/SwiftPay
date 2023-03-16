@@ -9,8 +9,6 @@ export default function TransactionHistory() {
 
 
 
-
-
     return (
         <div className='ooo'>
             <h1>Transaction History</h1>

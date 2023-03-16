@@ -4,15 +4,13 @@
 h1 {
   color: #005555;
   font-size: 4em;
-text-align: center;
+  text-align: center;
   border-bottom: 2px solid black;
 }
-.tableDiv {
-  display: flex;
-  flex-direction: column;
-}
+
 .filterDiv {
   margin: 5vh;
+  text-align: center;
 }
 table {
   border-color: rgb(255, 240, 240);
@@ -51,4 +49,27 @@ th {
 
 input {
   margin-right: 40px;
+}
+
+.MuiTableCell-root.MuiTableCell-head {
+  color: rgb(251, 245, 245);
+  background-color: #005555;
+  font-size: 1em;
+  margin: auto;
+  padding: 5px;
+}
+.MuiTableContainer-root {
+  background-color: rgb(255, 255, 247);
+}
+.MuiTableHead-root {
+  background-color: red;
+  display: "flex";
+  justify-content: "space-evenly";
+  flex-direction: "column";
+}
+
+.TableRow-root {
+  background-color: #005555 !important;
+  display: "flex";
+  justify-content: "space-evenly";
 }
