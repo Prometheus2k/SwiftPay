@@ -2,9 +2,10 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import SideBar from "./components/SideBar/SideBar";
 import Transfer from "./Pages/Transfer";
-import BasicExampleDataGrid from "./components/transactionHistory/Trans3";
+
 import UserProfile from "./components/userProfile/UserProfile";
 import AddBankAccount from "./components/addbankaccount/AddBankAccount";
+import TransactionHistory from "./components/transactionHistory/TransactionHistory";
 
 function App() {
   return (
