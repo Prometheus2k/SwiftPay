@@ -12,7 +12,7 @@ function App() {
       <SideBar />
       <Routes>
         <Route path="/transfer" element={<Transfer />} />
-        <Route path="/transactionhistory" element={<BasicExampleDataGrid />} />
+        <Route path="/transactionhistory" element={<TransactionHistory />} />
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/addbankacc" element={<AddBankAccount />} />
       </Routes>
