@@ -2,7 +2,6 @@ package com.stackroute.com.BankService.controller;
 
 import com.stackroute.com.BankService.exceptions.BankAlreadyExistsException;
 import com.stackroute.com.BankService.model.BankDetailsModel;
-import com.stackroute.com.BankService.service.BankDetailsService;
 import com.stackroute.com.BankService.service.BankDetailsServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,7 @@ import java.util.List;
 @RequestMapping("bank_details")
 public class BankDetailsController {
     @Autowired
-    private BankDetailsServiceInterface bankDetailsService;
+    private BankDetailsServiceInterface service;
 
     @GetMapping("/")
     public ResponseEntity<?> home() {
@@ -23,10 +22,10 @@ public class BankDetailsController {
         return entity;
     }
     @PostMapping("/add")
-    public ResponseEntity<?> addBankDetails(@RequestBody BankDetailsModel bankDetailsModel) {
+    public ResponseEntity<?> addBankDetails(@RequestBody BankDetailsModel model) {
         ResponseEntity<?> entity = null;
         try {
-            bankDetailsService.addBankDetails(bankDetailsModel);
+            service.addBankDetails(model);
             entity = new ResponseEntity<String>("Bank details added successfully", HttpStatus.OK);
         }
         catch (BankAlreadyExistsException e) {
@@ -36,7 +35,7 @@ public class BankDetailsController {
     }
     @GetMapping("/view")
     public ResponseEntity<?> viewAllBanks() {
-        List<BankDetailsModel> allBankList = bankDetailsService.getAllBankDetails();
+        List<BankDetailsModel> allBankList = service.getAllBankDetails();
         ResponseEntity<?> entity = new ResponseEntity<List<BankDetailsModel>>(allBankList, HttpStatus.OK);
         return entity;
     }

@@ -12,20 +12,20 @@ import java.util.Optional;
 @Service
 public class BankDetailsService implements BankDetailsServiceInterface {
     @Autowired
-    private BankDetailsRepository bankDetailsRepository;
+    private BankDetailsRepository repository;
 
 
     @Override
     public void addBankDetails(BankDetailsModel bankDetailsModel) throws BankAlreadyExistsException {
-        Optional<BankDetailsModel> optional = bankDetailsRepository.findById(bankDetailsModel.getBankId());
+        Optional<BankDetailsModel> optional = repository.findById(bankDetailsModel.getBankId());
         if(optional.isPresent()) {
             throw new BankAlreadyExistsException("Bank details already exists with this bank name");
         }
-        bankDetailsRepository.save(bankDetailsModel);
+        repository.save(bankDetailsModel);
     }
 
     @Override
     public List<BankDetailsModel> getAllBankDetails() {
-        return bankDetailsRepository.findAll();
+        return repository.findAll();
     }
 }
