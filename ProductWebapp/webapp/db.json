@@ -26,6 +26,26 @@
       "bankName": "American Express",
       "branchName": "delhi",
       "id": 1
+    },
+    {
+      "accNumber": "12345",
+      "amount": "50000",
+      "description": "this is working?",
+      "recieverAccNumber": "54321",
+      "swiftCode": "qwerty",
+      "bankName": "ICICI",
+      "branchName": "delhi",
+      "id": 2
+    },
+    {
+      "accNumber": "56098",
+      "amount": "123456",
+      "description": "working?",
+      "recieverAccNumber": "12345",
+      "swiftCode": "3456",
+      "bankName": "ICICI",
+      "branchName": "delhi",
+      "id": 3
     }
   ]
 }
