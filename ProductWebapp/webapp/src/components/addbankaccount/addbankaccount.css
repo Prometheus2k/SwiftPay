@@ -1,0 +1,76 @@
+.addacc {
+  width: 100%;
+}
+
+.addacc > h1 {
+  color: #005555;
+  /* text-align: center; */
+  margin-left: 150px;
+  margin-top: 90px;
+  margin-bottom: 30px;
+}
+
+.addacc > hr {
+  width: 95%;
+}
+
+.addAccForm {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 8rem;
+  align-items: center;
+  font-size: larger;
+}
+
+.addAccForm > .addAccForm_Left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.addAccForm > .addAccForm_Right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.row-last {
+  margin-top: 30px;
+  margin-left: 30vw;
+  font-size: larger;
+}
+
+.row > input {
+  height: 4vh;
+  width: 30vw;
+}
+
+.row > select {
+  width: 30.5vw;
+  font-size: large;
+  height: 4vh;
+}
+
+.row > textarea {
+  width: 30.5vw;
+  height: 8vh;
+}
+Button {
+  margin-left: 38vw;
+  background-color: #005555;
+  height: 6vh;
+  width: 10vw;
+  color: white;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-size: large;
+}
