@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BankDetailsModel {
+public class BankModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bankId;
