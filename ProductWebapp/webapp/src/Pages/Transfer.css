@@ -55,15 +55,17 @@
     width: 30.5vw;
     height: 8vh;
 }
+
 Button {
     margin-top: 5vh;
-    background-color: #005555;
+    /* background-color: #005555; */
     height: 6vh;
-    color: white;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     right: 33rem;
+    position: absolute;
     cursor: pointer;
 }
+
 
 .transferForm > img{
     height: 20vh;

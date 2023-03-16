@@ -12,7 +12,7 @@ export default function TransactionHistory() {
 
 
     return (
-        <>
+        <div>
             <h1>Transaction History</h1>
             <div className='filterDiv'>
                 <form action="/from_date_selected">
@@ -89,6 +89,6 @@ export default function TransactionHistory() {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     )
 }

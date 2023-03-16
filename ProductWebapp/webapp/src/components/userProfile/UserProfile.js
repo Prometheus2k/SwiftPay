@@ -76,66 +76,66 @@ const UserProfile = () => {
                   src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                   alt="avatar"
                   className="rounded-circle"
-                  style={{ width: '150px' , marginBottom: '30px' }}
+                  style={{ width: '150px', marginBottom: '30px' }}
                   fluid />
 
-                <MDBCardTitle style={{marginBottom: '40px'}}>My Profile</MDBCardTitle>
+                <MDBCardTitle style={{ marginBottom: '40px' }}>My Profile</MDBCardTitle>
 
                 <MDBContainer>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Full Name</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Email</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">example@example.com</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Phone</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-              
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Transactions</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">3</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Full Name</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Email</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Phone</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Transactions</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">3</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
                 </MDBContainer>
 
               </MDBCardBody>
-                <div className="d-flex justify-content-center mb-4">
-                  <MDBBtn style={{backgroundColor: '#005555'}}>Edit</MDBBtn>
-                </div>
-            </MDBCard>   
+              <div className="d-flex justify-content-center mb-4">
+                <MDBBtn style={{ backgroundColor: '#005555' }}>Edit</MDBBtn>
+              </div>
+            </MDBCard>
           </MDBCol>
 
-          
+
         </MDBRow>
-        
+
 
 
       </MDBContainer>
-      
+
     </section>
   );
 }
- 
+
 export default UserProfile;

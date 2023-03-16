@@ -39,8 +39,7 @@ const Transfer = () => {
             alert("Provide correct Benefiatiary Account Number")
             throw console.error("Wrong confirm account number");
         } else {
-            console.log(form.account);
-            alert(form);
+            console.log(form);
             resetButton()
         }
 
@@ -49,7 +48,7 @@ const Transfer = () => {
     /*after submiting the form the values in the form is reset */
     const resetButton = () => {
         setForm({
-            account: "",
+            accNumber: "",
             amount: 0,
             description: "",
             recieverAccNumber: "",
@@ -63,18 +62,12 @@ const Transfer = () => {
     return (
         <div className='transfer'>
             <h1>Transfer</h1>
-            <hr />
             <form>
                 <div className='transferForm'>
                     <div className='transferForm_Left'>
                         <div className='row'>
-                            <label>Account Type</label>
-                            <select defaultValue="Savings" name="account" onChange={handleChange} value={form.account}>
-                                <option value="Choose...">Choose...</option>
-                                <option value="Savings">Savings</option>
-                                <option value="Current">Current</option>
-                                <option value="Fixed Deposit">Fixed Deposit</option>
-                            </select>
+                            <label>Account Number</label>
+                            <input type="number" name="accNumber" onChange={handleChange} value={form.accNumber} required/>
                         </div>
 
                         <div className='row'>
@@ -117,9 +110,9 @@ const Transfer = () => {
                         </div>
                     </div>
                 </div>
-                <Button variant="primary" onClick={submitButton}>Initiate Transfer</Button>
-            </form >
-        </div >
+                <Button variant="primary" className='button' onClick={submitButton}>Initiate Transfer</Button>
+            </form>
+        </div>
     )
 }
 

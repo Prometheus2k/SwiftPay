@@ -6,6 +6,8 @@ import { Routes, Route } from 'react-router-dom';
 import SideBar from './components/SideBar/SideBar';
 
 import Transfer from './Pages/Transfer';
+import TransactionHistory from './components/transactionHistory/TransactionHistory';
+import UserProfile from './components/userProfile/UserProfile';
 
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
       <SideBar />
       <Routes>
         <Route path="/" element={<Transfer />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/transactionhistory" element={<TransactionHistory />} />
+        <Route path="/userprofile" element={<UserProfile />} />
       </Routes>
     </div>
   );
