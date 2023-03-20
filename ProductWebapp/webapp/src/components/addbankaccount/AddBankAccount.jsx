@@ -37,7 +37,6 @@ export default function AddBankAccount() {
   return (
     <div className="addacc">
       <h1>Add Bank Details</h1>
-      <hr />
       <form>
         <div className="addAccForm">
           <div className="addAccForm_Left">

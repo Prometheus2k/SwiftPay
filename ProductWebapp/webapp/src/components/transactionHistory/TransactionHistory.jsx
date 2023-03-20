@@ -1,92 +1,102 @@
+import * as React from 'react';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+// import transactionData from './generated.json';
+import { Box } from '@mui/material';
+import './transactionHistory.css';
+import { GetTransactionHistory } from './HistoryService';
 
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './TransactionHistory.css'
-import Dropdown from 'react-bootstrap/Dropdown';
 
 
 export default function TransactionHistory() {
 
 
+    const columns = [
+        {
+            field: 'transactionId',
+            headerName: 'Transaction Id',
+            headerAlign: 'center',
+            width: 250,
+            flex: 1
+
+        },
+        {
+            field: 'timeStamp',
+            headerName: 'Time Stamp',
+            headerAlign: 'center',
+            width: 250,
+            flex: 1
+        },
+        {
+            field: 'description',
+            headerName: ' Description',
+            headerAlign: 'center',
+            width: 250,
+            flex: 1,
+
+        },
+        {
+            field: 'toAccountNumber',
+            headerName: 'To Account Number',
+            width: 250,
+            headerAlign: 'center',
+            flex: 1
+        },
+        {
+            field: 'fromAccountNumber',
+            headerName: 'From Account Number',
+            headerAlign: 'center',
+            width: 250,
+            flex: 1
+        },
+        {
+            field: 'amount',
+            headerName: 'Amount',
+            headerAlign: 'center',
+            width: 250,
+            flex: 1
+        },
+        {
+            field: 'status',
+            headerName: 'Status',
+            headerAlign: 'center',
+            width: 250,
+            flex: 1
+        },
+    ];
+
+    const rows = GetTransactionHistory().then(
+        (res) => {
+            let rowdata = GetTransactionHistory;
+        }
+    )
 
     return (
-        <div>
-            <h1>Transaction History</h1>
-            <div className='filterDiv'>
-                <form action="/from_date_selected">
-                    <label for="fromDate">From Date : </label>
-                    <input type="date" id="fromDate" name="formDate" />
+        <>
+            <div className='transactionDiv'>
+                {console.log("row Data ----- " + rows + "-----" + rowdata)}
+                <h1>Transaction History</h1>
+                <Box sx={{ height: ' 100vh', width: '100%', alignItems: "center" }}>
+                    <DataGrid sx={{ m: 2 }} autoHeight
+                        rows={rows}
+                        columns={columns}
+                        initialState={{
+                            pagination: {
+                                paginationModel: {
+                                    pageSize: 5,
+                                },
+                            },
+                        }}
+                        pageSizeOptions={[5, 10, 15, 25]}
+                        slots={{
+                            toolbar: GridToolbar,
+                        }}
 
-                    <label for="Endate">End Date : </label>
-                    <input type="date" id="endDate" name="endDate" />
-                </form>
+                    />
+                </Box>
             </div>
 
-            <div className='tableDiv'>
-                <table >
-                    <thead >
-                        <tr className='hrow'>
-                            <th>Transaction ID</th>
-                            <th>Date and Time</th>
-                            <th>Description</th>
-                            <th>From Account Number</th>
-                            <th>To Account Number</th>
-                            <th>Amount</th>
-                            <th>
-                                <Dropdown >
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                        Status
-                                    </Dropdown.Toggle>
 
-                                    <Dropdown.Menu id="dropdown-men">
-                                        <Dropdown.Item href="#/action-1">Success</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Fail</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className='brow'>
-                            <td>635645823gdyhxh</td>
-                            <td>10/10/2023</td>
-                            <td>UPI Transaction</td>
-                            <td>10002012073647</td>
-                            <td>10002313239233</td>
-                            <td>+1000</td>
-                            <td>Success</td>
-                        </tr>
-                        <tr className='brow'>
-                            <td>635645823gdyhxh</td>
-                            <td>10/10/2023</td>
-                            <td>UPI Transaction</td>
-                            <td>10002012073647</td>
-                            <td>10002313239233</td>
-                            <td>+1000</td>
-                            <td>Success</td>
-                        </tr>
-                        <tr className='brow'>
-                            <td>635645823gdyhxh</td>
-                            <td>10/10/2023</td>
-                            <td>UPI Transaction</td>
-                            <td>10002012073647</td>
-                            <td>10002313239233</td>
-                            <td>+1000</td>
-                            <td>Success</td>
-                        </tr>
-                        <tr className='brow'>
-                            <td>635645823gdyhxh</td>
-                            <td>10/10/2023</td>
-                            <td>UPI Transaction</td>
-                            <td>10002012073647</td>
-                            <td>10002313239233</td>
-                            <td>+1000</td>
-                            <td>Success</td>
-                        </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    )
+        </>
+    );
 }

@@ -1,47 +1,136 @@
-import React from 'react'
-import myimageswift from '../images/swift_image.jpg'
-import login_icon from '../images/login_icon.png'
-import { Link } from '@mui/material'
-import mystyle from './SignUp.css'
-const SignUp = () => {
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import img from '../images/swift_image.jpg';
+
+
+
+const theme = createTheme();
+
+export default function SignUp() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
   return (
-    <>
-     
-      <div className='main-left'>
-        < img src={myimageswift}/>
-      </div>
-      <div className="main-right">
-          <h2>SIGN UP</h2>
-          <img src={login_icon}/>
-          <br/>
-          <br />
-          <form>
-             <div className="form-group" >
-              <center>
-                <input type="text" className="form-control" id="sign_up_f_name" aria-describedby="emailHelp" placeholder="First Name"/>
-                <br />
-                <input type="text" className="form-control" id="sign_up_l_name" aria-describedby="emailHelp" placeholder="Last Name"/>
-                <br />
-                <input type="email" className="form-control" id="sign_up_email" aria-describedby="emailHelp" placeholder="Email ID"/>
-                <br />
-                <input type="password"  className="form-control" id="sign_up_pw" placeholder="Password"/>
-                <br />
-                <input type="password"  className="form-control" id="sign_up_cpw" placeholder="Confirm Password"/>
-              </center>
-             </div>
-      
-            <div style={{float:"right"}}>
-            <Link to="/" id="link_to_login" style={{marginRight:"210px"}}>Already registered? Login here</Link>
-            
-           </div>
-    <br/><br/>
-    <button type="submit" id="sign_up_button" className="btn btn-primary" style={{backgroundColor:'#005555' ,width:"100px",borderColor:"#005555"}}>Sign Up</button>
+    <ThemeProvider theme={theme}>
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={false}
+          md={false}
+          lg={7}
+          style={{ padding: '20vh'}}
+        // sx={{
+        //   backgroundImage: `url(${img})`,
+        //   backgroundPosition: 'center',
+        //   maxWidth: '200px'
+        // }}
+        >
+          <img src={img} style={{ width: '100%', height: "100%", objectFit: 'cover' }} />
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={5} component={Paper} elevation={6} square>
+          <Box style={{ padding: '100px' }}
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Typography component="h1" variant="h4">
+              SIGN UP
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="firstname"
+                label="First Name"
+                name="firstname"
+                autoComplete="first name"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="lastname"
+                label="Last Name"
+                name="lastname"
+                autoComplete="last name"
+              
+              />
 
-  </form>
-</div>      
-      </>
-    
-  )
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+               
+              />
+
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="cpassword"
+                label="Confirm Password"
+                type="password"
+                id="cpassword"
+                autoComplete="current-password"
+              />
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                style={{ backgroundColor: '#005555' }}
+              >
+                Sign Up
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link href="/login" variant="body2">
+                    {"Already have an account ? Login "}
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
+  );
 }
-
-export default SignUp

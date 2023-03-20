@@ -1,5 +1,6 @@
 .transfer {
     width: 100%;
+    
 }
 
 .transfer > h1{
@@ -16,6 +17,7 @@
     justify-content: space-evenly;
     margin-top: 10rem;
     align-items: center;
+    margin-bottom: 5vh;
 }
 
 .transferForm > .transferForm_Left{
@@ -57,12 +59,11 @@
 }
 
 Button {
-    margin-top: 5vh;
     /* background-color: #005555; */
     height: 6vh;
     padding: 0 1.5rem;
-    right: 33rem;
-    position: absolute;
+    /* right: 33rem;
+    position: absolute; */
     cursor: pointer;
 }
 
