@@ -28,4 +28,20 @@ public class TransactionService implements TransactionServiceInterface{
 	public List<TransactionModel> getAllTransactions() {
 		return repository.findAll();
 	}
+
+	@Override
+	public TransactionModel getTransactionByAccountNumber(String accountNumber) throws CustomException {
+		Optional<TransactionModel> optional = repository.findByAccountNumber(accountNumber);
+		TransactionModel model = optional.isEmpty() ? null : optional.get();
+		if(model==null)
+		{
+			throw new CustomException("No transaction related to the Account Number Exists ");
+		}
+		else {
+			return model;
+		}
+	}
+
+
+
 }

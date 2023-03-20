@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import SideBar from "./components/SideBar/SideBar";
-import Transfer from "./Pages/Transfer";
+import Transfer from "./components/Pages/Transfer";
 
 import UserProfile from "./components/userProfile/UserProfile";
 import AddBankAccount from "./components/addbankaccount/AddBankAccount";

@@ -1,5 +1,5 @@
 import React from 'react'
-import mystyle from './SideBar.css'
+import './SideBar.css'
 import { SideBarData } from './SideBarData'
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import LogoutIcon from '@mui/icons-material/Logout';

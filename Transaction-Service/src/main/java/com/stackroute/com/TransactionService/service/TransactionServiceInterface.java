@@ -10,4 +10,6 @@ public interface TransactionServiceInterface  {
 	public void addTransactions(TransactionModel transaction) throws CustomException;
 
 	public List<TransactionModel> getAllTransactions();
+
+	public TransactionModel getTransactionByAccountNumber(String AccountNumber) throws CustomException;
 }
