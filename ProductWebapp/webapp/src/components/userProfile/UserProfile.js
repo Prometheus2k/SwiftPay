@@ -1,141 +1,143 @@
 import React from 'react';
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBBtn,
-  MDBCardTitle
-} from 'mdb-react-ui-kit';
 import "./UserProfile.css"
+import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography, Box} from '@mui/material';
 
 const UserProfile = () => {
   return (
     <section className='user'>
-      <MDBContainer className="py-5">
-        <MDBRow>
-          <MDBCol lg="7">
-            <MDBCard className="mb-4">
-              <MDBCardTitle>Bank Details</MDBCardTitle>
-              <MDBCardBody>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Bank Name</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">American Express</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>PAN Number</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">LTIP*****</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Account Number</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">12345678910123</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>SwiftCode</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">MT103*****</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Account Type</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Business</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
+      <Grid container direction="row" spacing={5}>
+        <Grid item xs="12" md="6">
+          <Card variant="outlined">
+            <CardHeader title="BANK DETAILS" sx={{textAlign: 'center', color: '#005555'}} />
+            <CardContent>
+              <Grid container>
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>Bank Name</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography>American Express</Typography>
+                  </Grid>
+                  
+                </Grid>
+
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>PAN Number</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography >LTIP*****</Typography>
+                  </Grid>
+                </Grid>
+                
+
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>Account Number</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography >12345678910123</Typography>
+                  </Grid>
+                </Grid>
+                
+
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>SwiftCode</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography >MT103*****</Typography>
+                  </Grid>
+                </Grid>
+                
+
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>Account Type</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography>Business</Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+            </CardContent>
+          </Card>
+        </Grid>
 
 
-          <MDBCol lg="5">
-            <MDBCard className="mb-4">
-              <MDBCardBody className="text-center">
-                <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                  alt="avatar"
-                  className="rounded-circle"
-                  style={{ width: '150px', marginBottom: '30px' }}
-                  fluid />
+        <Grid item xs="12" md="6">
+          <Card variant='outlined' sx={{padding: '20px'}}>
+            <CardMedia
+              component="img"
+              image="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+              alt="avatar"
+              style={{ width: '150px', margin: '0px auto'}}
+            />
+            <CardHeader title="MY PROFILE" sx={{textAlign: 'center', marginTop: '20px', color: '#005555',}} />
+            <CardContent>
 
-                <MDBCardTitle style={{ marginBottom: '40px' }}>My Profile</MDBCardTitle>
-
-                <MDBContainer>
-                  <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Full Name</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
-                    </MDBCol>
-                  </MDBRow>
-                  <hr />
-                  <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Email</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">example@example.com</MDBCardText>
-                    </MDBCol>
-                  </MDBRow>
-                  <hr />
-                  <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Phone</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
-                    </MDBCol>
-                  </MDBRow>
-                  <hr />
-
-                  <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Transactions</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">3</MDBCardText>
-                    </MDBCol>
-                  </MDBRow>
-                </MDBContainer>
-
-              </MDBCardBody>
-              <div className="d-flex justify-content-center mb-4">
-                <MDBBtn style={{ backgroundColor: '#005555' }}>Edit</MDBBtn>
-              </div>
-            </MDBCard>
-          </MDBCol>
+              <Grid container direction="row">
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>Full Name</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography >Johnatan Smith</Typography>
+                  </Grid>
+                </Grid>
 
 
-        </MDBRow>
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>Email</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography >example@example.com</Typography>
+                  </Grid>
+                </Grid>
 
 
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>Phone</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography>(097) 234-5678</Typography>
+                  </Grid>
+                </Grid>
 
-      </MDBContainer>
 
-    </section>
+                <Grid container sx={{ margin: '10px' }}>
+                  <Grid item xs="9">
+                    <Typography>Transactions</Typography>
+                  </Grid>
+                  <Grid item xs="3">
+                    <Typography className="text-muted">3</Typography>
+                  </Grid>
+                </Grid>
+
+              </Grid>
+
+              <Box
+                m={1}
+                display="flex"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+
+              >
+                <Button variant="contained" sx={{ height: '40px', backgroundColor: '#005555', ":hover": { color: 'white', backgroundColor: '#005555' }, margin: '0px auto' }}>
+                  Edit
+                </Button>
+              </Box>
+
+            </CardContent>
+
+          </Card>
+        </Grid>
+      </Grid>
+
+    </section >
   );
 }
 

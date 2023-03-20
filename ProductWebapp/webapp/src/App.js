@@ -16,8 +16,8 @@ import TransactionHistory from "./components/transactionHistory/TransactionHisto
 function App() {
   return (
     <div className="App">
+      <SideBar />
       <Routes>
-      <Route path="/" element={<SideBar />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/transfer" element={<Transfer />} />
