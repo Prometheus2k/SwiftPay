@@ -46,9 +46,22 @@ Function to Add a Transaction to the history*/
 	/*function to Get all Transactions*/
 
 	@GetMapping("/transaction/history")
-	public ResponseEntity<?>  getAllTransactions(){
+	public ResponseEntity<?> getAllTransactions() {
 		List<TransactionModel> allTransactions = transactionService.getAllTransactions();
-		ResponseEntity<?> entity= new ResponseEntity<List<TransactionModel>>(allTransactions,HttpStatus.OK);
+		ResponseEntity<?> entity = new ResponseEntity<List<TransactionModel>>(allTransactions, HttpStatus.OK);
+		return entity;
+	}
+
+	@GetMapping("/transaction/history/{accountNumber}")
+	public ResponseEntity<?> getTransactionsByAccountNumber(@PathVariable("accountNumber") String accountNumber) {
+		ResponseEntity<?> entity = null;
+		try {
+			TransactionModel transaction = transactionService.getTransactionsByAccountNumber(accountNumber);
+			entity = new ResponseEntity<TransactionModel>(transaction, HttpStatus.OK);
+		} catch (CustomException e) {
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+		}
+
 		return entity;
 	}
 }

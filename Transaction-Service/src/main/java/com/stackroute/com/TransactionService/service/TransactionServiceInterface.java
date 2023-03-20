@@ -11,5 +11,5 @@ public interface TransactionServiceInterface  {
 
 	public List<TransactionModel> getAllTransactions();
 
-	public TransactionModel getTransactionByAccountNumber(String AccountNumber) throws CustomException;
+	public TransactionModel getTransactionsByAccountNumber(String AccountNumber) throws CustomException;
 }
