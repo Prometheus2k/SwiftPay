@@ -4,18 +4,6 @@ const url = "http://localhost:4000/transaction";
 
 export const GetTransactionHistory = () => {
   return axios.get(url).then((response) => {
-    console.log(response.data.transactionId);
+    console.log(response.data);
   });
 };
-
-// , {
-//       params: {
-//         transactionId: "",
-//         timeStamp: "",
-//         description: "",
-//         fromAccountNumber: "",
-//         toAccountNumber: "",
-//         amount: "",
-//         status: "",
-//       },
-//     }

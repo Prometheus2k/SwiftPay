@@ -3,7 +3,8 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 // import transactionData from './generated.json';
 import { Box } from '@mui/material';
 import './transactionHistory.css';
-import { GetTransactionHistory } from './HistoryService';
+import axios from 'axios';
+const url = "http://localhost:4000/transaction";
 
 
 
@@ -64,16 +65,19 @@ export default function TransactionHistory() {
         },
     ];
 
-    const rows = GetTransactionHistory().then(
-        (res) => {
-            let rowdata = GetTransactionHistory;
-        }
-    )
+    const [rows, setRows] = React.useState([])
+
+    React.useEffect(() => {
+        axios.get(url).then((response) => {
+            setRows(response.data);
+        });
+    }, [])
+    console.log(rows);
+
 
     return (
         <>
             <div className='transactionDiv'>
-                {console.log("row Data ----- " + rows + "-----" + rowdata)}
                 <h1>Transaction History</h1>
                 <Box sx={{ height: ' 100vh', width: '100%', alignItems: "center" }}>
                     <DataGrid sx={{ m: 2 }} autoHeight
