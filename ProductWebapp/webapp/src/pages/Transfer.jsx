@@ -172,7 +172,7 @@ export default function Transfer() {
               </Grid>
               <Grid item xs={12} >
                 <Box textAlign='center'>
-                  <Button variant="contained" color="primary" type="submit">
+                  <Button variant="contained" style={{backgroundColor:"#005555"}} type="submit">
                     Submit
                   </Button>
                 </Box>
