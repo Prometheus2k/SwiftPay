@@ -159,7 +159,7 @@ export default function AddBank() {
                               id="outlined-required"
                               label="Required"
                               fullWidth
-                              sx={{ paddingBottom: 2 }}
+                              sx={{ paddingBottom: 6 }}
                             />
                           </Grid>
                           <Grid/>
