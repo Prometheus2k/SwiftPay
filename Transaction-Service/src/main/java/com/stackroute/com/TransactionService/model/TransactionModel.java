@@ -14,6 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class TransactionModel {
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name="id",nullable = false)
+	private int id;
 	@Column(name="account_number",nullable = false,length = 20)
 	private String accountNumber;
 	@Column(name="beneficiary_name",nullable = false)

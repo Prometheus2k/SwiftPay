@@ -57,10 +57,10 @@ Function to Add a Transaction to the history*/
 	public ResponseEntity<?> getTransactionsByAccountNumber(@PathVariable("accountNumber") String accountNumber) {
 		ResponseEntity<?> entity = null;
 		try {
-			TransactionModel transaction = transactionService.getTransactionsByAccountNumber(accountNumber);
-			entity = new ResponseEntity<TransactionModel>(transaction, HttpStatus.OK);
+			List<TransactionModel> transaction = transactionService.getTransactionsByAccountNumber(accountNumber);
+			entity = new ResponseEntity<List<TransactionModel>>(transaction, HttpStatus.OK);
 		} catch (CustomException e) {
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
 		}
 
 		return entity;
