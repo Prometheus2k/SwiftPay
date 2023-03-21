@@ -33,7 +33,7 @@ public class UserController {
         return entity;
     }
 
-    @PostMapping("/users")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUer(@RequestBody User user){
         ResponseEntity<?> entity = null;
         try {
