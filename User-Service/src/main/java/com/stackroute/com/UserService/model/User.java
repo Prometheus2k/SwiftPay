@@ -22,6 +22,7 @@ public class User {
     @Column(name="profile_password",length=10)
     private String profilePassword;
 
+    //Getters and Setters
     public String getEmailId(){ return emailId; }
     public void setEmailId(String emailId) {
         this.emailId = emailId;

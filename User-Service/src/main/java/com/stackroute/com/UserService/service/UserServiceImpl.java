@@ -1,12 +1,17 @@
 package com.stackroute.com.UserService.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+
+import io.jsonwebtoken.Claims;
 
 import com.stackroute.com.UserService.exceptions.EmailIdAlreadyExistException;
 import com.stackroute.com.UserService.exceptions.EmailIdNotExistException;
 import com.stackroute.com.UserService.model.User;
 import com.stackroute.com.UserService.repository.UserRepository;
+import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +32,16 @@ public class UserServiceImpl implements UserService{
         return savedUser;
     }
 
-    public User updateUser(User user){
+    public User updateUser(User user, User updateUser){
+        updateUser.setEmailId(user.getEmailId());
+        updateUser.setLocation(user.getLocation());
+        updateUser.setNameOfTheUser(user.getNameOfTheUser());
+        updateUser.setPassword(user.getPassword());
+        updateUser.setMobileNumber(user.getMobileNumber());
+        updateUser.setPanNumber(user.getPanNumber());
+        updateUser.setProfilePassword(user.getProfilePassword());
         User updatedUser = userRepository.save(user);
-        return user;
+        return updatedUser;
     }
 
     public List<User> getAllUser(){
