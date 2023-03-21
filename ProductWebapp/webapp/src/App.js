@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Sidenav from "./components/Sidenav";
+import AddBank from "./pages/AddBank";
 import BankDetails from "./pages/BankDetails";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -19,6 +20,7 @@ function App() {
           <Route path="/bank-details" exact element={<BankDetails />}></Route>
           <Route path="/transfer" exact element={<Transfer />}></Route>
           <Route path="/transactions" exact element={<Transactions />}></Route>
+          <Route path="/addbank" exact element={<AddBank />}></Route>
         </Routes>
       </BrowserRouter>
     </>
