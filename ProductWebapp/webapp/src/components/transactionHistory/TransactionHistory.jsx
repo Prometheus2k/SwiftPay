@@ -4,7 +4,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import './transactionHistory.css';
 import axios from 'axios';
-const url = "http://localhost:4000/transaction";
+const url = "http://localhost:8060/transaction-service/transaction/history";
 
 
 
@@ -13,10 +13,9 @@ export default function TransactionHistory() {
 
     const columns = [
         {
-            field: 'transactionId',
+            field: 'receiverSwiftCode',
             headerName: 'Transaction Id',
             headerAlign: 'center',
-            width: 250,
             flex: 1
 
         },
@@ -24,43 +23,50 @@ export default function TransactionHistory() {
             field: 'timeStamp',
             headerName: 'Time Stamp',
             headerAlign: 'center',
-            width: 250,
             flex: 1
         },
         {
-            field: 'description',
+            field: 'message',
             headerName: ' Description',
             headerAlign: 'center',
-            width: 250,
+
             flex: 1,
 
         },
         {
-            field: 'toAccountNumber',
+            field: 'receiverAccountNumber',
             headerName: 'To Account Number',
-            width: 250,
             headerAlign: 'center',
             flex: 1
         },
         {
-            field: 'fromAccountNumber',
+            field: 'beneficiaryName',
+            headerName: 'Beneficiary Name',
+            headerAlign: 'center',
+            flex: 1
+        },
+        {
+            field: 'accountNumber',
             headerName: 'From Account Number',
             headerAlign: 'center',
-            width: 250,
             flex: 1
         },
         {
-            field: 'amount',
-            headerName: 'Amount',
+            field: 'credit',
+            headerName: 'Credit',
             headerAlign: 'center',
-            width: 250,
+            flex: 1
+        },
+        {
+            field: 'debit',
+            headerName: 'Debit',
+            headerAlign: 'center',
             flex: 1
         },
         {
             field: 'status',
             headerName: 'Status',
             headerAlign: 'center',
-            width: 250,
             flex: 1
         },
     ];
@@ -80,9 +86,10 @@ export default function TransactionHistory() {
             <div className='transactionDiv'>
                 <h1>Transaction History</h1>
                 <Box sx={{ height: ' 100vh', width: '100%', alignItems: "center" }}>
-                    <DataGrid sx={{ m: 2 }} autoHeight
+                    <DataGrid sx={{ m: 2, overflowX: 'scroll' }} autoHeight
                         rows={rows}
                         columns={columns}
+                        getRowId={(row) => row.receiverSwiftCode + row.timeStamp + row.message + row.receiverAccountNumber + row.beneficiaryName + row.receiverAccountNumber + row.credit + row.debit + row.status}
                         initialState={{
                             pagination: {
                                 paginationModel: {

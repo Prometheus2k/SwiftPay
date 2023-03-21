@@ -16,10 +16,10 @@ public class TransactionService implements TransactionServiceInterface{
 
 	@Override
 	public void addTransactions(TransactionModel transaction) throws CustomException {
-		Optional<TransactionModel> optional = repository.findByAccountNumber(transaction.getAccountNumber());
-		 if(optional.isPresent()){
-			throw new CustomException("Transaction data already Exists");
-			}
+//		Optional<TransactionModel> optional = repository.findByAccountNumber(transaction.getAccountNumber());
+//		 if(optional.isPresent()){
+//			throw new CustomException("Transaction data already Exists");
+//			}
 		repository.save(transaction);
 
 	}
