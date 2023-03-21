@@ -83,7 +83,11 @@ export default function Sidenav() {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <Box height={30} />
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} PaperProps={{
+    sx: {
+      backgroundColor: "#005555",
+      color: "#fff",
+    }}}>
         <DrawerHeader>
           <IconButton>
             {theme.direction === "rtl" ? (
@@ -96,7 +100,7 @@ export default function Sidenav() {
         <Divider />
         <List>
           <ListItem
-            disablePadding
+            
             sx={{ display: "block" }}
             onClick={() => {
               navigate("/");
@@ -104,13 +108,14 @@ export default function Sidenav() {
           >
             <ListItemButton
               sx={{
-                minHeight: 48,
+                minHeight: 70,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
+                  color: 'white',
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
@@ -122,7 +127,7 @@ export default function Sidenav() {
             </ListItemButton>
           </ListItem>
           <ListItem
-            disablePadding
+            
             sx={{ display: "block" }}
             onClick={() => {
               navigate("/profile");
@@ -130,13 +135,14 @@ export default function Sidenav() {
           >
             <ListItemButton
               sx={{
-                minHeight: 48,
+                minHeight: 70,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
+                  color: 'white',
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
@@ -148,7 +154,7 @@ export default function Sidenav() {
             </ListItemButton>
           </ListItem>
           <ListItem
-            disablePadding
+            
             sx={{ display: "block" }}
             onClick={() => {
               navigate("/bank-details");
@@ -156,13 +162,14 @@ export default function Sidenav() {
           >
             <ListItemButton
               sx={{
-                minHeight: 48,
+                minHeight: 70,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
+                  color: 'white',
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
@@ -177,7 +184,7 @@ export default function Sidenav() {
             </ListItemButton>
           </ListItem>
           <ListItem
-            disablePadding
+            
             sx={{ display: "block" }}
             onClick={() => {
               navigate("/transfer");
@@ -185,13 +192,14 @@ export default function Sidenav() {
           >
             <ListItemButton
               sx={{
-                minHeight: 48,
+                minHeight: 70,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
+                  color: 'white',
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
@@ -203,7 +211,7 @@ export default function Sidenav() {
             </ListItemButton>
           </ListItem>
           <ListItem
-            disablePadding
+            
             sx={{ display: "block" }}
             onClick={() => {
               navigate("/transactions");
@@ -211,13 +219,14 @@ export default function Sidenav() {
           >
             <ListItemButton
               sx={{
-                minHeight: 48,
+                minHeight: 70,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
+                  color: 'white',
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
