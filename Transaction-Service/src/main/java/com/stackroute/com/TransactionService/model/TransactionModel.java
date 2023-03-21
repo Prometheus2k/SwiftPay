@@ -4,8 +4,10 @@ import com.stackroute.com.TransactionService.constants.BankName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "Transaction")
@@ -19,6 +21,10 @@ public class TransactionModel {
 	private int id;
 	@Column(name="account_number",nullable = false,length = 20)
 	private String accountNumber;
+
+	@Column(name="timestamp")
+	@CreationTimestamp
+	private Timestamp timestamp;
 	@Column(name="beneficiary_name",nullable = false)
 	private String beneficiaryName;
 	@Column(name="receiver_account_number",nullable = false)
