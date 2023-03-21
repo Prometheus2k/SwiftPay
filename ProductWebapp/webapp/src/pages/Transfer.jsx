@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import arrow from "./arrow_right.svg"
 import axios from "axios";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export default function Transfer() {
 
@@ -87,17 +88,17 @@ export default function Transfer() {
       <Box height={30} />
       <Box sx={{ display: "flex" }}>
         <Sidenav />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "100vh", paddingTop:30}} style={{ backgroundColor: "#F0F0F0" }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "100vh", paddingTop: 20 }} style={{ backgroundColor: "#F0F0F0" }}>
           <form onSubmit={handleSubmit} style={{ backgroundColor: "#FFFFFF" }}>
-            <Grid container spacing={3} padding={5}>
+            <Grid container alignItems='center' spacing={3} padding={5}>
               <Grid item xs={5} rowSpacing={4}>
-                <Typography variant="h6">Sender Information</Typography>
+                <Typography variant="h6" sx={{ paddingBottom: 2 }}>Sender Information</Typography>
                 <TextField
                   fullWidth
                   label="Account Number"
                   name="accNumber" onChange={handleChange} value={form.accNumber}
                   required
-                  sx={{paddingBottom : 2}}
+                  sx={{ paddingBottom: 2 }}
                 />
                 <TextField
                   fullWidth
@@ -106,7 +107,7 @@ export default function Transfer() {
                   name="amount"
                   onChange={handleChange} value={form.amount}
                   required
-                  sx={{paddingBottom : 2}}
+                  sx={{ paddingBottom: 2 }}
                 />
                 <TextField
                   fullWidth
@@ -114,27 +115,29 @@ export default function Transfer() {
                   name="description"
                   onChange={handleChange} value={form.description}
                   required
-                  sx={{paddingBottom : 2}}
+                  sx={{ paddingBottom: 2 }}
                 />
               </Grid>
               <Grid item xs={2}>
-                <img src={arrow} alt="right arrow" height={200} width={200} />
+                <Box textAlign='center' >
+                  <img src={arrow} alt="right arrow" height={150} width={150} />
+                </Box>
               </Grid>
               <Grid container item xs={5} spacing={5}>
-                <Typography variant="h6">Beneficiary Information</Typography>
+                <Typography variant="h6" sx={{ paddingBottom: 2 }}>Beneficiary Information</Typography>
                 <TextField
                   fullWidth
                   label="Account Number"
                   name="recieverAccNumber"
                   onChange={handleChange} value={form.recieverAccNumber}
-                  sx={{paddingBottom : 2}}
+                  sx={{ paddingBottom: 2 }}
                 />
                 <TextField
                   fullWidth
                   label="Confirm Beneficiary Account Number"
                   name="recieverAccNumber" onChange={handleRecieverAccount} value={recieverAccNumber}
                   required
-                  sx={{paddingBottom : 2}}
+                  sx={{ paddingBottom: 2 }}
                 />
                 <TextField
                   fullWidth
@@ -142,14 +145,14 @@ export default function Transfer() {
                   name='swiftCode'
                   onChange={handleChange} value={form.swiftCode}
                   required
-                  sx={{paddingBottom : 2}}
+                  sx={{ paddingBottom: 2 }}
                 />
-                <FormControl fullWidth required sx={{paddingBottom : 2}}>
+                <FormControl fullWidth required sx={{ paddingBottom: 2 }}>
                   <InputLabel>Bank Name</InputLabel>
                   <Select
                     name='bankName'
                     onChange={handleChange} value={form.bankName}
-                    
+
                   >
                     <MenuItem value="SBI">SBI</MenuItem>
                     <MenuItem value="HDFC">HDFC</MenuItem>
@@ -164,13 +167,15 @@ export default function Transfer() {
                   name="branchName"
                   onChange={handleChange} value={form.branchName}
                   required
-                  sx={{paddingBottom : 2}}
+                  sx={{ paddingBottom: 2 }}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <Button variant="contained" color="primary" type="submit">
-                  Submit
-                </Button>
+              <Grid item xs={12} >
+                <Box textAlign='center'>
+                  <Button variant="contained" color="primary" type="submit">
+                    Submit
+                  </Button>
+                </Box>
               </Grid>
             </Grid>
           </form>
