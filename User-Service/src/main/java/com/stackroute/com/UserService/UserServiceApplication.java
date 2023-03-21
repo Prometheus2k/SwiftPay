@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableEurekaClient
+@EnableWebMvc
 public class UserServiceApplication {
 
 	public static void main(String[] args) {
@@ -22,5 +24,4 @@ public class UserServiceApplication {
 		filterRegistrationBean.addUrlPatterns("/login/*");
 		return filterRegistrationBean;
 	}
-
 }
