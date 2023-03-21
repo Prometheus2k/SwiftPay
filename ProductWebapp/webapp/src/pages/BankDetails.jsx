@@ -17,20 +17,20 @@ import {
   Divider,
 } from "@mui/material";
 
-const banks = [
-  {
-    value: "SBI",
-  },
-  {
-    value: "HDFC",
-  },
-  {
-    value: "ICICI",
-  },
-  {
-    value: "JPY",
-  },
-];
+// const banks = [
+//   {
+//     value: "SBI",
+//   },
+//   {
+//     value: "HDFC",
+//   },
+//   {
+//     value: "ICICI",
+//   },
+//   {
+//     value: "JPY",
+//   },
+// ];
 
 export default function BankDetails() {
   return (
@@ -56,23 +56,14 @@ export default function BankDetails() {
                           </Grid>
 
                           <Grid item xs="6">
-                            <TextField
-                              id="outlined-select-currency"
-                              select
-                              label="Select"
-                              defaultValue="EUR"
-                              helperText="Please select your bank"
+
+                          <TextField
+                              required
+                              id="outlined-required"
+                              label="Required"
                               fullWidth
-                            >
-                              {banks.map((option) => (
-                                <MenuItem
-                                  key={option.value}
-                                  value={option.value}
-                                >
-                                  {option.value}
-                                </MenuItem>
-                              ))}
-                            </TextField>
+                            />
+                            
                           </Grid>
                         </Grid>
                         <Divider />{" "}
@@ -93,22 +84,7 @@ export default function BankDetails() {
                           </Grid>
                         </Grid>
                         <Divider />{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              Confirm Account Number
-                            </Typography>
-                          </Grid>
-
-                          <Grid item xs="6">
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="Required"
-                              fullWidth
-                            />
-                          </Grid>
-                        </Grid>
+                        
                       </Grid>
                       <Grid container>
                         <Grid container sx={{ margin: "10px" }}>
@@ -148,7 +124,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              IFSC Code
+                              SWIFT Code
                             </Typography>
                           </Grid>
 
@@ -164,7 +140,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              Initial balance
+                               Balance
                             </Typography>
                           </Grid>
 
