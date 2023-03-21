@@ -17,22 +17,22 @@ import {
   Divider,
 } from "@mui/material";
 
-// const banks = [
-//   {
-//     value: "SBI",
-//   },
-//   {
-//     value: "HDFC",
-//   },
-//   {
-//     value: "ICICI",
-//   },
-//   {
-//     value: "JPY",
-//   },
-// ];
+const banks = [
+  {
+    value: "SBI",
+  },
+  {
+    value: "HDFC",
+  },
+  {
+    value: "ICICI",
+  },
+  {
+    value: "JPY",
+  },
+];
 
-export default function BankDetails() {
+export default function AddBank() {
   return (
     <>
       <div className="bg-color">
@@ -56,14 +56,23 @@ export default function BankDetails() {
                           </Grid>
 
                           <Grid item xs="6">
-
-                          <TextField
-                              required
-                              id="outlined-required"
-                              label="Required"
+                            <TextField
+                              id="outlined-select-currency"
+                              select
+                              label="Select"
+                              defaultValue="EUR"
+                              helperText="Please select your bank"
                               fullWidth
-                            />
-                            
+                            >
+                              {banks.map((option) => (
+                                <MenuItem
+                                  key={option.value}
+                                  value={option.value}
+                                >
+                                  {option.value}
+                                </MenuItem>
+                              ))}
+                            </TextField>
                           </Grid>
                         </Grid>
                         <Divider />{" "}
@@ -140,7 +149,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                               Balance
+                              Balance
                             </Typography>
                           </Grid>
 
@@ -150,8 +159,19 @@ export default function BankDetails() {
                               id="outlined-required"
                               label="Required"
                               fullWidth
+                              sx={{ paddingBottom: 2 }}
                             />
                           </Grid>
+                          <Grid/>
+                          <Divider/>{" "}
+                          
+                          <Grid item xs={12} >{" "}
+                          <Box textAlign='center'>
+                            <Button variant="contained" style={{backgroundColor:"#005555"}} type="submit">
+                              Add Account
+                            </Button>
+                          </Box>
+                         </Grid>
                         </Grid>
                       </Grid>
                     </CardContent>
