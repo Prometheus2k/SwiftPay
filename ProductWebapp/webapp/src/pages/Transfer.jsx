@@ -12,9 +12,9 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import arrow from "./arrow_right.svg"
+
 import axios from "axios";
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+
 
 export default function Transfer() {
 
@@ -88,10 +88,10 @@ export default function Transfer() {
       <Box height={30} />
       <Box sx={{ display: "flex" }}>
         <Sidenav />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "100vh", paddingTop: 20 }} style={{ backgroundColor: "#F0F0F0" }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "96vh", paddingTop: 28 }} style={{ backgroundColor: "#F0F0F0" }}>
           <form onSubmit={handleSubmit} style={{ backgroundColor: "#FFFFFF" }}>
-            <Grid container alignItems='center' spacing={3} padding={5}>
-              <Grid item xs={5} rowSpacing={4}>
+            <Grid container alignItems='center' spacing={8} padding={5}>
+              <Grid item xs={6} rowSpacing={2}>
                 <Typography variant="h6" sx={{ paddingBottom: 2 }}>Sender Information</Typography>
                 <TextField
                   fullWidth
@@ -118,12 +118,8 @@ export default function Transfer() {
                   sx={{ paddingBottom: 2 }}
                 />
               </Grid>
-              <Grid item xs={2}>
-                <Box textAlign='center' >
-                  <img src={arrow} alt="right arrow" height={150} width={150} />
-                </Box>
-              </Grid>
-              <Grid container item xs={5} spacing={5}>
+              
+              <Grid container item xs={6} spacing={2}>
                 <Typography variant="h6" sx={{ paddingBottom: 2 }}>Beneficiary Information</Typography>
                 <TextField
                   fullWidth
