@@ -11,18 +11,12 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { MuiTelInput } from "mui-tel-input";
 import axios from "axios";
-<<<<<<< HEAD
-import { Card, CardContent } from "@mui/material";
-import { border, shadows } from "@mui/system";
-=======
+import { Card } from '@mui/material';
 import { useNavigate } from "react-router-dom";
->>>>>>> 24128f36aeb51f53346aba68f4dfb966c0b91975
 const theme = createTheme();
-
 export default function SignUp() {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("");
-
   const handleChange = (newValue) => {
     setValue(newValue);
   };
@@ -39,7 +33,6 @@ export default function SignUp() {
       profilePassword: null,
     };
     console.log(mapData);
-
     axios
       .post("http://localhost:8090/register", mapData)
       .then((res) => {
@@ -51,15 +44,13 @@ export default function SignUp() {
           });
         }
       })
-
       .catch(function (error) {
         console.log(error.response.data);
       });
   };
-
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh"  }}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -67,11 +58,7 @@ export default function SignUp() {
           sm={false}
           md={false}
           lg={6}
-<<<<<<< HEAD
-          style={{ padding: "20vh"}}
-=======
           style={{ padding: "20vh" }}
->>>>>>> 24128f36aeb51f53346aba68f4dfb966c0b91975
         // sx={{
         //   backgroundImage: `url(${img})`,
         //   backgroundPosition: 'center',
@@ -80,22 +67,21 @@ export default function SignUp() {
         >
           <img
             src={img}
-            style={{ width: "100%", height: "100%", objectFit: "cover"}}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </Grid>
-          
-          
-          
-        <Grid item xs={12} sm={12} md={12} lg={6} component={Paper} square>
-        <Card style={{ padding: "100px" }}
+        <Grid item xs={12} sm={12} md={12} lg={6} square>
+          <Card style={{ padding: "100px", borderTop:"2px solid white" ,boxShadow:"1px 1px 1px 1px "}}
             sx={{
               my: 8,
               mx: 4,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              
             }}>
           <Box
+           
             
           >
             <Typography component="h1" variant="h4">
@@ -145,7 +131,6 @@ export default function SignUp() {
                 fullWidth
                 sx={{ paddingTop: 1 }}
               />
-
               <Button
                 type="submit"
                 fullWidth
@@ -163,13 +148,11 @@ export default function SignUp() {
                 </Grid>
               </Grid>
             </Box>
+            
           </Box>
           </Card>
         </Grid>
-        
       </Grid>
-      
-
     </ThemeProvider>
   );
 }
