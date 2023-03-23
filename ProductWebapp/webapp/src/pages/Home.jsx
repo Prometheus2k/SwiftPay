@@ -13,7 +13,6 @@ import {
   Box,
   Divider,
 } from "@mui/material";
-import { useLocation } from "react-router-dom";
 
 export default function Home() {
   return (
