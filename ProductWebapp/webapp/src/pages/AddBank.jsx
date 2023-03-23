@@ -17,16 +17,16 @@ import {
 
 const banks = [
   {
-    value: "SBI",
+    value: "State Bank of India",
   },
   {
-    value: "HDFC",
+    value: "Bank of America ",
   },
   {
     value: "ICICI",
   },
   {
-    value: "JPY",
+    value: "Axis Bank",
   },
 ];
 
@@ -104,7 +104,7 @@ export default function AddBank() {
                             <TextField
                               required
                               id="outlined-required"
-                              label="Required"
+                              
                               fullWidth
                             />
                           </Grid>
@@ -121,7 +121,7 @@ export default function AddBank() {
                             <TextField
                               required
                               id="outlined-required"
-                              label="Required"
+                              
                               fullWidth
                             />
                           </Grid>

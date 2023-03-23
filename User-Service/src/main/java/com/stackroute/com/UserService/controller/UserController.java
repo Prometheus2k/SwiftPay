@@ -7,6 +7,7 @@ import com.stackroute.com.UserService.exceptions.EmailIdAlreadyExistException;
 import com.stackroute.com.UserService.exceptions.EmailIdNotExistException;
 import com.stackroute.com.UserService.model.User;
 import com.stackroute.com.UserService.service.UserServiceImpl;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.core.Application;
+
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/user-service")
 public class UserController {
 
     @Autowired
@@ -27,7 +31,7 @@ public class UserController {
         return entity;
     }
 
-    @GetMapping("/users")
+    @GetMapping(value = "/users", produces = "application/json")
     public ResponseEntity<?> getAllUsers(){
         List<User> userList = userServiceImpl.getAllUser();
         ResponseEntity<?> entity = new ResponseEntity<List<User>>(userList,HttpStatus.OK);
@@ -50,7 +54,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/users/{email}")
+    @GetMapping(value="/users/{email}", produces = "application/json")
     public ResponseEntity<?> getUserByEmailId(@PathVariable("email") String emailId) {
         ResponseEntity<?> entity = null;
         User user = null;
@@ -67,7 +71,7 @@ public class UserController {
         return entity;
     }
 
-    @DeleteMapping("users/{email}")
+    @DeleteMapping("/users/{email}")
     public ResponseEntity<?> deleteUserByEmail(@PathVariable("email") String emailId){
         boolean isDeleted = false;
         try {
@@ -93,6 +97,7 @@ public class UserController {
         return entity;
     }
 
+
     private String getToken(String emailId) {
         String token = Jwts.builder().setSubject(emailId).setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "success").compact();
@@ -110,6 +115,28 @@ public class UserController {
         }
         userServiceImpl.updateUser(user, updateUser);
         return new ResponseEntity<User>(updateUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value="/users/verify/{email}", produces = "application/json")
+    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestBody String token){
+        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(token).getBody();
+        ResponseEntity<?> entity = null;
+        User user = null;
+        if(claims.isEmpty()){
+            return new ResponseEntity<String>("Bad JWT Token", HttpStatus.UNAUTHORIZED);
+        }else{
+            try {
+                user = userServiceImpl.getUserByEmail(emailId);
+            } catch (EmailIdNotExistException e) {
+                throw new RuntimeException(e);
+            }
+            if(user==null) {
+                entity = new ResponseEntity<String>("Email Id Not Exist",HttpStatus.BAD_REQUEST);
+            }else {
+                entity = new ResponseEntity<User>(user,HttpStatus.OK);
+            }
+            return entity;
+        }
     }
 
     @ExceptionHandler(EmailIdNotExistException.class)

@@ -100,7 +100,7 @@ export default function Navbar() {
         vertical: "top",
         horizontal: "right",
       }}
-      open={isMenuOpen}
+      open={isMenuOpen}np
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>

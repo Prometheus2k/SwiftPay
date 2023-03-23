@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Sidenav from "../components/Sidenav";
 import "../styles/Userprofile.css";
@@ -9,13 +9,36 @@ import {
   CardMedia,
   Grid,
   Typography,
+<<<<<<< HEAD
   Box
+=======
+  Box,
+>>>>>>> bc5a7f5e806daed4b6ca6036693faef3fb557d90
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 export default function Userprofile() {
+  const [data, SetData] = useState([]);
 
   const navigate = useNavigate();
+  let userData;
+  let email = localStorage.getItem("email");
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://e648-115-111-183-90.in.ngrok.io/user-service/users/${email}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        SetData(res.data);
+      })
+      .catch(function (error) {
+        console.log(error.response.data);
+      });
+  }, []);
+
+  console.log(data.emailId);
   return (
     <div className="bg-color">
       <Navbar />
@@ -24,58 +47,140 @@ export default function Userprofile() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <section className="user">
             <Grid container direction="row" spacing={3}>
-
-              <Grid item xs="12" >
-                <Card sx={{ padding: '6vh' }}>
+              <h1>{localStorage.getItem("email")}</h1>
+              <Grid item xs="12">
+                <Card sx={{ padding: "6vh" }}>
                   <CardMedia
                     component="img"
                     image="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                     alt="avatar"
-                    sx={{ width: "170px", margin: "0px auto" }}
+                    sx={{
+                      maxWidth: "170px",
+                      margin: "0px auto",
+                      borderRadius: "100%",
+                      borderColor: "grey.500 ",
+                    }}
                   />
                   <CardContent>
+                    <Grid container sx={{ margin: "1%" }}>
+                      <Grid item xs="9">
+                        <Typography
+                          variant="h5"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          Name
+                        </Typography>
+                      </Grid>
+                      <Grid item xs="3">
+                        <Typography
+                          variant="h6"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          {data.nameOfTheUser}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    <Grid container sx={{ margin: "1%" }}>
+                      <Grid item xs="9">
+                        <Typography
+                          variant="h5"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          Email
+                        </Typography>
+                      </Grid>
+                      <Grid item xs="3">
+                        <Typography
+                          variant="h6"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          {data.emailId}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    <Grid container sx={{ margin: "1%" }}>
+                      <Grid item xs="9">
+                        <Typography
+                          variant="h5"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          Phone
+                        </Typography>
+                      </Grid>
+                      <Grid item xs="3">
+                        <Typography
+                          variant="h6"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          {data.mobileNumber}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    <Grid container sx={{ margin: "1%" }}>
+                      <Grid item xs="9">
+                        <Typography
+                          variant="h5"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          Location
+                        </Typography>
+                      </Grid>
+                      <Grid item xs="3">
+                        <Typography
+                          variant="h6"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          {data.location}
+                        </Typography>
+                      </Grid>
+                    </Grid>
 
-                    <Grid container >
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Full Name</Typography>
+<<<<<<< HEAD
+                    <Grid container spacing={3}>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Name</Typography>
                         </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">Johnatan Smith</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Email</Typography>
-                        </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">example@example.com</Typography>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>Johnatan Smith</Typography>
                         </Grid>
                       </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Phone</Typography>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Email</Typography>
                         </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">(097) 234-5678</Typography>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>example@example.com</Typography>
                         </Grid>
                       </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Transactions</Typography>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Phone</Typography>
                         </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">3</Typography>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>(097) 234-5678</Typography>
+                        </Grid>
+                      </Grid>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Location</Typography>
+                        </Grid>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>India</Typography>
                         </Grid>
                       </Grid>
                     </Grid>
+
+=======
+>>>>>>> bc5a7f5e806daed4b6ca6036693faef3fb557d90
                     <Box
                       m={1}
                       display="flex"
                       justifyContent="flex-start"
                       alignItems="flex-start"
                     >
-                      <Button onClick={() => navigate("/bank-details")}
+                      <Button
+                        onClick={() => navigate("/bank-details")}
                         variant="contained"
                         sx={{
                           height: 40,
