@@ -35,40 +35,40 @@ export default function Userprofile() {
                   />
                   <CardContent>
 
-                    <Grid container >
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Full Name</Typography>
+                    
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Name</Typography>
                         </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">Johnatan Smith</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Email</Typography>
-                        </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">example@example.com</Typography>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>Johnatan Smith</Typography>
                         </Grid>
                       </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Phone</Typography>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Email</Typography>
                         </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">(097) 234-5678</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Location</Typography>
-                        </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">India</Typography>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>example@example.com</Typography>
                         </Grid>
                       </Grid>
-                    </Grid>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Phone</Typography>
+                        </Grid>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>(097) 234-5678</Typography>
+                        </Grid>
+                      </Grid>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Location</Typography>
+                        </Grid>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>India</Typography>
+                        </Grid>
+                      </Grid>
+                    
                     <Box
                       m={1}
                       display="flex"
