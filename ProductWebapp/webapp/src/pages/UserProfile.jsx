@@ -6,151 +6,97 @@ import {
   Button,
   Card,
   CardContent,
-  CardHeader,
   CardMedia,
   Grid,
   Typography,
-  Box,
-  Divider,
+  Box
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 export default function Userprofile() {
+
+  const navigate = useNavigate();
+
   return (
-    <>
-      <div className="bg-color">
-        <Navbar />
-        <Box height={30} />
-        <Box sx={{ display: "flex" }}>
-          <Sidenav />
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <section className="user">
-              <Grid container direction="row" spacing={3}>
-                <Grid item xs="6">
-                  <Card>
-                    <CardHeader>Bank Details</CardHeader>
-                    <CardContent>
-                      <Grid container>
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>Bank Name</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>American Express</Typography>
-                          </Grid>
+    <div className="bg-color">
+      <Navbar />
+      <Box sx={{ display: "flex" }}>
+        <Sidenav />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <section className="user">
+            <Grid container direction="row" spacing={3}>
+
+              <Grid item xs="12" >
+                <Card sx={{ padding: '6vh' }}>
+                  <CardMedia
+                    component="img"
+                    image="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                    alt="avatar"
+                    sx={{ width: "170px", margin: "0px auto" }}
+                  />
+                  <CardContent>
+
+                    <Grid container >
+                      <Grid container sx={{ margin: "10px" }}>
+                        <Grid item xs="10">
+                          <Typography variant="h5">Full Name</Typography>
                         </Grid>
-                        <Divider />{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>PAN Number</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>LTIP*****</Typography>
-                          </Grid>
+                        <Grid item xs="2">
+                          <Typography variant="h6">Johnatan Smith</Typography>
                         </Grid>
-                        <Divider />{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>Account Number</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>12345678910123</Typography>
-                          </Grid>
+                      </Grid>
+                      <Grid container sx={{ margin: "10px" }}>
+                        <Grid item xs="10">
+                          <Typography variant="h5">Email</Typography>
                         </Grid>
-                        <Divider />{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>SwiftCode</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>MT103*****</Typography>
-                          </Grid>
+                        <Grid item xs="2">
+                          <Typography variant="h6">example@example.com</Typography>
                         </Grid>
-                        <Divider />{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>Account Type</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>Business</Typography>
-                          </Grid>
+                      </Grid>
+                      <Grid container sx={{ margin: "10px" }}>
+                        <Grid item xs="10">
+                          <Typography variant="h5">Phone</Typography>
                         </Grid>
-                      </Grid>{" "}
-                    </CardContent>
-                  </Card>
-                </Grid>{" "}
-                <Grid item xs="6">
-                  <Card>
-                    <CardHeader sx={{ color: "black" }}>My Profile</CardHeader>
-                    <CardMedia
-                      component="img"
-                      image="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                      alt="avatar"
-                      style={{ width: "150px", margin: "0px auto" }}
-                    />
-                    <CardContent>
-                      {" "}
-                      <Grid container direction="row">
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>Full Name</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>Johnatan Smith</Typography>
-                          </Grid>
-                        </Grid>{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>Email</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>example@example.com</Typography>
-                          </Grid>
-                        </Grid>{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>Phone</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography>(097) 234-5678</Typography>
-                          </Grid>
-                        </Grid>{" "}
-                        <Grid container sx={{ margin: "10px" }}>
-                          <Grid item xs="6">
-                            <Typography>Transactions</Typography>
-                          </Grid>
-                          <Grid item xs="6">
-                            <Typography className="text-muted">3</Typography>
-                          </Grid>
-                        </Grid>{" "}
-                      </Grid>{" "}
-                      <Box
-                        m={1}
-                        display="flex"
-                        justifyContent="flex-start"
-                        alignItems="flex-start"
-                      >
-                        <Button
-                          variant="contained"
-                          sx={{
-                            height: 40,
+                        <Grid item xs="2">
+                          <Typography variant="h6">(097) 234-5678</Typography>
+                        </Grid>
+                      </Grid>
+                      <Grid container sx={{ margin: "10px" }}>
+                        <Grid item xs="10">
+                          <Typography variant="h5">Transactions</Typography>
+                        </Grid>
+                        <Grid item xs="2">
+                          <Typography variant="h6">3</Typography>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                    <Box
+                      m={1}
+                      display="flex"
+                      justifyContent="flex-start"
+                      alignItems="flex-start"
+                    >
+                      <Button onClick={() => navigate("/bank-details")}
+                        variant="contained"
+                        sx={{
+                          height: 40,
+                          backgroundColor: "#005555",
+                          ":hover": {
+                            color: "white",
                             backgroundColor: "#005555",
-                            ":hover": {
-                              color: "white",
-                              backgroundColor: "#005555",
-                            },
-                            margin: "0px auto",
-                          }}
-                        >
-                          Edit
-                        </Button>
-                      </Box>{" "}
-                    </CardContent>{" "}
-                  </Card>
-                </Grid>
-              </Grid>{" "}
-            </section>
-          </Box>
+                          },
+                          margin: "0px auto",
+                        }}
+                      >
+                        Check Balance
+                      </Button>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+          </section>
         </Box>
-      </div>
-    </>
+      </Box>
+    </div>
   );
 }

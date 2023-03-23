@@ -104,6 +104,8 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+
     </Menu>
   );
 
