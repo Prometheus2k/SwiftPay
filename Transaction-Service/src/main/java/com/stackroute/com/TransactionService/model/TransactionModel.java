@@ -1,11 +1,14 @@
 package com.stackroute.com.TransactionService.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.stackroute.com.TransactionService.constants.BankName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Transaction")
@@ -15,12 +18,17 @@ import javax.persistence.*;
 public class TransactionModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="id",nullable = false)
-	private int id;
+	@Column(name="transactionId",nullable = false)
+	private int transactionId;
 	@Column(name="account_number",nullable = false,length = 20)
 	private String accountNumber;
 	@Column(name="beneficiary_name",nullable = false)
 	private String beneficiaryName;
+
+	@Column(name = "timeStamp",updatable = false)
+	@CreationTimestamp
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime timeStamp;
 	@Column(name="receiver_account_number",nullable = false)
 	private String receiverAccountNumber;
 	@Column(name="receiver_swift_code",nullable = false,length = 8)
