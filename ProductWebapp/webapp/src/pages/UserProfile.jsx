@@ -8,7 +8,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Typography,
+  Typography, 
   Box
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +31,7 @@ export default function Userprofile() {
                     component="img"
                     image="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                     alt="avatar"
-                    sx={{ width: "170px", margin: "0px auto" }}
+                    sx={{ maxWidth: "170px", margin: "0px auto", borderRadius: '100%', borderColor: 'grey.500 ' }}
                   />
                   <CardContent>
 
@@ -62,10 +62,10 @@ export default function Userprofile() {
                       </Grid>
                       <Grid container sx={{ margin: "10px" }}>
                         <Grid item xs="10">
-                          <Typography variant="h5">Transactions</Typography>
+                          <Typography variant="h5">Location</Typography>
                         </Grid>
                         <Grid item xs="2">
-                          <Typography variant="h6">3</Typography>
+                          <Typography variant="h6">India</Typography>
                         </Grid>
                       </Grid>
                     </Grid>
