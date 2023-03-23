@@ -91,7 +91,7 @@ export default function Transactions() {
             <div className="transactionDiv">
               {/* <h1>Transaction History</h1> */}
               <Box
-                sx={{ height: " 100vh", width: "100%", alignItems: "center" }}
+                sx={{ height: " 82vh", width: "100%", alignItems: "center" }}
               >
                 <DataGrid
                   sx={{ m: 2, overflowX: "scroll" }}

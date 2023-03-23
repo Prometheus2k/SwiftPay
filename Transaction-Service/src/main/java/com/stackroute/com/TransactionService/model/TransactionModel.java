@@ -6,8 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+<<<<<<< HEAD
 
 import javax.persistence.*;
+=======
+import org.springframework.data.annotation.CreatedDate;
+
+import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
+>>>>>>> 98fde24e3c9054587a223ec3df2deb1edd6fb2a7
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,6 +30,15 @@ public class TransactionModel {
 	private int transactionId;
 	@Column(name="account_number",nullable = false,length = 20)
 	private String accountNumber;
+
+//	@CreationTimestamp
+//	@Column(name = "created_at")
+//	private Date createdAt;
+
+	@Column(updatable = false)
+	@CreationTimestamp
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime createdAt;
 	@Column(name="beneficiary_name",nullable = false)
 	private String beneficiaryName;
 
@@ -42,6 +59,7 @@ public class TransactionModel {
 	private float debit;
 	@Column(name="message",nullable = false)
 	private String message;
+
 
 
 }

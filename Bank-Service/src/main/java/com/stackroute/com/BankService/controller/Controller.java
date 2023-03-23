@@ -3,8 +3,10 @@ package com.stackroute.com.BankService.controller;
 import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.BankModel;
+import com.stackroute.com.BankService.model.TransactionModel;
 import com.stackroute.com.BankService.service.AccountServiceInterface;
 import com.stackroute.com.BankService.service.BankServiceInterface;
+import com.stackroute.com.BankService.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -150,6 +152,22 @@ public class Controller {
         try {
             accountService.updateAccount(accountNumber, account);
             entity = new ResponseEntity<String>("Account updated successfully", HttpStatus.OK);
+        }
+        catch (CustomException e) {
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+        }
+        return entity;
+    }
+
+    @Autowired
+    TransactionService transactionService;
+
+    @PostMapping("/transaction/transfer")
+    public ResponseEntity<?> transfer(@RequestBody TransactionModel model) {
+        ResponseEntity<?> entity = null;
+        try {
+            transactionService.performTransaction(model);
+            entity = new ResponseEntity<String>("Transfer Successful", HttpStatus.OK);
         }
         catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);

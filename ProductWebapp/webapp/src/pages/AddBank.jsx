@@ -9,8 +9,6 @@ import {
   Button,
   Card,
   CardContent,
-  CardHeader,
-  CardMedia,
   Grid,
   Typography,
   Box,
@@ -19,16 +17,16 @@ import {
 
 const banks = [
   {
-    value: "SBI",
+    value: "State Bank of India",
   },
   {
-    value: "HDFC",
+    value: "Bank of America ",
   },
   {
     value: "ICICI",
   },
   {
-    value: "JPY",
+    value: "Axis Bank",
   },
 ];
 
@@ -41,11 +39,10 @@ export default function AddBank() {
         <Box sx={{ display: "flex" }}>
           <Sidenav />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <section className="bankdetails">
+            <section style={{padding: '4vh'}}>
               <Grid container direction="row" spacing={3} className="gridbank">
                 <Grid item xs="12">
                   <Card className="gridbank">
-                    <CardHeader>Bank Details</CardHeader>
                     <CardContent>
                       <Grid container>
                         <Grid container sx={{ margin: "10px" }}>
@@ -159,7 +156,7 @@ export default function AddBank() {
                               id="outlined-required"
                               label="Required"
                               fullWidth
-                              sx={{ paddingBottom: 2 }}
+                              sx={{ paddingBottom: 6 }}
                             />
                           </Grid>
                           <Grid/>
