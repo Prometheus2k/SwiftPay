@@ -9,7 +9,7 @@ import UserProfile from "./pages/UserProfile";
 function App() {
   return (
     <>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/login" exact element={<Login />}></Route>
           <Route path="/signup" exact element={<SignUp />}></Route>
@@ -20,10 +20,7 @@ function App() {
           <Route path="/transactions" exact element={<Transactions />}></Route>
           <Route path="/addbank" exact element={<AddBank />}></Route>
         </Routes>
-      </BrowserRouter> */}
-      <SignUp/>
-      
-      
+      </BrowserRouter>
     </>
   );
 }

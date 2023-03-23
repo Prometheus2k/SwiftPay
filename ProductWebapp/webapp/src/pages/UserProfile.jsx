@@ -22,7 +22,9 @@ export default function Userprofile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/users/${email}`)
+      .get(
+        `https://e648-115-111-183-90.in.ngrok.io/user-service/users/${email}`
+      )
       .then((res) => {
         console.log(res.data);
         SetData(res.data);
