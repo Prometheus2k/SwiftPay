@@ -5,7 +5,6 @@ import MuiDrawer from "@mui/material/Drawer";
 
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 
@@ -15,8 +14,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import HomeIcon from "@mui/icons-material/Home";
 import Person2Icon from "@mui/icons-material/Person2";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MoveUpIcon from "@mui/icons-material/MoveUp";
@@ -100,33 +97,6 @@ export default function Sidenav() {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem
-            
-            sx={{ display: "block" }}
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 70,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  color: 'white',
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
           <ListItem
             
             sx={{ display: "block" }}

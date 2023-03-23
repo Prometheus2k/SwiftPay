@@ -19,7 +19,7 @@ public class User {
     private String location;
     @Column(name="pan_number",length=30)
     private String panNumber;
-    @Column(name="profile_password",length=10)
+    @Column(name="profile_password",length=30)
     private String profilePassword;
 
     //Getters and Setters
