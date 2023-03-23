@@ -42,12 +42,9 @@ export default function Home() {
 
                         <Grid item xs="6">
 
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            fullWidth
-                          />
+                        <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
+                          SBI
+                        </Typography>
 
                         </Grid>
                       </Grid>
@@ -60,12 +57,9 @@ export default function Home() {
                         </Grid>
 
                         <Grid item xs="6">
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            fullWidth
-                          />
+                        <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
+                        34567890123
+                        </Typography>
                         </Grid>
                       </Grid>
                       <Divider />{" "}
@@ -80,12 +74,9 @@ export default function Home() {
                         </Grid>
 
                         <Grid item xs="6">
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            fullWidth
-                          />
+                        <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
+                          Chennai
+                        </Typography>
                         </Grid>
                       </Grid>
                       <Divider />{" "}
@@ -97,12 +88,9 @@ export default function Home() {
                         </Grid>
 
                         <Grid item xs="6">
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            fullWidth
-                          />
+                        <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
+                          Savings
+                        </Typography>
                         </Grid>
                       </Grid>
                       <Divider />{" "}
@@ -114,12 +102,9 @@ export default function Home() {
                         </Grid>
 
                         <Grid item xs="6">
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            fullWidth
-                          />
+                        <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
+                          MT101
+                        </Typography>
                         </Grid>
                       </Grid>
                       <Grid container sx={{ margin: "10px" }}>
@@ -130,12 +115,9 @@ export default function Home() {
                         </Grid>
 
                         <Grid item xs="6">
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Required"
-                            fullWidth
-                          />
+                        <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
+                          50000.0
+                        </Typography>
                         </Grid>
                       </Grid>
                     </Grid>
