@@ -17,7 +17,7 @@ export default function Transactions() {
       field: "receiverSwiftCode",
       headerName: "Transaction Id",
       headerAlign: "center",
-      flex: 1,
+      width: 120,
     },
     {
       field: "timeStamp",
@@ -29,8 +29,9 @@ export default function Transactions() {
       field: "message",
       headerName: " Description",
       headerAlign: "center",
+      width: 300,
 
-      flex: 1,
+
     },
     {
       field: "receiverAccountNumber",
@@ -50,23 +51,25 @@ export default function Transactions() {
       headerAlign: "center",
       flex: 1,
     },
+
     {
       field: "credit",
       headerName: "Credit",
       headerAlign: "center",
-      flex: 1,
+
     },
     {
       field: "debit",
       headerName: "Debit",
       headerAlign: "center",
-      flex: 1,
+
     },
     {
       field: "status",
       headerName: "Status",
       headerAlign: "center",
-      flex: 1,
+      flex: 0,
+
     },
   ];
 
@@ -97,8 +100,8 @@ export default function Transactions() {
                   sx={{ m: 2, overflowX: "scroll" }}
                   disableRowSelectionOnClick
                   autoHeight
-                  rows={rows}
-                  //rows={genRows}
+                  //rows={rows}
+                  rows={genRows}
                   columns={columns}
                   getRowId={(row) =>
                     row.receiverSwiftCode +
