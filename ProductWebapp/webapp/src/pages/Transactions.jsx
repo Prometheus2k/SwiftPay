@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import "../styles/transactionHistory.css";
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-const url = "http://localhost:8060/transaction-service/transaction/history";
+const url = "http://localhost:8081/transaction-service/transaction/history";
 
 export default function Transactions() {
 
@@ -77,7 +77,7 @@ export default function Transactions() {
       setRows(response.data);
     });
   }, []);
-  //console.log(rows);
+  console.log(rows);
 
   return (
     <>
@@ -97,8 +97,8 @@ export default function Transactions() {
                   sx={{ m: 2, overflowX: "scroll" }}
                   disableRowSelectionOnClick
                   autoHeight
-                  //rows={rows}
-                  rows={genRows}
+                  rows={rows}
+                  //rows={genRows}
                   columns={columns}
                   getRowId={(row) =>
                     row.receiverSwiftCode +
