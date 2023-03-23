@@ -8,6 +8,10 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 const url = "http://localhost:8060/transaction-service/transaction/history";
 
 export default function Transactions() {
+
+  const genData = require("../generated.json");
+  let genRows = genData.transactions;
+
   const columns = [
     {
       field: "receiverSwiftCode",
@@ -73,11 +77,12 @@ export default function Transactions() {
       setRows(response.data);
     });
   }, []);
-  console.log(rows);
+  //console.log(rows);
 
   return (
     <>
       <div className="bg-color">
+        {console.log(genData)}
         <Navbar />
         <Box height={30} />
         <Box sx={{ display: "flex" }}>
@@ -90,8 +95,10 @@ export default function Transactions() {
               >
                 <DataGrid
                   sx={{ m: 2, overflowX: "scroll" }}
+                  disableRowSelectionOnClick
                   autoHeight
-                  rows={rows}
+                  //rows={rows}
+                  rows={genRows}
                   columns={columns}
                   getRowId={(row) =>
                     row.receiverSwiftCode +
