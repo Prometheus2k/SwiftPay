@@ -14,8 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.core.Application;
+
 @RestController
 @CrossOrigin("*")
+@RequestMapping("/user-service")
 public class UserController {
 
     @Autowired
@@ -27,7 +30,7 @@ public class UserController {
         return entity;
     }
 
-    @GetMapping("/users")
+    @GetMapping(value = "/users", produces = "application/json")
     public ResponseEntity<?> getAllUsers(){
         List<User> userList = userServiceImpl.getAllUser();
         ResponseEntity<?> entity = new ResponseEntity<List<User>>(userList,HttpStatus.OK);
@@ -92,6 +95,7 @@ public class UserController {
         }
         return entity;
     }
+
 
     private String getToken(String emailId) {
         String token = Jwts.builder().setSubject(emailId).setIssuedAt(new Date())
