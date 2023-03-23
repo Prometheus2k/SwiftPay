@@ -11,6 +11,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { MuiTelInput } from "mui-tel-input";
 import axios from "axios";
+import { Card, CardContent } from "@mui/material";
+import { border, shadows } from "@mui/system";
 const theme = createTheme();
 
 export default function SignUp() {
@@ -43,7 +45,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ height: "100vh"  }}>
         <CssBaseline />
         <Grid
           item
@@ -51,28 +53,32 @@ export default function SignUp() {
           sm={false}
           md={false}
           lg={6}
-          style={{ padding: "20vh" }}
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
+          style={{ padding: "20vh"}}
+        // sx={{
+        //   backgroundImage: `url(${img})`,
+        //   backgroundPosition: 'center',
+        //   maxWidth: '200px'
+        // }}
         >
           <img
             src={img}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover"}}
           />
         </Grid>
+          
+          
+          
         <Grid item xs={12} sm={12} md={12} lg={6} component={Paper} square>
-          <Box
-            style={{ padding: "100px" }}
+        <Card style={{ padding: "100px" }}
             sx={{
               my: 8,
               mx: 4,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
+            }}>
+          <Box
+            
           >
             <Typography component="h1" variant="h4">
               SIGN UP
@@ -140,8 +146,12 @@ export default function SignUp() {
               </Grid>
             </Box>
           </Box>
+          </Card>
         </Grid>
+        
       </Grid>
+      
+
     </ThemeProvider>
   );
 }
