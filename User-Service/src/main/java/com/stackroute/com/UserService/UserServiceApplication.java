@@ -22,6 +22,7 @@ public class UserServiceApplication {
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean<>();
 		filterRegistrationBean.setFilter(new UserFilter());
 		filterRegistrationBean.addUrlPatterns("/login/*");
+
 		return filterRegistrationBean;
 	}
 }
