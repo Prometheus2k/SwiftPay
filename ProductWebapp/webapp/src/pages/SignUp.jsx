@@ -39,12 +39,9 @@ export default function SignUp() {
       .post("http://localhost:8090/register", mapData)
       .then((res) => {
         if (res.status == 201) {
-          navigate("/", {
-            state: {
-              emailId: mapData.emailId,
-            },
-          });
+          navigate("/");
         }
+        localStorage.setItem("email", mapData.emailId);
       })
 
       .catch(function (error) {
@@ -63,11 +60,11 @@ export default function SignUp() {
           md={false}
           lg={6}
           style={{ padding: "20vh" }}
-        // sx={{
-        //   backgroundImage: `url(${img})`,
-        //   backgroundPosition: 'center',
-        //   maxWidth: '200px'
-        // }}
+          // sx={{
+          //   backgroundImage: `url(${img})`,
+          //   backgroundPosition: 'center',
+          //   maxWidth: '200px'
+          // }}
         >
           <img
             src={img}
