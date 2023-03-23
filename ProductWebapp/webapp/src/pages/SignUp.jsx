@@ -52,11 +52,11 @@ export default function SignUp() {
           md={false}
           lg={6}
           style={{ padding: "20vh" }}
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
+        // sx={{
+        //   backgroundImage: `url(${img})`,
+        //   backgroundPosition: 'center',
+        //   maxWidth: '200px'
+        // }}
         >
           <img
             src={img}

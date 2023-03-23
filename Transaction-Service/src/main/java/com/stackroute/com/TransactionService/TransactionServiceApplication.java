@@ -30,7 +30,7 @@ public class TransactionServiceApplication {
 	}
 	private ApiInfo apiDetails(){
 		Contact contact = new Contact("kireeti",null,"kireeti@gmail.com");
-		ApiInfo apiInfo = new ApiInfo("Transaction Service API","deals with transactions","1.0","kireeti@gmail.com","kireeti",null,null);
+		ApiInfo apiInfo = new ApiInfo("Transaction Service API","Deals with transactions","1.0","kireeti@gmail.com","kireeti",null,null);
 		return apiInfo;
 	}
 }

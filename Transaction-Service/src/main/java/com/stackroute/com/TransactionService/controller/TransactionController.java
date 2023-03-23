@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3001")
 @RequestMapping("transaction-service")
 public class TransactionController {
 
@@ -32,10 +32,10 @@ public class TransactionController {
 Function to Add a Transaction to the history*/
 
 	@PostMapping("/transaction/add")
-	public ResponseEntity<?> addTransaction(@RequestBody TransactionModel transaction) {
+	public ResponseEntity<?> addTransaction(@RequestBody List<TransactionModel> transaction) {
 		ResponseEntity<?> entity = null;
 		try {
-			transactionService.addTransactions(transaction);
+			transactionService.addTransactions(transaction.get(0));
 			entity = new ResponseEntity<String>("Transaction added", HttpStatus.OK);
 
 
