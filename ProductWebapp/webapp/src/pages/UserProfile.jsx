@@ -8,7 +8,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Typography,
+  Typography, 
   Box
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -31,44 +31,44 @@ export default function Userprofile() {
                     component="img"
                     image="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                     alt="avatar"
-                    sx={{ width: "170px", margin: "0px auto" }}
+                    sx={{ maxWidth: "170px", margin: "0px auto", borderRadius: '100%', borderColor: 'grey.500 ' }}
                   />
                   <CardContent>
 
-                    <Grid container >
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Full Name</Typography>
+                    
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Name</Typography>
                         </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">Johnatan Smith</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Email</Typography>
-                        </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">example@example.com</Typography>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>Johnatan Smith</Typography>
                         </Grid>
                       </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Phone</Typography>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Email</Typography>
                         </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">(097) 234-5678</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "10px" }}>
-                        <Grid item xs="10">
-                          <Typography variant="h5">Transactions</Typography>
-                        </Grid>
-                        <Grid item xs="2">
-                          <Typography variant="h6">3</Typography>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>example@example.com</Typography>
                         </Grid>
                       </Grid>
-                    </Grid>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Phone</Typography>
+                        </Grid>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>(097) 234-5678</Typography>
+                        </Grid>
+                      </Grid>
+                      <Grid container sx={{ margin: "1%" }}>
+                        <Grid item xs="9">
+                          <Typography variant="h5" sx={{fontFamily: 'sans-serif'}}>Location</Typography>
+                        </Grid>
+                        <Grid item xs="3">
+                          <Typography variant="h6" sx={{fontFamily: 'sans-serif'}}>India</Typography>
+                        </Grid>
+                      </Grid>
+                    
                     <Box
                       m={1}
                       display="flex"

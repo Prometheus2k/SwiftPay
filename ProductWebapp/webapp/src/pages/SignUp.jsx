@@ -11,11 +11,16 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { MuiTelInput } from "mui-tel-input";
 import axios from "axios";
+<<<<<<< HEAD
 import { Card, CardContent } from "@mui/material";
 import { border, shadows } from "@mui/system";
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> 24128f36aeb51f53346aba68f4dfb966c0b91975
 const theme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [value, setValue] = React.useState("");
 
   const handleChange = (newValue) => {
@@ -37,7 +42,16 @@ export default function SignUp() {
 
     axios
       .post("http://localhost:8090/register", mapData)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        if (res.status == 201) {
+          navigate("/", {
+            state: {
+              emailId: mapData.emailId,
+            },
+          });
+        }
+      })
+
       .catch(function (error) {
         console.log(error.response.data);
       });
@@ -53,7 +67,11 @@ export default function SignUp() {
           sm={false}
           md={false}
           lg={6}
+<<<<<<< HEAD
           style={{ padding: "20vh"}}
+=======
+          style={{ padding: "20vh" }}
+>>>>>>> 24128f36aeb51f53346aba68f4dfb966c0b91975
         // sx={{
         //   backgroundImage: `url(${img})`,
         //   backgroundPosition: 'center',

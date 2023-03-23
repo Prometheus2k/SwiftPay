@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import "../styles/transactionHistory.css";
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-const url = "http://localhost:8060/transaction-service/transaction/history";
+const url = "http://localhost:8081/transaction-service/transaction/history";
 
 export default function Transactions() {
 
@@ -17,7 +17,7 @@ export default function Transactions() {
       field: "receiverSwiftCode",
       headerName: "Transaction Id",
       headerAlign: "center",
-      flex: 1,
+      width: 120,
     },
     {
       field: "timeStamp",
@@ -29,8 +29,9 @@ export default function Transactions() {
       field: "message",
       headerName: " Description",
       headerAlign: "center",
+      width: 300,
 
-      flex: 1,
+
     },
     {
       field: "receiverAccountNumber",
@@ -50,23 +51,25 @@ export default function Transactions() {
       headerAlign: "center",
       flex: 1,
     },
+
     {
       field: "credit",
       headerName: "Credit",
       headerAlign: "center",
-      flex: 1,
+
     },
     {
       field: "debit",
       headerName: "Debit",
       headerAlign: "center",
-      flex: 1,
+
     },
     {
       field: "status",
       headerName: "Status",
       headerAlign: "center",
-      flex: 1,
+      flex: 0,
+
     },
   ];
 
@@ -77,7 +80,7 @@ export default function Transactions() {
       setRows(response.data);
     });
   }, []);
-  //console.log(rows);
+  console.log(rows);
 
   return (
     <>
