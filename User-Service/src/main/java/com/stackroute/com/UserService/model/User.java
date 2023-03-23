@@ -13,7 +13,7 @@ public class User {
     private String password;
     @Column(name="user_name",length=30)
     private String nameOfTheUser;
-    @Column(name="mobile_number",length=10)
+    @Column(name="mobile_number",length=15)
     private String mobileNumber;
     @Column(name="location", length=30)
     private String location;
