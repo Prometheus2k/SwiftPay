@@ -9,17 +9,36 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
-
+import { MuiTelInput } from "mui-tel-input";
+import axios from "axios";
 const theme = createTheme();
 
 export default function SignUp() {
+  const [value, setValue] = React.useState("");
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
+    let mapData = {
+      emailId: data.get("email"),
       password: data.get("password"),
-    });
+      nameOfTheUser: data.get("name"),
+      mobileNumber: value,
+      location: null,
+      panNumber: null,
+      profilePassword: null,
+    };
+    console.log(mapData);
+
+    axios
+      .post("http://localhost:8090/register", mapData)
+      .then((res) => console.log(res.data))
+      .catch(function (error) {
+        console.log(error.response.data);
+      });
   };
 
   return (
@@ -68,26 +87,6 @@ export default function SignUp() {
                 margin="normal"
                 required
                 fullWidth
-                id="firstname"
-                label="First Name"
-                name="firstname"
-                autoComplete="first name"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="lastname"
-                label="Last Name"
-                name="lastname"
-                autoComplete="last name"
-              />
-
-              <TextField
-                margin="normal"
-                required
-                fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
@@ -103,16 +102,24 @@ export default function SignUp() {
                 id="password"
                 autoComplete="current-password"
               />
-
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                name="cpassword"
-                label="Confirm Password"
-                type="password"
-                id="cpassword"
-                autoComplete="current-password"
+                id="name"
+                label="Name"
+                name="name"
+                autoComplete="name"
+              />
+              <MuiTelInput
+                margin="normal"
+                id="phone"
+                placeholder="Phone"
+                required
+                value={value}
+                onChange={handleChange}
+                fullWidth
+                sx={{ paddingTop: 1 }}
               />
 
               <Button
