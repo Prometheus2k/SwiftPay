@@ -9,11 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 
 import javax.persistence.*;
-import org.springframework.data.annotation.CreatedDate;
-
-import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,9 +24,6 @@ public class TransactionModel {
 	@Column(name="account_number",nullable = false,length = 20)
 	private String accountNumber;
 
-//	@CreationTimestamp
-//	@Column(name = "created_at")
-//	private Date createdAt;
 
 	@Column(updatable = false)
 	@CreationTimestamp
@@ -57,7 +49,5 @@ public class TransactionModel {
 	private float debit;
 	@Column(name="message",nullable = false)
 	private String message;
-
-
 
 }

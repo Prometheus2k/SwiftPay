@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+
+import { Card } from '@mui/material';
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -46,16 +48,17 @@ export default function Login() {
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} component={Paper} square>
-          <Box
-            style={{ marginTop: "200px", padding: "100px" }}
+        <Grid item xs={12} sm={12} md={12} lg={6} square>
+          <Card style={{ marginTop: "200px", padding: "100px" ,boxShadow:"1px 1px 1px 1px " }}
             sx={{
               my: 8,
               mx: 4,
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
-            }}
+              alignItems: "center"}}>
+          <Box
+            
+            
           >
             <Typography component="h1" variant="h4">
               LOGIN
@@ -103,7 +106,9 @@ export default function Login() {
                 </Grid>
               </Grid>
             </Box>
+            
           </Box>
+          </Card>
         </Grid>
       </Grid>
     </ThemeProvider>
