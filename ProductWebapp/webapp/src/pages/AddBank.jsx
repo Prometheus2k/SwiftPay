@@ -17,16 +17,16 @@ import {
 
 const banks = [
   {
-    value: "SBI",
+    value: "State Bank of India",
   },
   {
-    value: "HDFC",
+    value: "Bank of America ",
   },
   {
     value: "ICICI",
   },
   {
-    value: "JPY",
+    value: "Axis Bank",
   },
 ];
 

@@ -46,7 +46,7 @@ export default function BankDetails() {
                     <CardHeader
                       title={
                         <Typography gutterBottom variant="h5" component="h1" sx={{ textAlign: 'center', color: '#005555' }} >
-                          My bank
+                          My Bank
                         </Typography>
                       }
                     />
@@ -55,7 +55,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              Bank Name
+                              Bank Name :
                             </Typography>
                           </Grid>
 
@@ -68,7 +68,7 @@ export default function BankDetails() {
                               fullWidth
                             /> */}
                             <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
-                          SBI
+                          State Bank of India
                         </Typography>
 
                           </Grid>
@@ -77,7 +77,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              Account Number
+                              Account Number :
                             </Typography>
                           </Grid>
 
@@ -94,7 +94,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              Bank Branch
+                              Bank Branch :
                             </Typography>
                           </Grid>
 
@@ -108,7 +108,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              Account Type
+                              Account Type :
                             </Typography>
                           </Grid>
 
@@ -122,7 +122,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              SWIFT Code
+                              SWIFT Code :
                             </Typography>
                           </Grid>
 
@@ -135,7 +135,7 @@ export default function BankDetails() {
                         <Grid container sx={{ margin: "10px" }}>
                           <Grid item xs="6">
                             <Typography sx={{ fontSize: 18, paddingTop: 2 }}>
-                              Balance
+                              Balance :
                             </Typography>
                           </Grid>
 
