@@ -11,6 +11,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -117,9 +118,9 @@ public class UserController {
         return new ResponseEntity<User>(updateUser, HttpStatus.CREATED);
     }
 
-    @PostMapping(value="/users/verify/{email}", produces = "application/json")
-    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestBody String token){
-        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(token).getBody();
+    @GetMapping(value="/users/verify/{email}", produces = "application/json")
+    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestHeader HttpHeaders header){
+        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws("hea").getBody();
         ResponseEntity<?> entity = null;
         User user = null;
         if(claims.isEmpty()){
