@@ -53,10 +53,11 @@ export default function SignUp() {
       <Card style={{ padding: "100px" ,
               
               height:"85vh",
+              
               borderColor:"black" , border:"2px solid wheat"}}
             sx={{
               my: 8,
-              mx: 4,
+            mx: 26,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",

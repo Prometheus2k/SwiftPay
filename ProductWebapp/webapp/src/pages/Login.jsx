@@ -54,11 +54,12 @@ export default function Login() {
             height:"80vh", border:"2px solid wheat"}}
           sx={{
             my: 8,
-            mx: 4,
+            mx: 20,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
+          
           >
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
