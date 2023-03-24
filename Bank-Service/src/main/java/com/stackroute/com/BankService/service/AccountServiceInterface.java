@@ -15,4 +15,6 @@ public interface AccountServiceInterface {
     public void deleteAccount(String accountNumber) throws CustomException;
 
     public void updateAccount(String accountNumber, AccountModel account) throws CustomException;
+
+    public AccountModel getAccountByUserEmailId(String emailId) throws CustomException;
 }

@@ -3,18 +3,20 @@ package com.stackroute.com.BankService.controller;
 import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.BankModel;
-import com.stackroute.com.BankService.model.TransactionModel;
+import com.stackroute.com.BankService.interservice.InterService;
+import com.stackroute.com.BankService.models.User;
 import com.stackroute.com.BankService.service.AccountServiceInterface;
 import com.stackroute.com.BankService.service.BankServiceInterface;
-import com.stackroute.com.BankService.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("bank-service")
 public class Controller {
     /*
@@ -34,6 +36,12 @@ public class Controller {
     @Autowired
     private BankServiceInterface bankService;
 
+    @Autowired
+    private AccountServiceInterface accountService;
+
+    @Autowired
+    private InterService interService;
+
     @PostMapping("/bank/add")
     public ResponseEntity<?> addBankDetails(@RequestBody BankModel bank) {
         ResponseEntity<?> entity = null;
@@ -42,7 +50,7 @@ public class Controller {
             entity = new ResponseEntity<String>("Bank details added successfully", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -75,7 +83,7 @@ public class Controller {
             entity = new ResponseEntity<String>("Bank deleted", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -88,7 +96,7 @@ public class Controller {
             entity = new ResponseEntity<String>("Bank details updated successfully", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -96,9 +104,6 @@ public class Controller {
     /*
     * For Account Model
     */
-
-    @Autowired
-    private AccountServiceInterface accountService;
 
     @PostMapping("/account/add")
     public ResponseEntity<?> addAccountDetails(@RequestBody AccountModel account) {
@@ -108,7 +113,7 @@ public class Controller {
             entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -128,7 +133,7 @@ public class Controller {
             entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -141,7 +146,7 @@ public class Controller {
             entity = new ResponseEntity<String>("Account deleted", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -154,24 +159,41 @@ public class Controller {
             entity = new ResponseEntity<String>("Account updated successfully", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
 
-    @Autowired
-    TransactionService transactionService;
+    /*
+    * To initiate transfer
+    */
 
-    @PostMapping("/transaction/transfer")
-    public ResponseEntity<?> transfer(@RequestBody TransactionModel model) {
+    @GetMapping("/test")
+    public ResponseEntity<?> test(@RequestHeader Map<String, String> headers) {
+        String token = headers.get("token");
+        User user = interService.getUserDetails(token);
         ResponseEntity<?> entity = null;
+        AccountModel account = null;
         try {
-            transactionService.performTransaction(model);
-            entity = new ResponseEntity<String>("Transfer Successful", HttpStatus.OK);
-        }
-        catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+            account = accountService.getAccountByUserEmailId(user.getEmailId());
+            entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
+        } catch (CustomException e) {
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
+
+
+//    @PostMapping("/transaction/transfer")
+//    public ResponseEntity<?> transfer(@RequestBody TransactionModel model) {
+//        ResponseEntity<?> entity = null;
+//        try {
+//            transactionService.performTransaction(model);
+//            entity = new ResponseEntity<String>("Transfer Successful", HttpStatus.OK);
+//        }
+//        catch (CustomException e) {
+//            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
+//        }
+//        return entity;
+//    }
 }

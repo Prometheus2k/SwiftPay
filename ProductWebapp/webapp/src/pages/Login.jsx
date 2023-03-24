@@ -5,11 +5,14 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+
+import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const theme = createTheme();
 
@@ -18,10 +21,29 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
+    let mapData = {
+      emailId: data.get("email"),
       password: data.get("password"),
-    });
+    };
+
+    console.log(mapData);
+
+    axios
+      .post("http://localhost:8090/user-service/login", mapData)
+      .then((res) => {
+        if (res.status == 200) {
+          console.log(res.data.substring(res.data.indexOf(":")) + 1);
+          localStorage.setItem(
+            "token",
+            res.data.substring(res.data.indexOf(":")) + 1
+          );
+          navigate("/");
+        }
+        localStorage.setItem("email", mapData.emailId);
+      })
+      .catch(function (error) {
+        console.log(error.response.data);
+      });
   };
 
   return (
@@ -46,9 +68,13 @@ export default function Login() {
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} component={Paper} square>
-          <Box
-            style={{ marginTop: "200px", padding: "100px" }}
+        <Grid item xs={12} sm={12} md={12} lg={6} square>
+          <Card
+            style={{
+              marginTop: "200px",
+              padding: "100px",
+              boxShadow: "1px 1px 1px 1px ",
+            }}
             sx={{
               my: 8,
               mx: 4,
@@ -57,53 +83,55 @@ export default function Login() {
               alignItems: "center",
             }}
           >
-            <Typography component="h1" variant="h4">
-              LOGIN
-            </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
-            >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-              />
-
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, height: 50 }}
-                style={{ backgroundColor: "#005555" }}
+            <Box>
+              <Typography component="h1" variant="h4">
+                LOGIN
+              </Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+                sx={{ mt: 1 }}
               >
-                Login
-              </Button>
-              <Grid container>
-                <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                />
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, height: 50 }}
+                  style={{ backgroundColor: "#005555" }}
+                >
+                  Login
+                </Button>
+                <Grid container>
+                  <Grid item>
+                    <Link href="/signup" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </Box>
             </Box>
-          </Box>
+          </Card>
         </Grid>
       </Grid>
     </ThemeProvider>
