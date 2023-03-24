@@ -8,15 +8,15 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import KeyIcon from '@mui/icons-material/Key';
+import KeyIcon from "@mui/icons-material/Key";
 import img from "../images/swift_image.jpg";
 import { MuiTelInput } from "mui-tel-input";
 import axios from "axios";
-import { Card, InputAdornment } from '@mui/material';
+import { Card, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { style } from "@mui/system";
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 const theme = createTheme();
 export default function SignUp() {
   const navigate = useNavigate();
@@ -50,37 +50,24 @@ export default function SignUp() {
       });
   };
   return (
-
     <ThemeProvider theme={theme}>
-<<<<<<< HEAD
       <Card
         style={{
           padding: "100px",
-          overflow: "auto",
           height: "85vh",
+
           borderColor: "black",
           border: "2px solid wheat",
         }}
-=======
-<<<<<<< HEAD
-
-      <Card style={{
-        padding: "100px",
-
-        height: "85vh",
-        borderColor: "black", border: "2px solid wheat"
-      }}
->>>>>>> 9404ed871c26e136cb5a185deb609bb7860ece7c
         sx={{
           my: 8,
-          mx: 4,
+          mx: 26,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
-
       >
-        <Grid container component="main" sx={{ height: "100vh" }} >
+        <Grid container component="main" sx={{ height: "100vh" }}>
           <CssBaseline />
           <Grid
             item
@@ -89,7 +76,6 @@ export default function SignUp() {
             md={false}
             lg={6}
 
-<<<<<<< HEAD
             // sx={{
             //   backgroundImage: `url(${img})`,
             //   backgroundPosition: 'center',
@@ -100,62 +86,27 @@ export default function SignUp() {
             //   backgroundPosition: 'center',
             //   maxWidth: '200px'
             // }}
-=======
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
-=======
-      
-      <Card style={{ padding: "100px" ,
-              
-              height:"85vh",
-              
-              borderColor:"black" , border:"2px solid wheat"}}
-            sx={{
-              my: 8,
-            mx: 26,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-            
-            >
-      <Grid container component="main" sx={{ height: "100vh" }} >
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={false}
-          md={false}
-          lg={6}
-        
-        // sx={{
-        //   backgroundImage: `url(${img})`,
-        //   backgroundPosition: 'center',
-        //   maxWidth: '200px'
-        // }}
->>>>>>> 8e444dfa26c061145cf2fef5583e6e1ba67063b7
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
->>>>>>> 9404ed871c26e136cb5a185deb609bb7860ece7c
           >
             <img
               src={img}
-              style={{ width: "100%", height: "100%", objectFit: "cover", padding: "20px" }}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                padding: "20px",
+              }}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6} square style={{ padding: "50px" }}>
-            <Box
-
-
-
-            >
-<<<<<<< HEAD
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={6}
+            square
+            style={{ padding: "50px" }}
+          >
+            <Box>
               <Typography component="h1" variant="h4">
                 SIGN UP
               </Typography>
@@ -164,73 +115,6 @@ export default function SignUp() {
                 noValidate
                 onSubmit={handleSubmit}
                 sx={{ mt: 1 }}
-=======
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <MailOutlineIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <KeyIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label="Name"
-                name="name"
-                autoComplete="name"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <DriveFileRenameOutlineIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <MuiTelInput
-                margin="normal"
-                id="phone"
-                placeholder="Phone"
-                required
-                value={value}
-                onChange={handleChange}
-                fullWidth
-                sx={{ paddingTop: 1 }}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, height: 50 }}
-                style={{ backgroundColor: "#005555" }}
->>>>>>> 8e444dfa26c061145cf2fef5583e6e1ba67063b7
               >
                 <TextField
                   margin="normal"
@@ -240,6 +124,13 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <MailOutlineIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   margin="normal"
@@ -250,6 +141,13 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <KeyIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   margin="normal"
@@ -259,6 +157,13 @@ export default function SignUp() {
                   label="Name"
                   name="name"
                   autoComplete="name"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <DriveFileRenameOutlineIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <MuiTelInput
                   margin="normal"
@@ -292,7 +197,7 @@ export default function SignUp() {
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link href="/login" variant="body2">
+                    <Link href="/" variant="body2">
                       {"Already have an account ? Login "}
                     </Link>
                   </Grid>
@@ -302,9 +207,6 @@ export default function SignUp() {
           </Grid>
         </Grid>
       </Card>
-
     </ThemeProvider>
-
-
   );
 }
