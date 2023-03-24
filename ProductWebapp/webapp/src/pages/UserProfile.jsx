@@ -41,7 +41,7 @@ export default function Userprofile() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <section className="user">
             <Grid container direction="row" spacing={3}>
-              <h1>{localStorage.getItem("email")}</h1>
+              
               <Grid item xs="12">
                 <Card sx={{ padding: "6vh" }}>
                   <CardMedia
@@ -92,6 +92,26 @@ export default function Userprofile() {
                         </Typography>
                       </Grid>
                     </Grid>
+
+                    <Grid container sx={{ margin: "1%" }}>
+                      <Grid item xs="9">
+                        <Typography
+                          variant="h5"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          Password
+                        </Typography>
+                      </Grid>
+                      <Grid item xs="3">
+                        <Typography
+                          variant="h6"
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          {data.password} 
+                        </Typography>
+                      </Grid>
+                    </Grid>
+
                     <Grid container sx={{ margin: "1%" }}>
                       <Grid item xs="9">
                         <Typography
