@@ -82,12 +82,23 @@ export default function Navbar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    localStorage.removeItem("token");
-    navigate("/login");
   };
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuProfile = (event) => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    navigate("/profile");
+  };
+
+  const handleMenulogout = (event) => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    navigate("/");
+    localStorage.removeItem("token");
   };
 
   const menuId = "primary-search-account-menu";
@@ -105,11 +116,10 @@ export default function Navbar() {
         horizontal: "right",
       }}
       open={isMenuOpen}
-      np
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+      <MenuItem onClick={handleMenuProfile}>Profile</MenuItem>
+      <MenuItem onClick={handleMenulogout}>Log Out</MenuItem>
     </Menu>
   );
 
