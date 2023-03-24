@@ -55,12 +55,12 @@ export default function SignUp() {
       
       <Card style={{ padding: "100px" ,
               
-              height:"85vh",
-              
-              borderColor:"black" , border:"2px solid wheat"}}
+              height:"82vh",
+              overflow:"auto",
+              borderColor:"black" , border:"2px solid grey"}}
             sx={{
               my: 8,
-            mx: 26,
+            mx: 20,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -89,7 +89,7 @@ export default function SignUp() {
         >
           <img
             src={img}
-            style={{ width: "100%",height:"100%", objectFit: "cover",padding:"20px" }}
+            style={{ width: "100%",height:"100%", objectFit: "cover",padding:"10px" }}
           />
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}> 
