@@ -20,7 +20,6 @@ function App() {
           <Route path="/addbank" exact element={<AddBank />}></Route>
         </Routes>
       </BrowserRouter>
-      
     </>
   );
 }
