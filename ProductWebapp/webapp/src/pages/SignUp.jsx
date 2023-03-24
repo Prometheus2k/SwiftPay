@@ -56,9 +56,9 @@ export default function SignUp() {
         style={{
           padding: "100px",
           height: "85vh",
-          overflow:"auto",
+          
           borderColor: "black",
-          border: "2px solid wheat",
+          border: "2px solid grey",
         }}
         sx={{
           my: 8,
