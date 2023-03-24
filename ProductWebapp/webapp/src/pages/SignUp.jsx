@@ -52,17 +52,17 @@ export default function SignUp() {
   return (
 
     <ThemeProvider theme={theme}>
-<<<<<<< HEAD
 
       <Card style={{
         padding: "100px",
 
         height: "85vh",
+
         borderColor: "black", border: "2px solid wheat"
       }}
         sx={{
           my: 8,
-          mx: 4,
+          mx: 26,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -83,37 +83,6 @@ export default function SignUp() {
           //   backgroundPosition: 'center',
           //   maxWidth: '200px'
           // }}
-=======
-      
-      <Card style={{ padding: "100px" ,
-              
-              height:"85vh",
-              
-              borderColor:"black" , border:"2px solid wheat"}}
-            sx={{
-              my: 8,
-            mx: 26,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-            
-            >
-      <Grid container component="main" sx={{ height: "100vh" }} >
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={false}
-          md={false}
-          lg={6}
-        
-        // sx={{
-        //   backgroundImage: `url(${img})`,
-        //   backgroundPosition: 'center',
-        //   maxWidth: '200px'
-        // }}
->>>>>>> 8e444dfa26c061145cf2fef5583e6e1ba67063b7
           // sx={{
           //   backgroundImage: `url(${img})`,
           //   backgroundPosition: 'center',
@@ -126,21 +95,7 @@ export default function SignUp() {
             />
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} square style={{ padding: "50px" }}>
-            <Box
-
-
-
-            >
-<<<<<<< HEAD
-              <Typography component="h1" variant="h4">
-                SIGN UP
-              </Typography>
-              <Box
-                component="form"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 1 }}
-=======
+            <Box >
               <TextField
                 margin="normal"
                 required
@@ -206,79 +161,76 @@ export default function SignUp() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, height: 50 }}
                 style={{ backgroundColor: "#005555" }}
->>>>>>> 8e444dfa26c061145cf2fef5583e6e1ba67063b7
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                name="name"
+                autoComplete="name"
+              />
+              <MuiTelInput
+                margin="normal"
+                id="phone"
+                placeholder="Phone"
+                required
+                value={value}
+                onChange={handleChange}
+                fullWidth
+                sx={{ paddingTop: 1 }}
+              />
+
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="location"
+                label="Location"
+                name="location"
+                autoComplete="location"
+              />
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, height: 50 }}
+                style={{ backgroundColor: "#005555" }}
               >
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                  name="name"
-                  autoComplete="name"
-                />
-                <MuiTelInput
-                  margin="normal"
-                  id="phone"
-                  placeholder="Phone"
-                  required
-                  value={value}
-                  onChange={handleChange}
-                  fullWidth
-                  sx={{ paddingTop: 1 }}
-                />
-
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="location"
-                  label="Location"
-                  name="location"
-                  autoComplete="location"
-                />
-
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2, height: 50 }}
-                  style={{ backgroundColor: "#005555" }}
-                >
-                  Sign Up
-                </Button>
-                <Grid container>
-                  <Grid item>
-                    <Link href="/login" variant="body2">
-                      {"Already have an account ? Login "}
-                    </Link>
-                  </Grid>
+                Sign Up
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link href="/login" variant="body2">
+                    {"Already have an account ? Login "}
+                  </Link>
                 </Grid>
-              </Box>
+              </Grid>
             </Box>
           </Grid>
         </Grid>
       </Card>
-
     </ThemeProvider>
 
 
