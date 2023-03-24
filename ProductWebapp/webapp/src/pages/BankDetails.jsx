@@ -12,6 +12,7 @@ import {
   Box,
   Divider,
 } from "@mui/material";
+import axios from "axios";
 
 // const banks = [
 //   {
@@ -87,7 +88,6 @@ export default function BankDetails() {
                                 fontSize: 18,
                                 paddingTop: 2,
                                 color: "black",
-                                textAlign: "left",
                               }}
                             >
                               State Bank of India
@@ -108,7 +108,7 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
+                          <Grid item xs="6">
                             <Typography
                               gutterBottom
                               variant="h5"
@@ -117,7 +117,6 @@ export default function BankDetails() {
                                 fontSize: 18,
                                 paddingTop: 2,
                                 color: "black",
-                                textAlign: "left",
                               }}
                             >
                               34567890123
@@ -140,7 +139,7 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
+                          <Grid item xs="6">
                             <Typography
                               gutterBottom
                               variant="h5"
@@ -149,7 +148,6 @@ export default function BankDetails() {
                                 fontSize: 18,
                                 paddingTop: 2,
                                 color: "black",
-                                textAlign: "left",
                               }}
                             >
                               Chennai
@@ -170,7 +168,7 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
+                          <Grid item xs="6">
                             <Typography
                               gutterBottom
                               variant="h5"
@@ -179,7 +177,6 @@ export default function BankDetails() {
                                 fontSize: 18,
                                 paddingTop: 2,
                                 color: "black",
-                                textAlign: "left",
                               }}
                             >
                               Savings
@@ -200,7 +197,7 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
+                          <Grid item xs="6">
                             <Typography
                               gutterBottom
                               variant="h5"
@@ -209,7 +206,6 @@ export default function BankDetails() {
                                 fontSize: 18,
                                 paddingTop: 2,
                                 color: "black",
-                                textAlign: "left",
                               }}
                             >
                               MT101
@@ -229,7 +225,7 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
+                          <Grid item xs="6">
                             <Typography
                               gutterBottom
                               variant="h5"
@@ -238,7 +234,6 @@ export default function BankDetails() {
                                 fontSize: 18,
                                 paddingTop: 2,
                                 color: "black",
-                                textAlign: "left",
                               }}
                             >
                               50000.0
