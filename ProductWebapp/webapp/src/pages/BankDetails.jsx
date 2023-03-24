@@ -12,6 +12,10 @@ import {
   Box,
   Divider,
 } from "@mui/material";
+import axios from "axios";
+
+
+
 
 // const banks = [
 //   {
@@ -79,6 +83,10 @@ export default function BankDetails() {
                               label="Required"
                               fullWidth
                             /> */}
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
+                              State Bank of India
+                            </Typography>
+
                             <Typography
                               gutterBottom
                               variant="h5"
@@ -108,18 +116,8 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                                textAlign: "left",
-                              }}
-                            >
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
                               34567890123
                             </Typography>
                           </Grid>
@@ -140,18 +138,8 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                                textAlign: "left",
-                              }}
-                            >
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
                               Chennai
                             </Typography>
                           </Grid>
@@ -170,18 +158,8 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                                textAlign: "left",
-                              }}
-                            >
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
                               Savings
                             </Typography>
                           </Grid>
@@ -200,18 +178,8 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-                          <Grid item xs="2">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                                textAlign: "left",
-                              }}
-                            >
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
                               MT101
                             </Typography>
                           </Grid>
@@ -229,27 +197,10 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-<<<<<<< HEAD
                           <Grid item xs="6">
-                          <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
-                           50000.0
-                        </Typography>
-=======
-                          <Grid item xs="2">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                                textAlign: "left",
-                              }}
-                            >
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
                               50000.0
                             </Typography>
->>>>>>> 04e7d471166f0e938b9b1b4eeb300b8d0b0b6f59
                           </Grid>
                         </Grid>
                       </Grid>

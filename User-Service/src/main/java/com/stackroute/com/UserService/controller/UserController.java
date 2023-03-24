@@ -145,4 +145,13 @@ public class UserController {
         ResponseEntity<?> entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
         return entity;
     }
+
+
+
+    // THIS IS A CUSTOM FUNCTION FOR TESTING INTER SERVICE COMMUNICATION WITH BANK SERVICE
+    @GetMapping("/test/{token}")
+    public ResponseEntity<?> test(@PathVariable String token) throws EmailIdNotExistException {
+        User user = userServiceImpl.getUserByEmail("anik@bardhan.com");
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
 }
