@@ -43,9 +43,10 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUer(@RequestBody User user){
         ResponseEntity<?> entity = null;
+        String regexPattern = "^(.+)@(\\S+)$";
         try {
-            if(user.getEmailId() == null || user.getPassword() == null ){
-                return new ResponseEntity<String>("Important Information Missing", HttpStatus.BAD_REQUEST);
+            if(!user.getEmailId().matches(regexPattern)){
+                return new ResponseEntity<String>("Bad Email Address", HttpStatus.BAD_REQUEST);
             }
             userServiceImpl.saveUser(user);
             entity= new ResponseEntity<String>("User Registered Successfully..",HttpStatus.CREATED);
@@ -133,7 +134,7 @@ public class UserController {
             return new ResponseEntity<String>("Bad JWT Token", HttpStatus.UNAUTHORIZED);
         }else{
             try {
-                user = userServiceImpl.getUserByEmail(emailId);
+                user = userServiceImpl.getUserByEmail(claims.getSubject());
             } catch (EmailIdNotExistException e) {
                 throw new RuntimeException(e);
             }
