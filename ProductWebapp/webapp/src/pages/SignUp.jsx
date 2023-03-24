@@ -51,7 +51,7 @@ export default function SignUp() {
     <ThemeProvider theme={theme}>
       
       <Card style={{ padding: "100px" ,
-              overflow:"auto",
+              
               height:"85vh",
               borderColor:"black" , border:"2px solid wheat"}}
             sx={{

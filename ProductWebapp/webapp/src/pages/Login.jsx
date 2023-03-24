@@ -50,7 +50,7 @@ export default function Login() {
     <ThemeProvider theme={theme}>
       <Card
             style={{ padding: "100px" ,
-            overflow:"auto",
+            
             height:"80vh", border:"2px solid wheat"}}
           sx={{
             my: 8,
