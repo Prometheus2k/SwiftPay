@@ -16,6 +16,7 @@ import { Card, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { style } from "@mui/system";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 const theme = createTheme();
 export default function SignUp() {
@@ -55,7 +56,7 @@ export default function SignUp() {
         style={{
           padding: "100px",
           height: "85vh",
-
+          overflow:"auto",
           borderColor: "black",
           border: "2px solid wheat",
         }}
@@ -184,6 +185,13 @@ export default function SignUp() {
                   label="Location"
                   name="location"
                   autoComplete="location"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LocationOnIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
 
                 <Button

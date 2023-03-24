@@ -53,13 +53,13 @@ export default function Login() {
       <Card
         style={{
           padding: "100px",
-          overflow: "auto",
-          height: "80vh",
-          border: "2px solid wheat",
+      
+          height: "82vh",
+          border: "2px solid grey",
         }}
         sx={{
           my: 8,
-          mx: 4,
+          mx: 20,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -86,7 +86,7 @@ export default function Login() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                padding: "20px",
+                padding: "10px",
               }}
             />
           </Grid>
