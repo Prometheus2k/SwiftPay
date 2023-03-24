@@ -2,6 +2,7 @@ package com.stackroute.com.UserService.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.stackroute.com.UserService.exceptions.EmailIdAlreadyExistException;
 import com.stackroute.com.UserService.exceptions.EmailIdNotExistException;
@@ -107,20 +108,25 @@ public class UserController {
 
     //PUT for User details editing
     @PutMapping("users/{email}")
-    public ResponseEntity<?> updateUser(@PathVariable("email") String emailId, @RequestBody User user) {
+    public ResponseEntity<?> updateUser(@PathVariable("email") String emailId, @RequestBody User user, @RequestHeader Map<String, String> header) {
         User updateUser;
-        try {
-            updateUser = userServiceImpl.getUserByEmail(emailId);
-        } catch (EmailIdNotExistException e) {
-            throw new RuntimeException(e);
+        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(header.get("token") .toString()).getBody();
+        if(!claims.isEmpty()) {
+            try {
+                updateUser = userServiceImpl.getUserByEmail(emailId);
+            } catch (EmailIdNotExistException e) {
+                throw new RuntimeException(e);
+            }
+            userServiceImpl.updateUser(user, updateUser);
+            return new ResponseEntity<User>(updateUser, HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<String>("Bad JWT Token", HttpStatus.UNAUTHORIZED);
         }
-        userServiceImpl.updateUser(user, updateUser);
-        return new ResponseEntity<User>(updateUser, HttpStatus.CREATED);
     }
 
     @GetMapping(value="/users/verify/{email}", produces = "application/json")
-    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestHeader HttpHeaders header){
-        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws("hea").getBody();
+    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestHeader Map<String, String> header){
+        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(header.get("token") .toString()).getBody();
         ResponseEntity<?> entity = null;
         User user = null;
         if(claims.isEmpty()){
