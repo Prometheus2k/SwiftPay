@@ -4,11 +4,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
+import InputAdornment from '@mui/material/InputAdornment';
 import Box from "@mui/material/Box";
-
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import KeyIcon from '@mui/icons-material/Key';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
@@ -116,6 +118,13 @@ export default function Login() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <MailOutlineIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   margin="normal"
@@ -125,6 +134,13 @@ export default function Login() {
                   label="Password"
                   type="password"
                   id="password"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <KeyIcon/>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
 
                 <Button
