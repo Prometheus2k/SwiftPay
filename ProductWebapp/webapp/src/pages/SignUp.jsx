@@ -47,6 +47,7 @@ export default function SignUp() {
   };
   return (
     <ThemeProvider theme={theme}>
+<<<<<<< HEAD
       <Card
         style={{
           padding: "100px",
@@ -82,6 +83,53 @@ export default function SignUp() {
             //   backgroundPosition: 'center',
             //   maxWidth: '200px'
             // }}
+=======
+      
+      <Card style={{ padding: "100px" ,
+              
+              height:"85vh",
+              
+              borderColor:"black" , border:"2px solid wheat"}}
+            sx={{
+              my: 8,
+            mx: 26,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+            
+            >
+      <Grid container component="main" sx={{ height: "100vh" }} >
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={false}
+          md={false}
+          lg={6}
+        
+        // sx={{
+        //   backgroundImage: `url(${img})`,
+        //   backgroundPosition: 'center',
+        //   maxWidth: '200px'
+        // }}
+          // sx={{
+          //   backgroundImage: `url(${img})`,
+          //   backgroundPosition: 'center',
+          //   maxWidth: '200px'
+          // }}
+        >
+          <img
+            src={img}
+            style={{ width: "100%",height:"100%", objectFit: "cover",padding:"20px" }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}> 
+          <Box 
+  
+           
+            
+>>>>>>> 6080b9e9290fdaf8156226bf5940feffaf42b11d
           >
             <img
               src={img}
