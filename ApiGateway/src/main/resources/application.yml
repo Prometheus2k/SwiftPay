@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: http://localhost:8090
+          predicates:
+            - Path=/user-service/**
+        - id: BANK-SERVICE
+          uri: http://localhost:8060
+          predicates:
+            - Path=/bank-service/**
+
+        - id: TRANSACTION-SERVICE
+          uri: http://localhost:8060
+          predicates:
+            - Path=/transaction-service/**
