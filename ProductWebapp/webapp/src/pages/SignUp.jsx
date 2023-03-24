@@ -16,6 +16,7 @@ import { Card, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { style } from "@mui/system";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 const theme = createTheme();
 export default function SignUp() {
@@ -51,58 +52,11 @@ export default function SignUp() {
   };
   return (
     <ThemeProvider theme={theme}>
-<<<<<<< HEAD
-      
-      <Card style={{ padding: "100px" ,
-              
-              height:"82vh",
-              overflow:"auto",
-              borderColor:"black" , border:"2px solid grey"}}
-            sx={{
-              my: 8,
-            mx: 20,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-            
-            >
-      <Grid container component="main" sx={{ height: "100vh" }} >
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={false}
-          md={false}
-          lg={6}
-        
-        // sx={{
-        //   backgroundImage: `url(${img})`,
-        //   backgroundPosition: 'center',
-        //   maxWidth: '200px'
-        // }}
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
-        >
-          <img
-            src={img}
-            style={{ width: "100%",height:"100%", objectFit: "cover",padding:"10px" }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}> 
-          <Box 
-  
-           
-            
-=======
       <Card
         style={{
           padding: "100px",
           height: "85vh",
-
+          overflow:"auto",
           borderColor: "black",
           border: "2px solid wheat",
         }}
@@ -133,7 +87,6 @@ export default function SignUp() {
             //   backgroundPosition: 'center',
             //   maxWidth: '200px'
             // }}
->>>>>>> 2da65a3804b180759c3b84bf92a439adc740ff0b
           >
             <img
               src={img}
@@ -232,6 +185,13 @@ export default function SignUp() {
                   label="Location"
                   name="location"
                   autoComplete="location"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LocationOnIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
 
                 <Button
