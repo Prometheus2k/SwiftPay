@@ -9,11 +9,7 @@ import {
   CardMedia,
   Grid,
   Typography,
-<<<<<<< HEAD
-  Box
-=======
   Box,
->>>>>>> bc5a7f5e806daed4b6ca6036693faef3fb557d90
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -26,9 +22,7 @@ export default function Userprofile() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://e648-115-111-183-90.in.ngrok.io/user-service/users/${email}`
-      )
+      .get(`http://localhost:8090/user-service/users/${email}`)
       .then((res) => {
         console.log(res.data);
         SetData(res.data);
@@ -135,44 +129,6 @@ export default function Userprofile() {
                       </Grid>
                     </Grid>
 
-<<<<<<< HEAD
-                    <Grid container spacing={3}>
-                      <Grid container sx={{ margin: "1%" }}>
-                        <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Name</Typography>
-                        </Grid>
-                        <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>Johnatan Smith</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "1%" }}>
-                        <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Email</Typography>
-                        </Grid>
-                        <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>example@example.com</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "1%" }}>
-                        <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Phone</Typography>
-                        </Grid>
-                        <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>(097) 234-5678</Typography>
-                        </Grid>
-                      </Grid>
-                      <Grid container sx={{ margin: "1%" }}>
-                        <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Location</Typography>
-                        </Grid>
-                        <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>India</Typography>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-
-=======
->>>>>>> bc5a7f5e806daed4b6ca6036693faef3fb557d90
                     <Box
                       m={1}
                       display="flex"

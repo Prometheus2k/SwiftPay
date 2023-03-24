@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useAppStore } from "../appStore";
+import { useNavigate } from "react-router-dom";
 
 const AppBar = styled(
   MuiAppBar,
@@ -61,6 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const updateOpen = useAppStore((state) => state.updateOpen);
@@ -80,6 +82,8 @@ export default function Navbar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -100,12 +104,12 @@ export default function Navbar() {
         vertical: "top",
         horizontal: "right",
       }}
-      open={isMenuOpen}np
+      open={isMenuOpen}
+      np
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
-
     </Menu>
   );
 
@@ -126,7 +130,6 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -147,7 +150,7 @@ export default function Navbar() {
       <AppBar
         position="fixed"
         elevation={5}
-        sx={{ backgroundColor: "#005555", color: "#fff"}}
+        sx={{ backgroundColor: "#005555", color: "#fff" }}
       >
         <Toolbar>
           <IconButton
@@ -168,10 +171,9 @@ export default function Navbar() {
           >
             SWIFTPAY
           </Typography>
-          
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            
             <IconButton
               size="large"
               edge="end"
