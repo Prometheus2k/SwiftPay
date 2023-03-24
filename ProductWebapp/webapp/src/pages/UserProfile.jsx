@@ -9,11 +9,7 @@ import {
   CardMedia,
   Grid,
   Typography,
-<<<<<<< HEAD
-  Box
-=======
   Box,
->>>>>>> 5cddc4ed794ed926d7e329796291edaf28f541db
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -60,46 +56,81 @@ export default function Userprofile() {
                     }}
                   />
                   <CardContent>
-                    
-
-<<<<<<< HEAD
                     <Grid container spacing={3}>
                       <Grid container sx={{ margin: "1%" }}>
                         <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Name</Typography>
+                          <Typography
+                            variant="h5"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            Name
+                          </Typography>
                         </Grid>
                         <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>Johnatan Smith</Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            Johnatan Smith
+                          </Typography>
                         </Grid>
                       </Grid>
                       <Grid container sx={{ margin: "1%" }}>
                         <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Email</Typography>
+                          <Typography
+                            variant="h5"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            Email
+                          </Typography>
                         </Grid>
                         <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>example@example.com</Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            example@example.com
+                          </Typography>
                         </Grid>
                       </Grid>
                       <Grid container sx={{ margin: "1%" }}>
                         <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Phone</Typography>
+                          <Typography
+                            variant="h5"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            Phone
+                          </Typography>
                         </Grid>
                         <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>(097) 234-5678</Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            (097) 234-5678
+                          </Typography>
                         </Grid>
                       </Grid>
                       <Grid container sx={{ margin: "1%" }}>
                         <Grid item xs="9">
-                          <Typography variant="h5" sx={{ fontFamily: 'sans-serif' }}>Location</Typography>
+                          <Typography
+                            variant="h5"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            Location
+                          </Typography>
                         </Grid>
                         <Grid item xs="3">
-                          <Typography variant="h6" sx={{ fontFamily: 'sans-serif' }}>India</Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "sans-serif" }}
+                          >
+                            India
+                          </Typography>
                         </Grid>
                       </Grid>
                     </Grid>
 
-=======
->>>>>>> 5cddc4ed794ed926d7e329796291edaf28f541db
                     <Box
                       m={1}
                       display="flex"
