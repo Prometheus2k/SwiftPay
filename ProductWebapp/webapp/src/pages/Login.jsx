@@ -51,7 +51,6 @@ export default function Login() {
   return (
     <ThemeProvider theme={theme}>
       <Card
-<<<<<<< HEAD
         style={{
           padding: "100px",
           overflow: "auto",
@@ -99,19 +98,6 @@ export default function Login() {
             lg={6}
             square
             style={{ padding: "50px" }}
-=======
-            style={{ padding: "100px" ,
-            
-            height:"80vh", border:"2px solid wheat"}}
-          sx={{
-            my: 8,
-            mx: 20,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-          
->>>>>>> 6080b9e9290fdaf8156226bf5940feffaf42b11d
           >
             <Box>
               <Typography component="h1" variant="h4">
