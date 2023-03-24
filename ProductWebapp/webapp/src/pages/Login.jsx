@@ -48,6 +48,18 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Card
+            style={{ padding: "100px" ,
+            overflow:"auto",
+            height:"80vh", border:"2px solid wheat"}}
+          sx={{
+            my: 8,
+            mx: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+          >
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -56,7 +68,7 @@ export default function Login() {
           sm={false}
           md={false}
           lg={6}
-          style={{ padding: "20vh" }}
+          
           // sx={{
           //   backgroundImage: `url(${img})`,
           //   backgroundPosition: 'center',
@@ -65,24 +77,11 @@ export default function Login() {
         >
           <img
             src={img}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover" ,padding:"20px"}}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} square>
-          <Card
-            style={{
-              marginTop: "200px",
-              padding: "100px",
-              boxShadow: "1px 1px 1px 1px ",
-            }}
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
+        <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}>
+          
             <Box>
               <Typography component="h1" variant="h4">
                 LOGIN
@@ -131,9 +130,10 @@ export default function Login() {
                 </Grid>
               </Box>
             </Box>
-          </Card>
+          
         </Grid>
       </Grid>
+      </Card>
     </ThemeProvider>
   );
 }

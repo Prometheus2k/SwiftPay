@@ -11,7 +11,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { MuiTelInput } from "mui-tel-input";
 import axios from "axios";
+import { Card } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { style } from "@mui/system";
 const theme = createTheme();
 export default function SignUp() {
   const navigate = useNavigate();
@@ -45,8 +47,23 @@ export default function SignUp() {
       });
   };
   return (
+    
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      
+      <Card style={{ padding: "100px" ,
+              overflow:"auto",
+              height:"85vh",
+              borderColor:"black" , border:"2px solid wheat"}}
+            sx={{
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+            
+            >
+      <Grid container component="main" sx={{ height: "100vh" }} >
         <CssBaseline />
         <Grid
           item
@@ -54,7 +71,12 @@ export default function SignUp() {
           sm={false}
           md={false}
           lg={6}
-          style={{ padding: "20vh" }}
+        
+        // sx={{
+        //   backgroundImage: `url(${img})`,
+        //   backgroundPosition: 'center',
+        //   maxWidth: '200px'
+        // }}
           // sx={{
           //   backgroundImage: `url(${img})`,
           //   backgroundPosition: 'center',
@@ -63,19 +85,14 @@ export default function SignUp() {
         >
           <img
             src={img}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ width: "100%",height:"100%", objectFit: "cover",padding:"20px" }}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} component={Paper} square>
-          <Box
-            style={{ padding: "100px" }}
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+        <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}> 
+          <Box 
+  
+           
+            
           >
             <Typography component="h1" variant="h4">
               SIGN UP
@@ -144,6 +161,10 @@ export default function SignUp() {
           </Box>
         </Grid>
       </Grid>
+      </Card>
+      
     </ThemeProvider>
+    
+    
   );
 }
