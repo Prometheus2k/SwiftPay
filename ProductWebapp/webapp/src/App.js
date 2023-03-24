@@ -12,6 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Login />}></Route>
+          <Route path="/login" exact element={<Login />}></Route>
           <Route path="/signup" exact element={<SignUp />}></Route>
           <Route path="/profile" exact element={<UserProfile />}></Route>
           <Route path="/bank-details" exact element={<BankDetails />}></Route>
@@ -20,7 +21,6 @@ function App() {
           <Route path="/addbank" exact element={<AddBank />}></Route>
         </Routes>
       </BrowserRouter>
-      
     </>
   );
 }
