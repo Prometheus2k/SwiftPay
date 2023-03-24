@@ -23,9 +23,12 @@ function App() {
           <Route path="/addbank" exact element={<AddBank />}></Route>
         </Routes>
       </BrowserRouter>
+<<<<<<< HEAD
    
       
       
+=======
+>>>>>>> 5cddc4ed794ed926d7e329796291edaf28f541db
     </>
   );
 }

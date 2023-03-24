@@ -9,7 +9,11 @@ import {
   CardMedia,
   Grid,
   Typography,
+<<<<<<< HEAD
   Box
+=======
+  Box,
+>>>>>>> 5cddc4ed794ed926d7e329796291edaf28f541db
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -22,9 +26,7 @@ export default function Userprofile() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://e648-115-111-183-90.in.ngrok.io/user-service/users/${email}`
-      )
+      .get(`http://localhost:8090/user-service/users/${email}`)
       .then((res) => {
         console.log(res.data);
         SetData(res.data);
@@ -60,6 +62,7 @@ export default function Userprofile() {
                   <CardContent>
                     
 
+<<<<<<< HEAD
                     <Grid container spacing={3}>
                       <Grid container sx={{ margin: "1%" }}>
                         <Grid item xs="9">
@@ -95,6 +98,8 @@ export default function Userprofile() {
                       </Grid>
                     </Grid>
 
+=======
+>>>>>>> 5cddc4ed794ed926d7e329796291edaf28f541db
                     <Box
                       m={1}
                       display="flex"

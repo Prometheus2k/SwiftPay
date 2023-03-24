@@ -68,4 +68,16 @@ public class AccountService implements AccountServiceInterface {
             repository.save(update);
         }
     }
+
+    @Override
+    public AccountModel getAccountByUserEmailId(String emailId) throws CustomException {
+        Optional<AccountModel> optional = repository.findByUserEmailId(emailId);
+        AccountModel account = optional.isEmpty() ? null : optional.get();
+        if(account == null) {
+            throw new CustomException("Invalid User");
+        }
+        else {
+            return account;
+        }
+    }
 }
