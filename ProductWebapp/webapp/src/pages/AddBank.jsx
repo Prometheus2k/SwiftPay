@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Sidenav from "../components/Sidenav";
 import Navbar from "../components/Navbar";
 import "../styles/Dashboard.css";
@@ -14,10 +14,6 @@ import {
   Box,
   Divider,
 } from "@mui/material";
-import axios from "axios";
-
-const url = " https://2430-171-78-178-71.in.ngrok.io/bank-service/bank/add"
-
 
 const banks = [
   {
@@ -34,39 +30,7 @@ const banks = [
   },
 ];
 
-
-
-
 export default function AddBank() {
-
-
-  const [data, SetData] = useState([]);
-  const handleChange = (event) => {
-    let value = event.target.value;
-    SetData({ ...data }[value] = event.target.name);
-    console.log(event.target.name + "------" + value);
-
-  }
-  const handleSubmit = () => {
-    axios.get("https://2430-171-78-178-71.in.ngrok.io/bank-service/bank/get").then(
-      response => {
-        console.log("get method");
-        console.log(response.data);
-      }
-    )
-    return axios.post(url).then(response => {
-      console.log("post Method");
-      console.log(response.data);
-    })
-  }
-
-
-  useEffect(() => {
-    handleSubmit()
-
-  }, [])
-
-
   return (
     <>
       <div className="bg-color">
@@ -75,7 +39,7 @@ export default function AddBank() {
         <Box sx={{ display: "flex" }}>
           <Sidenav />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <section style={{ padding: '4vh' }}>
+            <section style={{padding: '4vh'}}>
               <Grid container direction="row" spacing={3} className="gridbank">
                 <Grid item xs="12">
                   <Card className="gridbank">
@@ -93,9 +57,7 @@ export default function AddBank() {
                               id="outlined-select-currency"
                               select
                               label="Select"
-                              onChange={handleChange}
-                              name="bankName"
-                              required
+                              defaultValue="EUR"
                               helperText="Please select your bank"
                               fullWidth
                             >
@@ -123,14 +85,12 @@ export default function AddBank() {
                               required
                               id="outlined-required"
                               label="Required"
-                              name="accountNumber"
-                              onChange={handleChange}
                               fullWidth
                             />
                           </Grid>
                         </Grid>
                         <Divider />{" "}
-
+                        
                       </Grid>
                       <Grid container>
                         <Grid container sx={{ margin: "10px" }}>
@@ -143,10 +103,8 @@ export default function AddBank() {
                           <Grid item xs="6">
                             <TextField
                               required
-                              name="bankBranch"
                               id="outlined-required"
                               label="Required"
-                              onChange={handleChange}
                               fullWidth
                             />
                           </Grid>
@@ -164,8 +122,6 @@ export default function AddBank() {
                               required
                               id="outlined-required"
                               label="Required"
-                              name="accountType"
-                              onChange={handleChange}
                               fullWidth
                             />
                           </Grid>
@@ -183,8 +139,6 @@ export default function AddBank() {
                               required
                               id="outlined-required"
                               label="Required"
-                              name="bankSwiftCode"
-                              onChange={handleChange}
                               fullWidth
                             />
                           </Grid>
@@ -201,28 +155,26 @@ export default function AddBank() {
                               required
                               id="outlined-required"
                               label="Required"
-                              name="balance"
                               fullWidth
-                              onChange={handleChange}
                               sx={{ paddingBottom: 6 }}
                             />
                           </Grid>
-                          <Grid />
-                          <Divider />
-
-                          <Grid item xs={12} >
-                            <Box textAlign='center'>
-                              <Button onClick={handleSubmit} variant="contained" style={{ backgroundColor: "#005555" }} type="submit">
-                                Add Account
-                              </Button>
-                            </Box>
-                          </Grid>
+                          <Grid/>
+                          <Divider/>{" "}
+                          
+                          <Grid item xs={12} >{" "}
+                          <Box textAlign='center'>
+                            <Button variant="contained" style={{backgroundColor:"#005555"}} type="submit">
+                              Add Account
+                            </Button>
+                          </Box>
+                         </Grid>
                         </Grid>
                       </Grid>
                     </CardContent>
                   </Card>
-                </Grid>
-              </Grid>
+                </Grid>{" "}
+              </Grid>{" "}
             </section>
           </Box>
         </Box>
