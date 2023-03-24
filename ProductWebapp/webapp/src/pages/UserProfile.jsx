@@ -9,11 +9,7 @@ import {
   CardMedia,
   Grid,
   Typography,
-<<<<<<< HEAD
   Box
-=======
-  Box,
->>>>>>> bc5a7f5e806daed4b6ca6036693faef3fb557d90
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -62,80 +58,8 @@ export default function Userprofile() {
                     }}
                   />
                   <CardContent>
-                    <Grid container sx={{ margin: "1%" }}>
-                      <Grid item xs="9">
-                        <Typography
-                          variant="h5"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          Name
-                        </Typography>
-                      </Grid>
-                      <Grid item xs="3">
-                        <Typography
-                          variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          {data.nameOfTheUser}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                    <Grid container sx={{ margin: "1%" }}>
-                      <Grid item xs="9">
-                        <Typography
-                          variant="h5"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          Email
-                        </Typography>
-                      </Grid>
-                      <Grid item xs="3">
-                        <Typography
-                          variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          {data.emailId}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                    <Grid container sx={{ margin: "1%" }}>
-                      <Grid item xs="9">
-                        <Typography
-                          variant="h5"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          Phone
-                        </Typography>
-                      </Grid>
-                      <Grid item xs="3">
-                        <Typography
-                          variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          {data.mobileNumber}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                    <Grid container sx={{ margin: "1%" }}>
-                      <Grid item xs="9">
-                        <Typography
-                          variant="h5"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          Location
-                        </Typography>
-                      </Grid>
-                      <Grid item xs="3">
-                        <Typography
-                          variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
-                        >
-                          {data.location}
-                        </Typography>
-                      </Grid>
-                    </Grid>
+                    
 
-<<<<<<< HEAD
                     <Grid container spacing={3}>
                       <Grid container sx={{ margin: "1%" }}>
                         <Grid item xs="9">
@@ -171,8 +95,6 @@ export default function Userprofile() {
                       </Grid>
                     </Grid>
 
-=======
->>>>>>> bc5a7f5e806daed4b6ca6036693faef3fb557d90
                     <Box
                       m={1}
                       display="flex"

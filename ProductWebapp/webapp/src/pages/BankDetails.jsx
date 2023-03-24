@@ -229,12 +229,6 @@ export default function BankDetails() {
                             </Typography>
                           </Grid>
 
-<<<<<<< HEAD
-                          <Grid item xs="6">
-                          <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2,color:"black" }} >
-                           50000.0
-                        </Typography>
-=======
                           <Grid item xs="2">
                             <Typography
                               gutterBottom
@@ -249,7 +243,6 @@ export default function BankDetails() {
                             >
                               50000.0
                             </Typography>
->>>>>>> 04e7d471166f0e938b9b1b4eeb300b8d0b0b6f59
                           </Grid>
                         </Grid>
                       </Grid>
