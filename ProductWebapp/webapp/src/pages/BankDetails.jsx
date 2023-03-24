@@ -120,154 +120,98 @@ export default function BankDetails() {
                             <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
                               34567890123
                             </Typography>
-                            <Grid item xs="2">
-                              <Typography
-                                gutterBottom
-                                variant="h5"
-                                component="h1"
-                                sx={{
-                                  fontSize: 18,
-                                  paddingTop: 2,
-                                  color: "black",
-                                  textAlign: "left",
-                                }}
-                              >
-                                34567890123
-                              </Typography>
-                            </Grid>
                           </Grid>
-                          <Divider />{" "}
                         </Grid>
-                        <Grid container>
-                          <Grid container sx={{ margin: "10px" }}>
-                            <Grid item xs="10">
-                              <Typography
-                                sx={{
-                                  fontSize: 20,
-                                  paddingTop: 2,
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                Bank Branch :
-                              </Typography>
-                            </Grid>
+                        <Divider />{" "}
+                      </Grid>
+                      <Grid container>
+                        <Grid container sx={{ margin: "10px" }}>
+                          <Grid item xs="10">
+                            <Typography
+                              sx={{
+                                fontSize: 20,
+                                paddingTop: 2,
+                                fontWeight: "bold",
+                              }}
+                            >
+                              Bank Branch :
+                            </Typography>
+                          </Grid>
 
-                            <Grid item xs="6">
-                              <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
-                                Chennai
-                              </Typography>
-                              <Grid item xs="2">
-                                <Typography
-                                  gutterBottom
-                                  variant="h5"
-                                  component="h1"
-                                  sx={{
-                                    fontSize: 18,
-                                    paddingTop: 2,
-                                    color: "black",
-                                    textAlign: "left",
-                                  }}
-                                >
-                                  Chennai
-                                </Typography>
-                              </Grid>
-                            </Grid>
-                            <Divider />{" "}
-                            <Grid container sx={{ margin: "10px" }}>
-                              <Grid item xs="10">
-                                <Typography
-                                  sx={{
-                                    fontSize: 20,
-                                    paddingTop: 2,
-                                    fontWeight: "bold",
-                                  }}
-                                >
-                                  Account Type :
-                                </Typography>
-                              </Grid>
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
+                              Chennai
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                        <Divider />{" "}
+                        <Grid container sx={{ margin: "10px" }}>
+                          <Grid item xs="10">
+                            <Typography
+                              sx={{
+                                fontSize: 20,
+                                paddingTop: 2,
+                                fontWeight: "bold",
+                              }}
+                            >
+                              Account Type :
+                            </Typography>
+                          </Grid>
 
-                              <Grid item xs="6">
-                                <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
-                                  Savings
-                                </Typography>
-                                <Grid item xs="2">
-                                  <Typography
-                                    gutterBottom
-                                    variant="h5"
-                                    component="h1"
-                                    sx={{
-                                      fontSize: 18,
-                                      paddingTop: 2,
-                                      color: "black",
-                                      textAlign: "left",
-                                    }}
-                                  >
-                                    Savings
-                                  </Typography>
-                                </Grid>
-                              </Grid>
-                              <Divider />{" "}
-                              <Grid container sx={{ margin: "10px" }}>
-                                <Grid item xs="10">
-                                  <Typography
-                                    sx={{
-                                      fontSize: 20,
-                                      paddingTop: 2,
-                                      fontWeight: "bold",
-                                    }}
-                                  >
-                                    SWIFT Code :
-                                  </Typography>
-                                </Grid>
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
+                              Savings
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                        <Divider />{" "}
+                        <Grid container sx={{ margin: "10px" }}>
+                          <Grid item xs="10">
+                            <Typography
+                              sx={{
+                                fontSize: 20,
+                                paddingTop: 2,
+                                fontWeight: "bold",
+                              }}
+                            >
+                              SWIFT Code :
+                            </Typography>
+                          </Grid>
 
-                                <Grid item xs="6">
-                                  <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
-                                    MT101
-                                  </Typography>
-                                  <Grid item xs="2">
-                                    <Typography
-                                      gutterBottom
-                                      variant="h5"
-                                      component="h1"
-                                      sx={{
-                                        fontSize: 18,
-                                        paddingTop: 2,
-                                        color: "black",
-                                        textAlign: "left",
-                                      }}
-                                    >
-                                      MT101
-                                    </Typography>
-                                  </Grid>
-                                </Grid>
-                                <Grid container sx={{ margin: "10px" }}>
-                                  <Grid item xs="10">
-                                    <Typography
-                                      sx={{
-                                        fontSize: 20,
-                                        paddingTop: 2,
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      Balance :
-                                    </Typography>
-                                  </Grid>
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
+                              MT101
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                        <Grid container sx={{ margin: "10px" }}>
+                          <Grid item xs="10">
+                            <Typography
+                              sx={{
+                                fontSize: 20,
+                                paddingTop: 2,
+                                fontWeight: "bold",
+                              }}
+                            >
+                              Balance :
+                            </Typography>
+                          </Grid>
 
-                                  <Grid item xs="6">
-                                    <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
-                                      50000.0
-                                    </Typography>
-                                  </Grid>
-                                </Grid>
-                              </Grid>
-                            </CardContent>
-                          </Card>
-                        </Grid>{" "}
-                      </Grid>{" "}
-                    </section>
-                  </Box>
-                </Box>
-              </div>
-            </>
-            );
+                          <Grid item xs="6">
+                            <Typography gutterBottom variant="h5" component="h1" sx={{ fontSize: 18, paddingTop: 2, color: "black" }} >
+                              50000.0
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                    </CardContent>
+                  </Card>
+                </Grid>{" "}
+              </Grid>{" "}
+            </section>
+          </Box>
+        </Box>
+      </div>
+    </>
+  );
 }
