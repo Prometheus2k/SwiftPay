@@ -37,7 +37,7 @@ export default function Login() {
             "token",
             res.data.substring(res.data.indexOf(":")) + 1
           );
-          navigate("/");
+          navigate("/profile");
         }
         localStorage.setItem("email", mapData.emailId);
       })
@@ -49,39 +49,54 @@ export default function Login() {
   return (
     <ThemeProvider theme={theme}>
       <Card
-            style={{ padding: "100px" ,
-            overflow:"auto",
-            height:"80vh", border:"2px solid wheat"}}
-          sx={{
-            my: 8,
-            mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+        style={{
+          padding: "100px",
+          overflow: "auto",
+          height: "80vh",
+          border: "2px solid wheat",
+        }}
+        sx={{
+          my: 8,
+          mx: 4,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Grid container component="main" sx={{ height: "100vh" }}>
+          <CssBaseline />
+          <Grid
+            item
+            xs={false}
+            sm={false}
+            md={false}
+            lg={6}
+
+            // sx={{
+            //   backgroundImage: `url(${img})`,
+            //   backgroundPosition: 'center',
+            //   maxWidth: '200px'
+            // }}
           >
-      <Grid container component="main" sx={{ height: "100vh" }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={false}
-          md={false}
-          lg={6}
-          
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
-        >
-          <img
-            src={img}
-            style={{ width: "100%", height: "100%", objectFit: "cover" ,padding:"20px"}}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}>
-          
+            <img
+              src={img}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                padding: "20px",
+              }}
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={6}
+            square
+            style={{ padding: "50px" }}
+          >
             <Box>
               <Typography component="h1" variant="h4">
                 LOGIN
@@ -130,9 +145,8 @@ export default function Login() {
                 </Grid>
               </Box>
             </Box>
-          
+          </Grid>
         </Grid>
-      </Grid>
       </Card>
     </ThemeProvider>
   );

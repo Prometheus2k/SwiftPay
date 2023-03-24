@@ -11,9 +11,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { MuiTelInput } from "mui-tel-input";
 import axios from "axios";
-import { Card } from '@mui/material';
+import { Card } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { style } from "@mui/system";
 const theme = createTheme();
 export default function SignUp() {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ export default function SignUp() {
       password: data.get("password"),
       nameOfTheUser: data.get("name"),
       mobileNumber: value,
-      location: null,
+      location: data.get("location"),
       panNumber: null,
       profilePassword: null,
     };
@@ -38,7 +37,7 @@ export default function SignUp() {
       .post("http://localhost:8090/user-service/register", mapData)
       .then((res) => {
         if (res.status == 201) {
-          navigate("/");
+          navigate("/profile");
         }
         localStorage.setItem("email", mapData.emailId);
       })
@@ -47,124 +46,141 @@ export default function SignUp() {
       });
   };
   return (
-    
     <ThemeProvider theme={theme}>
-      
-      <Card style={{ padding: "100px" ,
-              overflow:"auto",
-              height:"85vh",
-              borderColor:"black" , border:"2px solid wheat"}}
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-            
-            >
-      <Grid container component="main" sx={{ height: "100vh" }} >
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={false}
-          md={false}
-          lg={6}
-        
-        // sx={{
-        //   backgroundImage: `url(${img})`,
-        //   backgroundPosition: 'center',
-        //   maxWidth: '200px'
-        // }}
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
-        >
-          <img
-            src={img}
-            style={{ width: "100%",height:"100%", objectFit: "cover",padding:"20px" }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}> 
-          <Box 
-  
-           
-            
+      <Card
+        style={{
+          padding: "100px",
+          overflow: "auto",
+          height: "85vh",
+          borderColor: "black",
+          border: "2px solid wheat",
+        }}
+        sx={{
+          my: 8,
+          mx: 4,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Grid container component="main" sx={{ height: "100vh" }}>
+          <CssBaseline />
+          <Grid
+            item
+            xs={false}
+            sm={false}
+            md={false}
+            lg={6}
+
+            // sx={{
+            //   backgroundImage: `url(${img})`,
+            //   backgroundPosition: 'center',
+            //   maxWidth: '200px'
+            // }}
+            // sx={{
+            //   backgroundImage: `url(${img})`,
+            //   backgroundPosition: 'center',
+            //   maxWidth: '200px'
+            // }}
           >
-            <Typography component="h1" variant="h4">
-              SIGN UP
-            </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
-            >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label="Name"
-                name="name"
-                autoComplete="name"
-              />
-              <MuiTelInput
-                margin="normal"
-                id="phone"
-                placeholder="Phone"
-                required
-                value={value}
-                onChange={handleChange}
-                fullWidth
-                sx={{ paddingTop: 1 }}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, height: 50 }}
-                style={{ backgroundColor: "#005555" }}
+            <img
+              src={img}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                padding: "20px",
+              }}
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={6}
+            square
+            style={{ padding: "50px" }}
+          >
+            <Box>
+              <Typography component="h1" variant="h4">
+                SIGN UP
+              </Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+                sx={{ mt: 1 }}
               >
-                Sign Up
-              </Button>
-              <Grid container>
-                <Grid item>
-                  <Link href="/login" variant="body2">
-                    {"Already have an account ? Login "}
-                  </Link>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  name="name"
+                  autoComplete="name"
+                />
+                <MuiTelInput
+                  margin="normal"
+                  id="phone"
+                  placeholder="Phone"
+                  required
+                  value={value}
+                  onChange={handleChange}
+                  fullWidth
+                  sx={{ paddingTop: 1 }}
+                />
+
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="location"
+                  label="location"
+                  name="location"
+                  autoComplete="location"
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, height: 50 }}
+                  style={{ backgroundColor: "#005555" }}
+                >
+                  Sign Up
+                </Button>
+                <Grid container>
+                  <Grid item>
+                    <Link href="/login" variant="body2">
+                      {"Already have an account ? Login "}
+                    </Link>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </Box>
             </Box>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
       </Card>
-      
     </ThemeProvider>
-    
-    
   );
 }
