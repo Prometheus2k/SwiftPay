@@ -183,17 +183,24 @@ public class Controller {
         return entity;
     }
 
+    @GetMapping("/account/details")
+    public ResponseEntity<?> getAccountDetails(@RequestHeader Map<String, String> headers) {
+        String token = headers.get("token");
+        User user = interService.getUserDetails(token);
+        ResponseEntity<?> entity = null;
+        AccountModel account = null;
+        try {
+            account = accountService.getAccountByUserEmailId(user.getEmailId());
+            entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
+        } catch (CustomException e) {
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return entity;
+    }
 
-//    @PostMapping("/transaction/transfer")
-//    public ResponseEntity<?> transfer(@RequestBody TransactionModel model) {
-//        ResponseEntity<?> entity = null;
-//        try {
-//            transactionService.performTransaction(model);
-//            entity = new ResponseEntity<String>("Transfer Successful", HttpStatus.OK);
-//        }
-//        catch (CustomException e) {
-//            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
-//        }
-//        return entity;
+//    @GetMapping("/transfer")
+//    public ResponseEntity<?> transfer(@RequestHeader Map<String, String>, @RequestBody Transaction transaction) {
+//        return null;
 //    }
+
 }
