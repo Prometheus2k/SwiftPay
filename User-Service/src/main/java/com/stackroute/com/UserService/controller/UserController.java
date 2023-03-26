@@ -2,6 +2,7 @@ package com.stackroute.com.UserService.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.stackroute.com.UserService.exceptions.EmailIdAlreadyExistException;
 import com.stackroute.com.UserService.exceptions.EmailIdNotExistException;
@@ -11,6 +12,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,9 +43,10 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUer(@RequestBody User user){
         ResponseEntity<?> entity = null;
+        String regexPattern = "^(.+)@(\\S+)$";
         try {
-            if(user.getEmailId() == null || user.getPassword() == null ){
-                return new ResponseEntity<String>("Important Information Missing", HttpStatus.BAD_REQUEST);
+            if(!user.getEmailId().matches(regexPattern)){
+                return new ResponseEntity<String>("Bad Email Address", HttpStatus.BAD_REQUEST);
             }
             userServiceImpl.saveUser(user);
             entity= new ResponseEntity<String>("User Registered Successfully..",HttpStatus.CREATED);
@@ -106,27 +109,32 @@ public class UserController {
 
     //PUT for User details editing
     @PutMapping("users/{email}")
-    public ResponseEntity<?> updateUser(@PathVariable("email") String emailId, @RequestBody User user) {
+    public ResponseEntity<?> updateUser(@PathVariable("email") String emailId, @RequestBody User user, @RequestHeader Map<String, String> header) {
         User updateUser;
-        try {
-            updateUser = userServiceImpl.getUserByEmail(emailId);
-        } catch (EmailIdNotExistException e) {
-            throw new RuntimeException(e);
+        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(header.get("token") .toString()).getBody();
+        if(!claims.isEmpty()) {
+            try {
+                updateUser = userServiceImpl.getUserByEmail(emailId);
+            } catch (EmailIdNotExistException e) {
+                throw new RuntimeException(e);
+            }
+            userServiceImpl.updateUser(user, updateUser);
+            return new ResponseEntity<User>(updateUser, HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<String>("Bad JWT Token", HttpStatus.UNAUTHORIZED);
         }
-        userServiceImpl.updateUser(user, updateUser);
-        return new ResponseEntity<User>(updateUser, HttpStatus.CREATED);
     }
 
-    @PostMapping(value="/users/verify/{email}", produces = "application/json")
-    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestBody String token){
-        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(token).getBody();
+    @GetMapping(value="/users/verify/{email}", produces = "application/json")
+    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestHeader Map<String, String> header){
+        Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(header.get("token") .toString()).getBody();
         ResponseEntity<?> entity = null;
         User user = null;
         if(claims.isEmpty()){
             return new ResponseEntity<String>("Bad JWT Token", HttpStatus.UNAUTHORIZED);
         }else{
             try {
-                user = userServiceImpl.getUserByEmail(emailId);
+                user = userServiceImpl.getUserByEmail(claims.getSubject());
             } catch (EmailIdNotExistException e) {
                 throw new RuntimeException(e);
             }

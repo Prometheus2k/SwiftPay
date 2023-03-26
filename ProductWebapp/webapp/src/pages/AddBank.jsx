@@ -104,7 +104,7 @@ export default function AddBank() {
                             <TextField
                               required
                               id="outlined-required"
-                              
+                              label="Required"
                               fullWidth
                             />
                           </Grid>
@@ -121,7 +121,7 @@ export default function AddBank() {
                             <TextField
                               required
                               id="outlined-required"
-                              
+                              label="Required"
                               fullWidth
                             />
                           </Grid>
