@@ -4,13 +4,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
-import InputAdornment from '@mui/material/InputAdornment';
+import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import KeyIcon from '@mui/icons-material/Key';
+import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
@@ -28,17 +28,14 @@ export default function Login() {
       password: data.get("password"),
     };
 
-    console.log(mapData);
+    // console.log(mapData);
 
     axios
       .post("http://localhost:8090/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
-          console.log(res.data.substring(res.data.indexOf(":")) + 1);
-          localStorage.setItem(
-            "token",
-            res.data.substring(res.data.indexOf(":")) + 1
-          );
+          console.log(res.data);
+          localStorage.setItem("token", res.data);
           navigate("/profile");
         }
         localStorage.setItem("email", mapData.emailId);
@@ -53,7 +50,7 @@ export default function Login() {
       <Card
         style={{
           padding: "100px",
-      
+
           height: "82vh",
           border: "2px solid grey",
         }}
@@ -137,7 +134,7 @@ export default function Login() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <KeyIcon/>
+                        <KeyIcon />
                       </InputAdornment>
                     ),
                   }}

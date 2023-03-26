@@ -168,7 +168,7 @@ public class Controller {
     * To initiate transfer
     */
 
-    @GetMapping("/test")
+    @GetMapping("/account/details")
     public ResponseEntity<?> test(@RequestHeader Map<String, String> headers) {
         String token = headers.get("token");
         User user = interService.getUserDetails(token);
