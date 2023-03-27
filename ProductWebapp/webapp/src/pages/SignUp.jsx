@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
+import  { useState } from 'react';
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -20,10 +21,22 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 const theme = createTheme();
 export default function SignUp() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [mobileNo, setMobileNo] = useState('');
+  const [location, setLocation] = useState('');
+
+  
+
+  const isDisabled = !email || !password || !username || !location;
+
   const navigate = useNavigate();
   const [value, setValue] = React.useState("");
   const handleChange = (newValue) => {
     setValue(newValue);
+    
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,9 +68,9 @@ export default function SignUp() {
         style={{
           padding: "100px",
           height: "80vh",
-        
           borderColor: "black",
           border: "2px solid grey",
+          boxShadow:" 10px 10px 5px 1px #005555"
         }}
         sx={{
           my: 8,
@@ -124,6 +137,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -141,6 +155,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={(e) => setPassword(e.target.value)}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -157,6 +172,7 @@ export default function SignUp() {
                   label="Name"
                   name="name"
                   autoComplete="name"
+                  onChange={(e) => setUsername(e.target.value)}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -184,6 +200,7 @@ export default function SignUp() {
                   label="Location"
                   name="location"
                   autoComplete="location"
+                  onChange={(e) => setLocation(e.target.value)}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -199,6 +216,7 @@ export default function SignUp() {
                   variant="contained"
                   sx={{ mt: 3, mb: 2, height: 50 }}
                   style={{ backgroundColor: "#005555" }}
+                  disabled={isDisabled}
                 >
                   Sign Up
                 </Button>
