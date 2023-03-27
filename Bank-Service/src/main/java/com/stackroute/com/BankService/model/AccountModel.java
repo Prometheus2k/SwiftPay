@@ -25,6 +25,6 @@ public class AccountModel {
     @Column
     private long balance;
     @Column
-    private String location;
+    private String bankBranch;
 
 }

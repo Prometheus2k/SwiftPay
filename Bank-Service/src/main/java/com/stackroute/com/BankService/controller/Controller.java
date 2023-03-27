@@ -118,9 +118,10 @@ public class Controller {
     public ResponseEntity<?> addAccountDetails(@RequestHeader Map<String, String> headers,
             @RequestBody AccountModel account) {
         String token = headers.get("token");
+        User user = interService.getUserDetails(token);
         ResponseEntity<?> entity = null;
         try {
-            if (interService.verifyUser(token)) {
+            if(user != null) {
                 System.out.println("in /account/add/ " + token);
                 accountService.addAccountDetails(account);
                 entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
@@ -148,8 +149,13 @@ public class Controller {
         ResponseEntity<?> entity = null;
         AccountModel account = null;
         try {
-            account = accountService.getAccountByUserEmailId(user.getEmailId());
-            entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
+            if(user != null) {
+                account = accountService.getAccountByUserEmailId(user.getEmailId());
+                entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
+            }
+            else {
+                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+            }
 
         } catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -223,58 +229,58 @@ public class Controller {
     // return entity;
     // }
 
-    private String generateMT101(TransactionModel model) {
-        MT101 mt101 = new MT101();
-        mt101.setSender(model.getSenderAccountNumber().getAccountNumber());
-        mt101.setReceiver(model.getReceiverAccountNumber());
-        mt101.addField(new Field20(generateRandom("MT101")));
-        mt101.addField(new Field28D("1/1"));
-        mt101.addField(new Field30(gererateDate()));
-        mt101.addField(new Field21(generateRandom("")));
-        Field32B field32B = new Field32B();
-        field32B.setCurrency("USD");
-        field32B.setAmount(model.getDebit());
-        mt101.addField(field32B);
-        Field50F field50F = new Field50F();
-        field50F.setNameAndAddress1(model.getSenderLocation());
-        mt101.addField(field50F);
-        mt101.addField(new Field52A(generateRandom("")));
-        Field59F field59F = new Field59F();
-        field59F.setNameAndAddress1(model.getReceiverLocation());
-        mt101.addField(new Field71A("SHA"));
-        return mt101.message();
-    }
-    mt101.addField(new Field20(generateRandom("MT101")));
-    //
-    private String generateMT103(TransactionModel model) {
-        Random random = new Random();
-        int randomNumber = random.nextInt(9000) + 1000;
-        int randomNumber2 = random.nextInt(900000) + 100000;
-        MT103 mt103 = new MT103();
+    // private String generateMT101(TransactionModel model) {
+    //     MT101 mt101 = new MT101();
+    //     mt101.setSender(model.getSenderAccountNumber().getAccountNumber());
+    //     mt101.setReceiver(model.getReceiverAccountNumber());
+    //     mt101.addField(new Field20(generateRandom("MT101")));
+    //     mt101.addField(new Field28D("1/1"));
+    //     mt101.addField(new Field30(gererateDate()));
+    //     mt101.addField(new Field21(generateRandom("")));
+    //     Field32B field32B = new Field32B();
+    //     field32B.setCurrency("USD");
+    //     field32B.setAmount(model.getDebit());
+    //     mt101.addField(field32B);
+    //     Field50F field50F = new Field50F();
+    //     field50F.setNameAndAddress1(model.getSenderLocation());
+    //     mt101.addField(field50F);
+    //     mt101.addField(new Field52A(generateRandom("")));
+    //     Field59F field59F = new Field59F();
+    //     field59F.setNameAndAddress1(model.getReceiverLocation());
+    //     mt101.addField(new Field71A("SHA"));
+    //     return mt101.message();
+    // }
+    // mt101.addField(new Field20(generateRandom("MT101")));
+    // //
+    // private String generateMT103(TransactionModel model) {
+    //     Random random = new Random();
+    //     int randomNumber = random.nextInt(9000) + 1000;
+    //     int randomNumber2 = random.nextInt(900000) + 100000;
+    //     MT103 mt103 = new MT103();
 
-        SwiftBlock1 b1 = new SwiftBlock1();
-        b1.setApplicationId("F");
-        b1.setServiceId("01");
-        b1.setLogicalTerminal(model.getRecieverSwiftCode());
-        b1.setSessionNumber(String.valueOf(random.nextInt(9000) + 1000));
-        b1.setServiceId(String.valueOf(randomNumber2));
+    //     SwiftBlock1 b1 = new SwiftBlock1();
+    //     b1.setApplicationId("F");
+    //     b1.setServiceId("01");
+    //     b1.setLogicalTerminal(model.getRecieverSwiftCode());
+    //     b1.setSessionNumber(String.valueOf(random.nextInt(9000) + 1000));
+    //     b1.setServiceId(String.valueOf(randomNumber2));
 
-         mt103.setSender(model.getSenderAccountNumber().getAccountNumber());
-         mt103.setReceiver(model.getReceiverAccountNumber());
-         mt103.addField(new Field20(generateRandom("MT103")));
-         Field50a field50a = new Field50a()
-         Field59F field59F = new Field59F();
-         field59F.setNameAndAddress1(model.getReceiverLocation());
-         mt103.addField(field59F);
-         mt103.addField(new Field71A("SHA"));
-        Field32A f32A = new Field32A()
-                .setDate(Calendar.getInstance())
-                .setCurrency("USD")
-                .setAmount(model.getDebit());
-        mt103.addField(f32A);
-        return mt103.message();
+    //      mt103.setSender(model.getSenderAccountNumber().getAccountNumber());
+    //      mt103.setReceiver(model.getReceiverAccountNumber());
+    //      mt103.addField(new Field20(generateRandom("MT103")));
+    //      Field50a field50a = new Field50a()
+    //      Field59F field59F = new Field59F();
+    //      field59F.setNameAndAddress1(model.getReceiverLocation());
+    //      mt103.addField(field59F);
+    //      mt103.addField(new Field71A("SHA"));
+    //     Field32A f32A = new Field32A()
+    //             .setDate(Calendar.getInstance())
+    //             .setCurrency("USD")
+    //             .setAmount(model.getDebit());
+    //     mt103.addField(f32A);
+    //     return mt103.message();
 
-    }
+    // }
     // private String generateRandom(String s) {
     // String random = s + RandomStringUtils.randomAlphanumeric(5);
     // return random;

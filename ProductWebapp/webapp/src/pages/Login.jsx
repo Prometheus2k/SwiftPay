@@ -31,7 +31,7 @@ export default function Login() {
     // console.log(mapData);
 
     axios
-      .post("http://localhost:8090/user-service/login", mapData)
+      .post("http://localhost:8080/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);
@@ -83,7 +83,6 @@ export default function Login() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                
               }}
             />
           </Grid>
