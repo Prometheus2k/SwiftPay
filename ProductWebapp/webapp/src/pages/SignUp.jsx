@@ -54,10 +54,15 @@ export default function SignUp() {
       <Card
         style={{
           padding: "100px",
+<<<<<<< HEAD
+          height: "80vh",
+          
+=======
           height: "85vh",
           overflow: "auto",
+>>>>>>> 1589eaba384d98aaa68700cbd41b966e86777511
           borderColor: "black",
-          border: "2px solid wheat",
+          border: "2px solid grey",
         }}
         sx={{
           my: 8,
@@ -93,7 +98,7 @@ export default function SignUp() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                padding: "20px",
+                padding: "5px"
               }}
             />
           </Grid>
