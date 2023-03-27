@@ -6,13 +6,10 @@ import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.BankModel;
 import com.stackroute.com.BankService.interservice.InterService;
-import com.stackroute.com.BankService.model.TransactionModel;
 import com.stackroute.com.BankService.model.User;
 import com.stackroute.com.BankService.service.AccountServiceInterface;
 import com.stackroute.com.BankService.service.BankServiceInterface;
-import com.stackroute.com.BankService.service.TransactionService;
-import com.stackroute.com.BankService.service.TransactionServiceInterface;
-import org.apache.commons.lang.RandomStringUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,8 +45,8 @@ public class Controller {
     @Autowired
     private AccountServiceInterface accountService;
 
-    @Autowired
-    private TransactionServiceInterface transactionService;
+//    @Autowired
+//    private TransactionServiceInterface transactionService;
 
     @Autowired
     private InterService interService;
@@ -191,70 +188,70 @@ public class Controller {
     * To initiate transfer
     */
 
-    @PostMapping("/transfer")
-    public ResponseEntity<?> initiateTransfer(@RequestHeader Map<String, String> headers, @RequestBody TransactionModel model) {
-        String token = headers.get("token");
-        ResponseEntity<?> entity = null;
-        try {
-            if(interService.verifyUser(token)) {
-                boolean checkSender = transactionService.verifyAccount(model.getSenderAccountNumber().getAccountNumber());
-                boolean checkReceiver = transactionService.verifyAccount(model.getReceiverAccountNumber());
-                if(checkSender && checkReceiver) {
-                    String MT101 = generateMT101(model);
-                    System.out.println(MT101);
-                    if(interService.initiateTransaction(MT101)) {
-                        entity = new ResponseEntity<String>("Transfer success", HttpStatus.OK);
-                    }
-                    else {
-                        entity = new ResponseEntity<String>("Transfer failed", HttpStatus.BAD_REQUEST);
-                    }
-                }
-                else {
-                    entity = new ResponseEntity<String>("Invalid details", HttpStatus.BAD_REQUEST);
-                }
-            }
-            else {
-                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
-            }
-        }
-        catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-        return entity;
-    }
+//    @PostMapping("/transfer")
+//    public ResponseEntity<?> initiateTransfer(@RequestHeader Map<String, String> headers, @RequestBody TransactionModel model) {
+//        String token = headers.get("token");
+//        ResponseEntity<?> entity = null;
+//        try {
+//            if(interService.verifyUser(token)) {
+//                boolean checkSender = transactionService.verifyAccount(model.getSenderAccountNumber().getAccountNumber());
+//                boolean checkReceiver = transactionService.verifyAccount(model.getReceiverAccountNumber());
+//                if(checkSender && checkReceiver) {
+//                    String MT101 = generateMT101(model);
+//                    System.out.println(MT101);
+//                    if(interService.initiateTransaction(MT101)) {
+//                        entity = new ResponseEntity<String>("Transfer success", HttpStatus.OK);
+//                    }
+//                    else {
+//                        entity = new ResponseEntity<String>("Transfer failed", HttpStatus.BAD_REQUEST);
+//                    }
+//                }
+//                else {
+//                    entity = new ResponseEntity<String>("Invalid details", HttpStatus.BAD_REQUEST);
+//                }
+//            }
+//            else {
+//                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+//            }
+//        }
+//        catch (CustomException e) {
+//            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
+//        return entity;
+//    }
 
-    private String generateMT101(TransactionModel model) {
-        MT101 mt101 = new MT101();
-        mt101.setSender(model.getSenderAccountNumber().getAccountNumber());
-        mt101.setReceiver(model.getReceiverAccountNumber());
-        mt101.addField(new Field20(generateRandom("MT101")));
-        mt101.addField(new Field28D("1/1"));
-        mt101.addField(new Field30(gererateDate()));
-        mt101.addField(new Field21(generateRandom("")));
-        Field32B field32B = new Field32B();
-        field32B.setCurrency("USD");
-        field32B.setAmount(model.getDebit());
-        mt101.addField(field32B);
-        Field50F field50F = new Field50F();
-        field50F.setNameAndAddress1(model.getSenderLocation());
-        mt101.addField(field50F);
-        mt101.addField(new Field52A(generateRandom("")));
-        Field59F field59F = new Field59F();
-        field59F.setNameAndAddress1(model.getReceiverLocation());
-        mt101.addField(new Field71A("SHA"));
-        return mt101.message();
-    }
-
-    private String generateRandom(String s) {
-        String random = s + RandomStringUtils.randomAlphanumeric(5);
-        return random;
-    }
-
-    private String gererateDate() {
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yy/MM/dd");
-        String date = today.format(dateTimeFormatter);
-        return date;
-    }
+//    private String generateMT101(TransactionModel model) {
+//        MT101 mt101 = new MT101();
+//        mt101.setSender(model.getSenderAccountNumber().getAccountNumber());
+//        mt101.setReceiver(model.getReceiverAccountNumber());
+//        mt101.addField(new Field20(generateRandom("MT101")));
+//        mt101.addField(new Field28D("1/1"));
+//        mt101.addField(new Field30(gererateDate()));
+//        mt101.addField(new Field21(generateRandom("")));
+//        Field32B field32B = new Field32B();
+//        field32B.setCurrency("USD");
+//        field32B.setAmount(model.getDebit());
+//        mt101.addField(field32B);
+//        Field50F field50F = new Field50F();
+//        field50F.setNameAndAddress1(model.getSenderLocation());
+//        mt101.addField(field50F);
+//        mt101.addField(new Field52A(generateRandom("")));
+//        Field59F field59F = new Field59F();
+//        field59F.setNameAndAddress1(model.getReceiverLocation());
+//        mt101.addField(new Field71A("SHA"));
+//        return mt101.message();
+//    }
+//
+//    private String generateRandom(String s) {
+//        String random = s + RandomStringUtils.randomAlphanumeric(5);
+//        return random;
+//    }
+//
+//    private String gererateDate() {
+//        LocalDate today = LocalDate.now();
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+//        String date = today.format(dateTimeFormatter);
+//        return date;
+//    }
 
 }
