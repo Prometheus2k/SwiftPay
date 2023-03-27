@@ -27,3 +27,33 @@ services:
     restart: always
     depends_on:
       - eureka-server
+
+  transaction-service:
+    image: transaction-service
+    container_name: transaction-service-container
+    build: ./Transaction-Service
+    hostname: localhost
+    network_mode: host
+    restart: always
+    depends_on:
+      - eureka-server
+
+  user-service:
+    image: user-service
+    container_name: user-service-container
+    build: ./User-Service
+    hostname: localhost
+    network_mode: host
+    restart: always
+    depends_on:
+      - eureka-server
+
+  bank-service:
+    image: bank-service
+    container_name: bank-service-container
+    build: ./Bank-Service
+    hostname: localhost
+    network_mode: host
+    restart: always
+    depends_on:
+      - eureka-server
