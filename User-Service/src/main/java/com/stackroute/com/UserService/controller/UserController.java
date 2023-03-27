@@ -126,8 +126,8 @@ public class UserController {
         return new ResponseEntity<User>(updateUser, HttpStatus.CREATED);
     }
 
-    @GetMapping(value="/users/verify/{email}", produces = "application/json")
-    public ResponseEntity<?> verifyUser(@PathVariable("email") String emailId, @RequestHeader Map<String, String> header){
+    @GetMapping(value="/users/verify", produces = "application/json")
+    public ResponseEntity<?> verifyUser(@RequestHeader Map<String, String> header){
         Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(header.get("token") .toString()).getBody();
         ResponseEntity<?> entity = null;
         User user = null;
