@@ -156,9 +156,15 @@ public class UserController {
 
 
     // THIS IS A CUSTOM FUNCTION FOR TESTING INTER SERVICE COMMUNICATION WITH BANK SERVICE
-    @GetMapping("/test/{token}")
-    public ResponseEntity<?> test(@PathVariable String token) throws EmailIdNotExistException {
+    @GetMapping("/interservice/get/user")
+    public ResponseEntity<?> test(@RequestHeader Map<String, String> headers) throws EmailIdNotExistException {
+        System.out.println(headers.get("token"));
         User user = userServiceImpl.getUserByEmail("anik@bardhan.com");
         return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/interservice/verify")
+    public ResponseEntity<?> verifyUserFromBankService(@RequestHeader Map<String, String> headers) {
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 }
