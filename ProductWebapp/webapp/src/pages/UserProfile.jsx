@@ -22,7 +22,7 @@ export default function Userprofile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/user-service/users/${email}`)
+      .get(`http://localhost:8080/user-service/users/${email}`)
       .then((res) => {
         console.log(res.data);
         SetData(res.data);
@@ -41,7 +41,6 @@ export default function Userprofile() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <section className="user">
             <Grid container direction="row" spacing={3}>
-              
               <Grid item xs="12">
                 <Card sx={{ padding: "6vh" }}>
                   <CardMedia
@@ -107,7 +106,7 @@ export default function Userprofile() {
                           variant="h6"
                           sx={{ fontFamily: "sans-serif" }}
                         >
-                          {data.password} 
+                          {data.password}
                         </Typography>
                       </Grid>
                     </Grid>
