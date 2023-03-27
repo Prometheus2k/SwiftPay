@@ -16,7 +16,7 @@ import { Card, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { style } from "@mui/system";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 const theme = createTheme();
 export default function SignUp() {
@@ -44,7 +44,6 @@ export default function SignUp() {
         if (res.status == 201) {
           navigate("/");
         }
-        localStorage.setItem("email", mapData.emailId);
       })
       .catch(function (error) {
         console.log(error.response.data);
@@ -55,8 +54,13 @@ export default function SignUp() {
       <Card
         style={{
           padding: "100px",
+<<<<<<< HEAD
           height: "80vh",
           
+=======
+          height: "85vh",
+          overflow: "auto",
+>>>>>>> 1589eaba384d98aaa68700cbd41b966e86777511
           borderColor: "black",
           border: "2px solid grey",
         }}

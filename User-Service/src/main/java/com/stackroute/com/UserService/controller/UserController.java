@@ -96,7 +96,7 @@ public class UserController {
         ResponseEntity<?> entity = new ResponseEntity<String>("Invalid username or password",HttpStatus.UNAUTHORIZED);;
         if (isValid) {
             String token = getToken(user.getEmailId());
-            entity = new ResponseEntity<String>("User Logged In\nToken: " + token, HttpStatus.OK);
+            entity = new ResponseEntity<String>(token, HttpStatus.OK);
         }
         return entity;
     }
@@ -106,6 +106,11 @@ public class UserController {
         String token = Jwts.builder().setSubject(emailId).setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "success").compact();
         return token;
+    }
+
+    private String validateToken(String token){
+        final Claims claims = Jwts.parser().setSigningKey("success").parseClaimsJws(token).getBody();
+        return claims.getSubject();
     }
 
     //PUT for User details editing
@@ -154,7 +159,8 @@ public class UserController {
     // THIS IS A CUSTOM FUNCTION FOR TESTING INTER SERVICE COMMUNICATION WITH BANK SERVICE
     @GetMapping("/test/{token}")
     public ResponseEntity<?> test(@PathVariable String token) throws EmailIdNotExistException {
-        User user = userServiceImpl.getUserByEmail("anik@bardhan.com");
+        String email = validateToken(token);
+        User user = userServiceImpl.getUserByEmail(email);
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 }
