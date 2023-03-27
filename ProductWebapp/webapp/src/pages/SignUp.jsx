@@ -54,8 +54,8 @@ export default function SignUp() {
       <Card
         style={{
           padding: "100px",
-          height: "85vh",
-          overflow: "auto",
+          height: "80vh",
+        
           borderColor: "black",
           border: "2px solid grey",
         }}

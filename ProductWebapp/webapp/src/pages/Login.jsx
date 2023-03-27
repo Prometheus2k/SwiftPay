@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
+import  { useState } from 'react';
 import Paper from "@mui/material/Paper";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
@@ -19,6 +20,11 @@ import axios from "axios";
 const theme = createTheme();
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const isDisabled = !email || !password;
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,6 +34,7 @@ export default function Login() {
       password: data.get("password"),
     };
 
+   
     // console.log(mapData);
 
     axios
@@ -51,7 +58,7 @@ export default function Login() {
         style={{
           padding: "100px",
 
-          height: "82vh",
+          height: "80vh",
           border: "2px solid grey",
         }}
         sx={{
@@ -114,6 +121,8 @@ export default function Login() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -130,6 +139,8 @@ export default function Login() {
                   label="Password"
                   type="password"
                   id="password"
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -143,8 +154,10 @@ export default function Login() {
                   type="submit"
                   fullWidth
                   variant="contained"
+                  id="loginBtn"
                   sx={{ mt: 3, mb: 2, height: 50 }}
                   style={{ backgroundColor: "#005555" }}
+                  disabled={isDisabled}
                 >
                   Login
                 </Button>
