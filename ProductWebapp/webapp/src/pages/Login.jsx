@@ -31,7 +31,7 @@ export default function Login() {
     // console.log(mapData);
 
     axios
-      .post("http://localhost:8090/user-service/login", mapData)
+      .post("http://localhost:8080/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);
@@ -50,13 +50,8 @@ export default function Login() {
       <Card
         style={{
           padding: "100px",
-<<<<<<< HEAD
-      
-          height: "80vh",
-=======
 
           height: "82vh",
->>>>>>> 1589eaba384d98aaa68700cbd41b966e86777511
           border: "2px solid grey",
         }}
         sx={{
@@ -88,7 +83,6 @@ export default function Login() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                
               }}
             />
           </Grid>
