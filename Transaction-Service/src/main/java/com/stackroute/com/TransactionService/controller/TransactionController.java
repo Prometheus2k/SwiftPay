@@ -65,4 +65,14 @@ Function to Add a Transaction to the history*/
 
 		return entity;
 	}
+
+	/*
+	 * For transfer
+	 */
+	@PostMapping("/transfer")
+	public ResponseEntity<?> initiateTransfer() {
+
+	}
+
+
 }
