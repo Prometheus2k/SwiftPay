@@ -6,15 +6,15 @@ import com.stackroute.com.BankService.model.AccountModel;
 import java.util.List;
 
 public interface AccountServiceInterface {
-    public void addAccountDetails(AccountModel accountModel) throws CustomException;
+    void addAccountDetails(AccountModel accountModel) throws CustomException;
 
-    public List<AccountModel> viewAllAccounts();
+    List<AccountModel> viewAllAccounts();
 
-    public AccountModel getAccount(String accountNumber) throws CustomException;
+    AccountModel getAccount(String accountNumber) throws CustomException;
 
-    public void deleteAccount(String accountNumber) throws CustomException;
+    void deleteAccount(String accountNumber) throws CustomException;
 
-    public void updateAccount(String accountNumber, AccountModel account) throws CustomException;
+    void updateAccount(String accountNumber, AccountModel account) throws CustomException;
 
-    public AccountModel getAccountByUserEmailId(String emailId) throws CustomException;
+    AccountModel getAccountByUserEmailId(String emailId) throws CustomException;
 }
