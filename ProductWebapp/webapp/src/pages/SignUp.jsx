@@ -25,15 +25,28 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [mobileNo, setMobileNo] = useState('');
   const [location, setLocation] = useState('');
+  const [value, setValue] = useState("");
+  const [isValid, setIsValid] = useState(false);
+  
+
+  const handleEmailChange = (event) => {
+    const input = event.target.value;
+    setEmail(input);
+    setIsValid(validateEmail(input));
+  };
+
+  const validateEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  };
 
   
 
-  const isDisabled = !email || !password || !username || !mobileNo || !location;
+  const isDisabled = !email || !password || !username || !value || !location || !isValid;
 
   const navigate = useNavigate();
-  const [value, setValue] = React.useState("");
+ 
   const handleChange = (newValue) => {
     setValue(newValue);
     
@@ -139,7 +152,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleEmailChange}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -148,6 +161,7 @@ export default function SignUp() {
                     ),
                   }}
                 />
+                {isValid ? <p style={{color:"green"}}>Valid Email</p> : <p style={{color:"red"}}>Invalid Email!</p>}
                 <TextField
                   margin="normal"
                   required
