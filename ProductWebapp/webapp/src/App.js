@@ -1,4 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import RightSideNav from "./components/RightSideNav";
 import AddBank from "./pages/AddBank";
 import BankDetails from "./pages/BankDetails";
 import Login from "./pages/Login";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/addbank" exact element={<AddBank />}></Route>
         </Routes>
       </BrowserRouter>
+      
     </>
   );
 }

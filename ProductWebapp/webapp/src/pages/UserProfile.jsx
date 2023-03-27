@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Sidenav from "../components/Sidenav";
 import "../styles/Userprofile.css";
+import RightSideNav from "../components/RightSideNav";
 import {
   Button,
   Card,
@@ -13,13 +14,12 @@ import {
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 export default function Userprofile() {
   const [data, SetData] = useState([]);
-
   const navigate = useNavigate();
   let userData;
   let email = localStorage.getItem("email");
-
   useEffect(() => {
     axios
       .get(`http://localhost:8080/user-service/users/${email}`)
@@ -31,17 +31,17 @@ export default function Userprofile() {
         console.log(error.response.data);
       });
   }, []);
-
   console.log(data.emailId);
   return (
     <div className="bg-color">
       <Navbar />
       <Box sx={{ display: "flex" }}>
         <Sidenav />
+        <RightSideNav/>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <section className="user">
-            <Grid container direction="row" spacing={3}>
-              <Grid item xs="12">
+            <Grid container direction="row" spacing={10}>
+              <Grid item xs="6">
                 <Card sx={{ padding: "6vh" }}>
                   <CardMedia
                     component="img"
@@ -91,7 +91,6 @@ export default function Userprofile() {
                         </Typography>
                       </Grid>
                     </Grid>
-
                     <Grid container sx={{ margin: "1%" }}>
                       <Grid item xs="9">
                         <Typography
@@ -110,7 +109,6 @@ export default function Userprofile() {
                         </Typography>
                       </Grid>
                     </Grid>
-
                     <Grid container sx={{ margin: "1%" }}>
                       <Grid item xs="9">
                         <Typography
@@ -147,7 +145,6 @@ export default function Userprofile() {
                         </Typography>
                       </Grid>
                     </Grid>
-
                     <Box
                       m={1}
                       display="flex"
@@ -173,6 +170,7 @@ export default function Userprofile() {
                   </CardContent>
                 </Card>
               </Grid>
+             
             </Grid>
           </section>
         </Box>
