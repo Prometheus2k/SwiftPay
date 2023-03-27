@@ -1,19 +1,28 @@
 package com.stackroute.com.BankService.controller;
 
+import com.prowidesoftware.swift.model.field.*;
+import com.prowidesoftware.swift.model.mt.mt1xx.MT101;
 import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.BankModel;
 import com.stackroute.com.BankService.interservice.InterService;
-import com.stackroute.com.BankService.models.User;
+import com.stackroute.com.BankService.model.TransactionModel;
+import com.stackroute.com.BankService.model.User;
 import com.stackroute.com.BankService.service.AccountServiceInterface;
 import com.stackroute.com.BankService.service.BankServiceInterface;
+import com.stackroute.com.BankService.service.TransactionService;
+import com.stackroute.com.BankService.service.TransactionServiceInterface;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -38,6 +47,9 @@ public class Controller {
 
     @Autowired
     private AccountServiceInterface accountService;
+
+    @Autowired
+    private TransactionServiceInterface transactionService;
 
     @Autowired
     private InterService interService;
@@ -105,12 +117,19 @@ public class Controller {
     * For Account Model
     */
 
-    @PostMapping("/account/add")
-    public ResponseEntity<?> addAccountDetails(@RequestBody AccountModel account) {
+    @PostMapping("/account/add/")
+    public ResponseEntity<?> addAccountDetails(@RequestHeader Map<String, String> headers, @RequestBody AccountModel account) {
+        String token = headers.get("token");
         ResponseEntity<?> entity = null;
         try {
-            accountService.addAccountDetails(account);
-            entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
+            if(interService.verifyUser(token)) {
+                System.out.println("in /account/add/ " + token);
+                accountService.addAccountDetails(account);
+                entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
+            }
+            else {
+                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+            }
         }
         catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -118,21 +137,25 @@ public class Controller {
         return entity;
     }
 
-    @GetMapping("/account/get")
+    @GetMapping("/account/get/all")
     public ResponseEntity<?> getAllAccounts() {
         List<AccountModel> allUserList = accountService.viewAllAccounts();
         ResponseEntity<?> entity = new ResponseEntity<List<AccountModel>>(allUserList, HttpStatus.OK);
         return entity;
     }
 
-    @GetMapping("/account/get/{accountNumber}")
-    public ResponseEntity<?> getAccountByNumber(@PathVariable("accountNumber") String accountNumber) {
+    @GetMapping("/account/get")
+    public ResponseEntity<?> getAccountByNumber(@RequestHeader Map<String, String> headers  ) {
+        String token = headers.get("token");
+        System.out.println(token);
+        User user = interService.getUserDetails(token);
         ResponseEntity<?> entity = null;
+        AccountModel account = null;
         try {
-            AccountModel account = accountService.getAccount(accountNumber);
+            account = accountService.getAccountByUserEmailId(user.getEmailId());
             entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
-        }
-        catch (CustomException e) {
+
+        } catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
@@ -168,32 +191,70 @@ public class Controller {
     * To initiate transfer
     */
 
-    @GetMapping("/account/details")
-    public ResponseEntity<?> test(@RequestHeader Map<String, String> headers) {
+    @PostMapping("/transfer")
+    public ResponseEntity<?> initiateTransfer(@RequestHeader Map<String, String> headers, @RequestBody TransactionModel model) {
         String token = headers.get("token");
-        User user = interService.getUserDetails(token);
         ResponseEntity<?> entity = null;
-        AccountModel account = null;
         try {
-            account = accountService.getAccountByUserEmailId(user.getEmailId());
-            entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
-        } catch (CustomException e) {
+            if(interService.verifyUser(token)) {
+                boolean checkSender = transactionService.verifyAccount(model.getSenderAccountNumber().getAccountNumber());
+                boolean checkReceiver = transactionService.verifyAccount(model.getReceiverAccountNumber());
+                if(checkSender && checkReceiver) {
+                    String MT101 = generateMT101(model);
+                    System.out.println(MT101);
+                    if(interService.initiateTransaction(MT101)) {
+                        entity = new ResponseEntity<String>("Transfer success", HttpStatus.OK);
+                    }
+                    else {
+                        entity = new ResponseEntity<String>("Transfer failed", HttpStatus.BAD_REQUEST);
+                    }
+                }
+                else {
+                    entity = new ResponseEntity<String>("Invalid details", HttpStatus.BAD_REQUEST);
+                }
+            }
+            else {
+                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+            }
+        }
+        catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
 
+    private String generateMT101(TransactionModel model) {
+        MT101 mt101 = new MT101();
+        mt101.setSender(model.getSenderAccountNumber().getAccountNumber());
+        mt101.setReceiver(model.getReceiverAccountNumber());
+        mt101.addField(new Field20(generateRandom("MT101")));
+        mt101.addField(new Field28D("1/1"));
+        mt101.addField(new Field30(gererateDate()));
+        mt101.addField(new Field21(generateRandom("")));
+        Field32B field32B = new Field32B();
+        field32B.setCurrency("USD");
+        field32B.setAmount(model.getDebit());
+        mt101.addField(field32B);
+        Field50F field50F = new Field50F();
+        field50F.setNameAndAddress1(model.getSenderLocation());
+        mt101.addField(field50F);
+        mt101.addField(new Field52A(generateRandom("")));
+        Field59F field59F = new Field59F();
+        field59F.setNameAndAddress1(model.getReceiverLocation());
+        mt101.addField(new Field71A("SHA"));
+        return mt101.message();
+    }
 
-//    @PostMapping("/transaction/transfer")
-//    public ResponseEntity<?> transfer(@RequestBody TransactionModel model) {
-//        ResponseEntity<?> entity = null;
-//        try {
-//            transactionService.performTransaction(model);
-//            entity = new ResponseEntity<String>("Transfer Successful", HttpStatus.OK);
-//        }
-//        catch (CustomException e) {
-//            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
-//        }
-//        return entity;
-//    }
+    private String generateRandom(String s) {
+        String random = s + RandomStringUtils.randomAlphanumeric(5);
+        return random;
+    }
+
+    private String gererateDate() {
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+        String date = today.format(dateTimeFormatter);
+        return date;
+    }
+
 }

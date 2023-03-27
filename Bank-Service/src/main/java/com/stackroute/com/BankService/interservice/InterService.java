@@ -7,11 +7,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-
-import java.net.http.HttpHeaders;
-
 @Service
 public class InterService {
+
 
     public User getUserDetails(String token) {
         RestTemplate restTemplate = new RestTemplate();
@@ -47,6 +45,5 @@ public class InterService {
         ResponseEntity<Boolean> entity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, Boolean.class);
         return entity.getBody();
     }
-
 
 }

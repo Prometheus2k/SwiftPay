@@ -1,4 +1,4 @@
-package com.stackroute.com.BankService.models;
+package com.stackroute.com.BankService.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
