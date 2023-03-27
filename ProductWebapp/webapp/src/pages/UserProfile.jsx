@@ -22,7 +22,7 @@ export default function Userprofile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/user-service/users/${email}`)
+      .get(`http://localhost:8090/user-service/users/${email}`)
       .then((res) => {
         console.log(res.data);
         SetData(res.data);
