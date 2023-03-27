@@ -17,22 +17,22 @@ public class InterService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("token", token);
         HttpEntity<?> httpEntity = new HttpEntity<>(headers);
-        String uri = "http://localhost:8090/user-service/interservice/get/user";
+        String uri = "http://localhost:8090/user-service/users/verify/";
         ResponseEntity<User> entity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, User.class);
         return entity.getBody();
     }
 
-    public boolean verifyUser(String token) {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("token", token);
-        HttpEntity<?> httpEntity = new HttpEntity<>(headers);
-        String uri = "http://localhost:8090/user-service/interservice/verify/";
-        ResponseEntity<Boolean> entity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, Boolean.class);
-        boolean check = entity.getBody();
-        return check;
-    }
+//    public boolean verifyUser(String token) {
+//        RestTemplate restTemplate = new RestTemplate();
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        headers.set("token", token);
+//        HttpEntity<?> httpEntity = new HttpEntity<>(headers);
+//        String uri = "http://localhost:8090/user-service/interservice/verify/";
+//        ResponseEntity<Boolean> entity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, Boolean.class);
+//        boolean check = entity.getBody();
+//        return check;
+//    }
 
     public boolean initiateTransaction(String MT101) {
         RestTemplate restTemplate = new RestTemplate();

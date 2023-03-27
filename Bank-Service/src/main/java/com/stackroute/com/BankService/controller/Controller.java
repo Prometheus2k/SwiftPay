@@ -117,9 +117,10 @@ public class Controller {
     @PostMapping("/account/add/")
     public ResponseEntity<?> addAccountDetails(@RequestHeader Map<String, String> headers, @RequestBody AccountModel account) {
         String token = headers.get("token");
+        User user = interService.getUserDetails(token);
         ResponseEntity<?> entity = null;
         try {
-            if(interService.verifyUser(token)) {
+            if(user != null) {
                 System.out.println("in /account/add/ " + token);
                 accountService.addAccountDetails(account);
                 entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
@@ -149,8 +150,13 @@ public class Controller {
         ResponseEntity<?> entity = null;
         AccountModel account = null;
         try {
-            account = accountService.getAccountByUserEmailId(user.getEmailId());
-            entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
+            if(user != null) {
+                account = accountService.getAccountByUserEmailId(user.getEmailId());
+                entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
+            }
+            else {
+                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+            }
 
         } catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
