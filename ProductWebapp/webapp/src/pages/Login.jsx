@@ -4,7 +4,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import  { useState } from 'react';
-import Paper from "@mui/material/Paper";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -22,8 +21,20 @@ const theme = createTheme();
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isValid, setIsValid] = useState(false);
 
-  const isDisabled = !email || !password;
+  const isDisabled = !email || !password || !isValid;
+
+  const handleChange = (event) => {
+    const input = event.target.value;
+    setEmail(input);
+    setIsValid(validateEmail(input));
+  };
+
+  const validateEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  };
 
   const navigate = useNavigate();
   const handleSubmit = (event) => {
@@ -123,7 +134,7 @@ export default function Login() {
                   autoComplete="email"
                   autoFocus
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleChange}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -132,6 +143,7 @@ export default function Login() {
                     ),
                   }}
                 />
+                {isValid ? <p style={{color:"green"}}>Valid Email</p> : <p style={{color:"red"}}>Invalid Email!</p>}
                 <TextField
                   margin="normal"
                   required

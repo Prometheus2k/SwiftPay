@@ -30,12 +30,14 @@ export default function SignUp() {
 
   
 
-  const isDisabled = !email || !password || !username || !location;
+  const isDisabled = !email || !password || !username || !mobileNo || !location;
 
   const navigate = useNavigate();
   const [value, setValue] = React.useState("");
   const handleChange = (newValue) => {
     setValue(newValue);
+    
+    
     
   };
   const handleSubmit = (event) => {
