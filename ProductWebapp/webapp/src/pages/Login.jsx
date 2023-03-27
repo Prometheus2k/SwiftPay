@@ -54,12 +54,12 @@ export default function Login() {
         style={{
           padding: "100px",
       
-          height: "82vh",
+          height: "80vh",
           border: "2px solid grey",
         }}
         sx={{
           my: 8,
-          mx: 20,
+          mx: 26,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -86,7 +86,7 @@ export default function Login() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                padding: "10px",
+                
               }}
             />
           </Grid>

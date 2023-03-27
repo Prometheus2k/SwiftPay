@@ -55,7 +55,7 @@ export default function SignUp() {
       <Card
         style={{
           padding: "100px",
-          height: "85vh",
+          height: "80vh",
           
           borderColor: "black",
           border: "2px solid grey",
@@ -94,7 +94,7 @@ export default function SignUp() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                padding: "20px",
+                padding: "5px"
               }}
             />
           </Grid>
