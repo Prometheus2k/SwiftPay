@@ -29,6 +29,9 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/transaction-service/**")
 						.uri("lb://TRANSACTION-SERVICE")
 				)
+				.route(r -> r.path("/product-webapp-service/**")
+						.uri("lb://PRODUCT-WEBAPP-SERVICE")
+				)
 				.build();
 
 	}
