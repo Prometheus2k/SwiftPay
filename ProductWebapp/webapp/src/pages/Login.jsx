@@ -4,11 +4,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
+import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
-
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
@@ -26,18 +28,15 @@ export default function Login() {
       password: data.get("password"),
     };
 
-    console.log(mapData);
+    // console.log(mapData);
 
     axios
       .post("http://localhost:8090/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
-          console.log(res.data.substring(res.data.indexOf(":")) + 1);
-          localStorage.setItem(
-            "token",
-            res.data.substring(res.data.indexOf(":")) + 1
-          );
-          navigate("/");
+          console.log(res.data);
+          localStorage.setItem("token", res.data);
+          navigate("/profile");
         }
         localStorage.setItem("email", mapData.emailId);
       })
@@ -49,40 +48,54 @@ export default function Login() {
   return (
     <ThemeProvider theme={theme}>
       <Card
-            style={{ padding: "100px" ,
-            
-            height:"80vh", border:"2px solid wheat"}}
-          sx={{
-            my: 8,
-            mx: 20,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-          
+        style={{
+          padding: "100px",
+
+          height: "82vh",
+          border: "2px solid grey",
+        }}
+        sx={{
+          my: 8,
+          mx: 26,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Grid container component="main" sx={{ height: "100vh" }}>
+          <CssBaseline />
+          <Grid
+            item
+            xs={false}
+            sm={false}
+            md={false}
+            lg={6}
+
+            // sx={{
+            //   backgroundImage: `url(${img})`,
+            //   backgroundPosition: 'center',
+            //   maxWidth: '200px'
+            // }}
           >
-      <Grid container component="main" sx={{ height: "100vh" }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={false}
-          md={false}
-          lg={6}
-          
-          // sx={{
-          //   backgroundImage: `url(${img})`,
-          //   backgroundPosition: 'center',
-          //   maxWidth: '200px'
-          // }}
-        >
-          <img
-            src={img}
-            style={{ width: "100%", height: "100%", objectFit: "cover" ,padding:"20px"}}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} square style={{padding:"50px"}}>
-          
+            <img
+              src={img}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                
+              }}
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={6}
+            square
+            style={{ padding: "50px" }}
+          >
             <Box>
               <Typography component="h1" variant="h4">
                 LOGIN
@@ -102,6 +115,13 @@ export default function Login() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <MailOutlineIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   margin="normal"
@@ -111,6 +131,13 @@ export default function Login() {
                   label="Password"
                   type="password"
                   id="password"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <KeyIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
 
                 <Button
@@ -131,9 +158,8 @@ export default function Login() {
                 </Grid>
               </Box>
             </Box>
-          
+          </Grid>
         </Grid>
-      </Grid>
       </Card>
     </ThemeProvider>
   );

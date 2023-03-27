@@ -17,6 +17,6 @@ public class BankModel {
     private int bankId;
     @Column(name = "bank_name", nullable = false)
     private String bankName;
-    @Column(name = "bank_swift_code", nullable = false, length = 8)
+    @Column(name = "bank_swift_code", nullable = false, length = 11)
     private String bankSwiftCode;
 }

@@ -63,7 +63,6 @@ public class AccountService implements AccountServiceInterface {
             update.setUserEmailId(account.getUserEmailId());
             update.setAccountType(account.getAccountType());
             update.setBankModel(account.getBankModel());
-            update.setBranchSwiftCode(account.getBranchSwiftCode());
             update.setBalance(account.getBalance());
             repository.save(update);
         }

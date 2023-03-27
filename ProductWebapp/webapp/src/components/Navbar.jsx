@@ -13,6 +13,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useAppStore } from "../appStore";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AppBar = styled(
   MuiAppBar,
@@ -82,12 +83,41 @@ export default function Navbar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    localStorage.removeItem("token");
-    navigate("/login");
   };
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuProfile = (event) => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    navigate("/profile");
+  };
+
+  const handleMenulogout = (event) => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    let email = localStorage.getItem("email");
+    // console.log(localStorage.getItem("token"));
+    let token = localStorage.getItem("token");
+
+    axios
+      .get(`http://localhost:8090/user-service/users/verify/${email}`, {
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          navigate("/");
+        }
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
   };
 
   const menuId = "primary-search-account-menu";
@@ -105,11 +135,10 @@ export default function Navbar() {
         horizontal: "right",
       }}
       open={isMenuOpen}
-      np
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+      <MenuItem onClick={handleMenuProfile}>Profile</MenuItem>
+      <MenuItem onClick={handleMenulogout}>Log Out</MenuItem>
     </Menu>
   );
 

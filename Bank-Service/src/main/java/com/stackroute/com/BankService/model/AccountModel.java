@@ -22,8 +22,9 @@ public class AccountModel {
     private AccountType accountType;
     @ManyToOne
     private BankModel bankModel;
-    @Column(name = "bank_swift_code", nullable = false, length = 3)
-    private String branchSwiftCode;
     @Column
     private long balance;
+    @Column
+    private String location;
+
 }
