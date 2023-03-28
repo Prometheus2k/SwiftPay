@@ -8,8 +8,8 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 const url = "http://localhost:8060/transaction-service/transactions/get";
 
 export default function Transactions() {
-  // const genData = require("../generated.json");
-  // let genRows = genData.transactions;
+   const genData = require("../generated.json");
+   let genRows = genData.transactions;
   let token = localStorage.getItem("token");
   const columns = [
     {
@@ -85,7 +85,7 @@ export default function Transactions() {
 
   return (
     <>
-      <div className="bg-color">
+      <div >
         {/* {console.log(genData)} */}
         <Navbar />
         <Box height={30} />
@@ -101,8 +101,8 @@ export default function Transactions() {
                   sx={{ m: 2, overflowX: "scroll" }}
                   disableRowSelectionOnClick
                   autoHeight
-                  rows={rows}
-                  // rows={genRows}
+                  //rows={rows}
+                  rows={genRows}
                   columns={columns}
                   getRowId={(row) =>
                     row.transactionId +
@@ -118,7 +118,7 @@ export default function Transactions() {
                   initialState={{
                     pagination: {
                       paginationModel: {
-                        pageSize: 20,
+                        pageSize: 12,
                       },
                     },
                   }}
