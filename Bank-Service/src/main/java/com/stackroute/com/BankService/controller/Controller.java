@@ -33,7 +33,7 @@ import javax.transaction.Transaction;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("user-service")
+@RequestMapping("bank-service")
 public class Controller {
     /*
      * Function to check whether the endpoint is working.

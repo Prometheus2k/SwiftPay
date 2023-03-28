@@ -50,7 +50,7 @@ export default function Login() {
     // console.log(mapData);
 
     axios
-      .post("http://localhost:8090/user-service/login", mapData)
+      .post("http://localhost:8080/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);
@@ -192,7 +192,7 @@ export default function Login() {
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link href="/signup" variant="body2">
+                    <Link to='/signup' onClick={(e)=> {navigate("/signup")}} variant="body2">
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>

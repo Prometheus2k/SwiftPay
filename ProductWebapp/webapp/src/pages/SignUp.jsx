@@ -43,7 +43,7 @@ export default function SignUp() {
     return regex.test(email);
   };
 
-  
+
 
   const isDisabled = !email || !password || !username || !value || !location || !isValid;
 
@@ -69,7 +69,7 @@ export default function SignUp() {
     };
     console.log(mapData);
     axios
-      .post("http://localhost:8090/user-service/register", mapData)
+      .post("http://localhost:8080/user-service/register", mapData)
       .then((res) => {
         if (res.status == 201) {
           navigate("/");
@@ -250,7 +250,7 @@ export default function SignUp() {
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link href="/" variant="body2">
+                    <Link to='/login' onClick={(e)=> {navigate("/login")}} variant="body2">
                       {"Already have an account ? Login "}
                     </Link>
                   </Grid>
