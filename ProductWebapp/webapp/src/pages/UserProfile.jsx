@@ -59,7 +59,7 @@ export default function Userprofile() {
                       <Grid item xs="9">
                         <Typography
                           variant="h5"
-                          sx={{ fontFamily: "sans-serif" }}
+                          sx={{ fontFamily: "sans-serif"}}
                         >
                           Name
                         </Typography>
@@ -67,7 +67,7 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
+                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
                         >
                           {data.nameOfTheUser}
                         </Typography>
@@ -85,7 +85,7 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
+                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
                         >
                           {data.emailId}
                         </Typography>
@@ -103,7 +103,7 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
+                          sx={{ fontFamily: "sans-serif", textAlign: "left" }}
                         >
                           {data.password}
                         </Typography>
@@ -121,7 +121,7 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
+                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
                         >
                           {data.mobileNumber}
                         </Typography>
@@ -139,12 +139,13 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif" }}
+                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
                         >
                           {data.location}
                         </Typography>
                       </Grid>
                     </Grid>
+                    
                     <Box
                       m={1}
                       display="flex"
@@ -161,7 +162,7 @@ export default function Userprofile() {
                             color: "white",
                             backgroundColor: "#005555",
                           },
-                          margin: "0px auto",
+                          margin: "3vh auto",
                         }}
                       >
                         Check Balance
