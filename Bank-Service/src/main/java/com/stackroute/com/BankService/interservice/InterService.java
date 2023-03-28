@@ -28,26 +28,15 @@ public class InterService {
     }
 
     public TransactionModel initiateTransaction(TransactionModel model) throws JsonProcessingException {
-        System.out.println("***********Inside initiate transaction 1****************");
+        System.out.println(model.toString());
         RestTemplate restTemplate = new RestTemplate();
-        System.out.println("***********Inside initiate transaction 2****************");
         HttpHeaders headers = new HttpHeaders();
-        System.out.println("***********Inside initiate transaction 3****************");
         headers.setContentType(MediaType.APPLICATION_JSON);
-        System.out.println("***********Inside initiate transaction 4****************");
-        //MultiValueMap<String, TransactionModel> map = new LinkedMultiValueMap<String, TransactionModel>();
-        System.out.println("***********Inside initiate transaction 5****************");
-        //map.add("object", model);
         HttpEntity<TransactionModel> httpEntity = new HttpEntity<TransactionModel>(model, headers);
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        HttpEntity<?> httpEntity = new HttpEntity<Object>(objectMapper.writeValueAsString(model), headers);
-        System.out.println("***********Inside initiate transaction 6****************");
         String uri = "http://localhost:8060/transaction-service/transfer";
-        System.out.println("***********Inside initiate transaction 7****************");
-//        ResponseEntity<TransactionModel> entity = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, TransactionModel.class);
-        TransactionModel entity = restTemplate.postForObject(uri, model, TransactionModel.class);
-        System.out.println("***********Inside initiate transaction 8****************");
-        return entity;
+        ResponseEntity<TransactionModel> entity = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, TransactionModel.class);
+        System.out.println("***********Inside initiate transaction 8****************" + entity.getBody().toString());
+        return entity.getBody();
     }
 
 }
