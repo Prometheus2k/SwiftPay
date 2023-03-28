@@ -6,49 +6,56 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Transaction")
+@Table(name = "transactions")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransactionModel {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="transactionId",nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int transactionId;
-	@Column(name="account_number",nullable = false,length = 20)
-	private String accountNumber;
-
-
+	@Column
+	private String senderAccountNumber;
 	@Column(updatable = false)
 	@CreationTimestamp
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime createdAt;
-	@Column(name="beneficiary_name",nullable = false)
-	private String beneficiaryName;
-
-	@Column(name = "timeStamp",updatable = false)
-	@CreationTimestamp
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime timeStamp;
-	@Column(name="receiver_account_number",nullable = false)
+	private LocalDateTime time;
+	@Column
+	private String receiverName;
+	@Column
 	private String receiverAccountNumber;
-	@Column(name="receiver_swift_code",nullable = false,length = 8)
+	@Column
 	private String receiverSwiftCode;
+<<<<<<< HEAD
+	@Column
+	private String receiverBankName;
+	@Column
+=======
 	@Column(name="bank_name",nullable = false)
 	private String bankName;
 	@Column(name="credit",nullable = false)
+>>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40
 	private float credit;
-	@Column(name="debit",nullable = false)
+	@Column
 	private float debit;
-	@Column(name="message",nullable = false)
+	@Column
 	private String message;
+<<<<<<< HEAD
+	@Column
+	private String senderLocation;
+	@Column
+	private String receiverLocation;
+	@Column
+	private String status;
+}
+=======
 
 	@Column(name = "status", nullable = false)
 	private String status;
 
 }
+>>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40

@@ -1,11 +1,13 @@
 package com.stackroute.com.TransactionService.service;
 
+import com.prowidesoftware.swift.model.mt.AbstractMT;
 import com.stackroute.com.TransactionService.exceptions.CustomException;
 import com.stackroute.com.TransactionService.model.TransactionModel;
 import com.stackroute.com.TransactionService.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +17,7 @@ public class TransactionService implements TransactionServiceInterface{
 	private TransactionRepository repository;
 
 	@Override
-	public void addTransactions(TransactionModel transaction) throws CustomException {
+	public void addTransaction(TransactionModel transaction) {
 //		Optional<TransactionModel> optional = repository.findByAccountNumber(transaction.getAccountNumber());
 //		 if(optional.isPresent()){
 //			throw new CustomException("Transaction data already Exists");
@@ -31,7 +33,7 @@ public class TransactionService implements TransactionServiceInterface{
 
 	@Override
 	public List<TransactionModel> getTransactionsByAccountNumber(String accountNumber) throws CustomException {
-		Optional<List<TransactionModel>> optional = repository.findAllByAccountNumber(accountNumber);
+		Optional<List<TransactionModel>> optional = repository.findAllBySenderAccountNumber(accountNumber);
 		List<TransactionModel> model = optional.isEmpty() ? null : optional.get();
 		if(model==null)
 		{
@@ -40,6 +42,12 @@ public class TransactionService implements TransactionServiceInterface{
 		else {
 			return model;
 		}
+	}
+
+	@Override
+	public boolean checkMT101(String message) throws IOException {
+		AbstractMT abstractMT = AbstractMT.parse(message);
+		return true;
 	}
 
 

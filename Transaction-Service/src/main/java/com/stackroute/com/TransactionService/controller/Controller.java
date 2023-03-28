@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("transaction-service")
-public class TransactionController {
+public class Controller {
 
 
 
@@ -42,7 +42,7 @@ public class TransactionController {
 	 */
 	@GetMapping("/test")
 	public ResponseEntity<?> home() {
-		ResponseEntity<?> entity = new ResponseEntity<String>("Welcome to Transaction Service", HttpStatus.OK);
+		ResponseEntity<?> entity = new ResponseEntity<>("Welcome to Transaction Service", HttpStatus.OK);
 		return entity;
 	}
 
@@ -53,12 +53,12 @@ Function to Add a Transaction to the history*/
 	public ResponseEntity<?> addTransaction(@RequestBody List<TransactionModel> transaction) {
 		ResponseEntity<?> entity = null;
 		try {
-			transactionService.addTransactions(transaction.get(0));
-			entity = new ResponseEntity<String>("Transaction added", HttpStatus.OK);
+			transactionService.addTransaction(transaction.get(0));
+			entity = new ResponseEntity<>("Transaction added", HttpStatus.OK);
 
 
 		} catch (CustomException e) {
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
@@ -67,7 +67,7 @@ Function to Add a Transaction to the history*/
 	@GetMapping("/transaction/history")
 	public ResponseEntity<?> getAllTransactions() {
 		List<TransactionModel> allTransactions = transactionService.getAllTransactions();
-		ResponseEntity<?> entity = new ResponseEntity<List<TransactionModel>>(allTransactions, HttpStatus.OK);
+		ResponseEntity<?> entity = new ResponseEntity<>(allTransactions, HttpStatus.OK);
 		return entity;
 	}
 
@@ -76,9 +76,9 @@ Function to Add a Transaction to the history*/
 		ResponseEntity<?> entity = null;
 		try {
 			List<TransactionModel> transaction = transactionService.getTransactionsByAccountNumber(accountNumber);
-			entity = new ResponseEntity<List<TransactionModel>>(transaction, HttpStatus.OK);
+			entity = new ResponseEntity<>(transaction, HttpStatus.OK);
 		} catch (CustomException e) {
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
 		}
 
 		return entity;

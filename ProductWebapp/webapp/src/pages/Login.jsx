@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
-import  { useState } from 'react';
+import { useState } from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -19,9 +19,15 @@ import axios from "axios";
 const theme = createTheme();
 
 export default function Login() {
+<<<<<<< HEAD
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isValid, setIsValid] = useState(false);
+=======
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState('');
+>>>>>>> 5d8f47588998b597be07fa4f50d68f71de9412c8
 
   const isDisabled = !email || !password || !isValid;
 
@@ -45,11 +51,10 @@ export default function Login() {
       password: data.get("password"),
     };
 
-   
     // console.log(mapData);
 
     axios
-      .post("http://localhost:8090/user-service/login", mapData)
+      .post("http://localhost:8080/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);
@@ -71,7 +76,7 @@ export default function Login() {
 
           height: "80vh",
           border: "2px solid grey",
-          boxShadow:" 10px 10px 5px 1px #005555"
+          boxShadow: " 10px 10px 5px 1px #005555",
         }}
         sx={{
           my: 8,
@@ -132,7 +137,7 @@ export default function Login() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  autoFocus
+                  
                   value={email}
                   onChange={handleChange}
                   InputProps={{
@@ -143,7 +148,11 @@ export default function Login() {
                     ),
                   }}
                 />
-                {isValid ? <p style={{color:"green"}}>Valid Email</p> : <p style={{color:"red"}}>Invalid Email!</p>}
+                {isValid ? (
+                  <p style={{ color: "green" }}>Valid Email</p>
+                ) : (
+                  <p style={{ color: "red" }}>Invalid Email!</p>
+                )}
                 <TextField
                   margin="normal"
                   required
@@ -152,7 +161,7 @@ export default function Login() {
                   label="Password"
                   type="password"
                   id="password"
-                  value={password} 
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   InputProps={{
                     startAdornment: (
