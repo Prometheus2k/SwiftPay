@@ -1,11 +1,14 @@
 package com.stackroute.com.BankService.interservice;
 
+import com.stackroute.com.BankService.model.TransactionModel;
 import com.stackroute.com.BankService.model.User;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
 
 @Service
 public class InterService {
@@ -22,15 +25,15 @@ public class InterService {
         return entity.getBody();
     }
 
-    public boolean initiateTransaction(String MT101) {
+    public TransactionModel initiateTransaction(TransactionModel model) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-        map.add("MT101", MT101);
-        HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+        MultiValueMap<String, TransactionModel> map = new LinkedMultiValueMap<String, TransactionModel>();
+        map.add("object", model);
+        HttpEntity<MultiValueMap<String, TransactionModel>> httpEntity = new HttpEntity<MultiValueMap<String, TransactionModel>>(map, headers);
         String uri = "http://localhost:8060/transaction-service/transfer";
-        ResponseEntity<Boolean> entity = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, Boolean.class);
+        ResponseEntity<TransactionModel> entity = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, TransactionModel.class);
         return entity.getBody();
     }
 

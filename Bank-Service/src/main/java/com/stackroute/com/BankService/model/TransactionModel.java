@@ -18,8 +18,8 @@ public class TransactionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transactionId;
-    @ManyToOne
-    private AccountModel senderAccountNumber;
+    @Column
+    private String senderAccountNumber;
     @Column(updatable = false)
     @CreationTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -30,8 +30,8 @@ public class TransactionModel {
     private String receiverAccountNumber;
     @Column
     private String receiverSwiftCode;
-    @ManyToOne
-    private BankModel receiverBankName;
+    @Column
+    private String receiverBankName;
     @Column
     private float credit;
     @Column
@@ -42,4 +42,6 @@ public class TransactionModel {
     private String senderLocation;
     @Column
     private String receiverLocation;
+    @Column
+    private String status;
 }

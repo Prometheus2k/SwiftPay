@@ -1,53 +1,47 @@
 package com.stackroute.com.TransactionService.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.stackroute.com.TransactionService.constants.BankName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Transaction")
+@Table(name = "transactions")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransactionModel {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="transactionId",nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int transactionId;
-	@Column(name="account_number",nullable = false,length = 20)
-	private String accountNumber;
-
-
+	@Column
+	private String senderAccountNumber;
 	@Column(updatable = false)
 	@CreationTimestamp
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime createdAt;
-	@Column(name="beneficiary_name",nullable = false)
-	private String beneficiaryName;
-
-	@Column(name = "timeStamp",updatable = false)
-	@CreationTimestamp
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime timeStamp;
-	@Column(name="receiver_account_number",nullable = false)
+	private LocalDateTime time;
+	@Column
+	private String receiverName;
+	@Column
 	private String receiverAccountNumber;
-	@Column(name="receiver_swift_code",nullable = false,length = 8)
+	@Column
 	private String receiverSwiftCode;
-	@Column(name="bank_name",nullable = false)
-	@Enumerated(EnumType.STRING)
-	private BankName bankName;
-	@Column(name="credit",nullable = false)
+	@Column
+	private String receiverBankName;
+	@Column
 	private float credit;
-	@Column(name="debit",nullable = false)
+	@Column
 	private float debit;
-	@Column(name="message",nullable = false)
+	@Column
 	private String message;
-
+	@Column
+	private String senderLocation;
+	@Column
+	private String receiverLocation;
+	@Column
+	private String status;
 }

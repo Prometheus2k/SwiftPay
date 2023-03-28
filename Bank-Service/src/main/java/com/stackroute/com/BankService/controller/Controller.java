@@ -1,7 +1,5 @@
 package com.stackroute.com.BankService.controller;
 
-import com.prowidesoftware.swift.model.field.*;
-import com.prowidesoftware.swift.model.mt.mt1xx.MT101;
 import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.BankModel;
@@ -12,17 +10,16 @@ import com.stackroute.com.BankService.service.AccountServiceInterface;
 import com.stackroute.com.BankService.service.BankServiceInterface;
 
 import com.stackroute.com.BankService.service.TransactionServiceInterface;
-import org.apache.commons.lang.RandomStringUtils;
+import com.stackroute.com.BankService.swift.SwiftOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -34,7 +31,7 @@ public class Controller {
 
     @GetMapping("/bank")
     public ResponseEntity<?> home() {
-        ResponseEntity<?> entity = new ResponseEntity<String>("Welcome to bank service", HttpStatus.OK);
+        ResponseEntity<?> entity = new ResponseEntity<>("Welcome to bank service", HttpStatus.OK);
         return entity;
     }
 
@@ -54,15 +51,18 @@ public class Controller {
     @Autowired
     private InterService interService;
 
+    @Autowired
+    private SwiftOperation swiftOperation;
+
     @PostMapping("/bank/add")
     public ResponseEntity<?> addBankDetails(@RequestBody BankModel bank) {
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             bankService.addBankDetails(bank);
-            entity = new ResponseEntity<String>("Bank details added successfully", HttpStatus.OK);
+            entity = new ResponseEntity<>("Bank details added successfully", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -70,45 +70,44 @@ public class Controller {
     @GetMapping("/bank/get")
     public ResponseEntity<?> getAllBanks() {
         List<BankModel> allBankList = bankService.getAllBankDetails();
-        ResponseEntity<?> entity = new ResponseEntity<List<BankModel>>(allBankList, HttpStatus.OK);
-        return entity;
+        return new ResponseEntity<>(allBankList, HttpStatus.OK);
     }
 
     @GetMapping("/bank/get/{bankId}")
     public ResponseEntity<?> getBankById(@PathVariable("bankId") int bankId) {
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             BankModel bank = bankService.getBankById(bankId);
-            entity = new ResponseEntity<BankModel>(bank, HttpStatus.OK);
+            entity = new ResponseEntity<>(bank, HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
 
     @DeleteMapping("/bank/delete/{bankId}")
     public ResponseEntity<?> deleteBankById(@PathVariable("bankId") int bankId) {
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             bankService.deleteBankByBankId(bankId);
-            entity = new ResponseEntity<String>("Bank deleted", HttpStatus.OK);
+            entity = new ResponseEntity<>("Bank deleted", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
 
     @PutMapping("/bank/update/{bankId}")
     public ResponseEntity<?> updateBankDetails(@PathVariable("bankId") int bankId, @RequestBody BankModel bank) {
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             bankService.updateBankById(bankId, bank);
-            entity = new ResponseEntity<String>("Bank details updated successfully", HttpStatus.OK);
+            entity = new ResponseEntity<>("Bank details updated successfully", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -121,19 +120,19 @@ public class Controller {
     public ResponseEntity<?> addAccountDetails(@RequestHeader Map<String, String> headers, @RequestBody AccountModel account) {
         String token = headers.get("token");
         User user = interService.getUserDetails(token);
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             if(user != null) {
                 System.out.println("in /account/add/ " + token);
                 accountService.addAccountDetails(account);
-                entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
+                entity = new ResponseEntity<>("Account details added successfully", HttpStatus.OK);
             }
             else {
-                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+                entity = new ResponseEntity<>("Invalid token", HttpStatus.BAD_REQUEST);
             }
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -141,8 +140,7 @@ public class Controller {
     @GetMapping("/account/get/all")
     public ResponseEntity<?> getAllAccounts() {
         List<AccountModel> allUserList = accountService.viewAllAccounts();
-        ResponseEntity<?> entity = new ResponseEntity<List<AccountModel>>(allUserList, HttpStatus.OK);
-        return entity;
+        return new ResponseEntity<>(allUserList, HttpStatus.OK);
     }
 
     @GetMapping("/account/get")
@@ -150,45 +148,45 @@ public class Controller {
         String token = headers.get("token");
         System.out.println(token);
         User user = interService.getUserDetails(token);
-        ResponseEntity<?> entity = null;
-        AccountModel account = null;
+        ResponseEntity<?> entity;
+        AccountModel account;
         try {
             if(user != null) {
                 account = accountService.getAccountByUserEmailId(user.getEmailId());
-                entity = new ResponseEntity<AccountModel>(account, HttpStatus.OK);
+                entity = new ResponseEntity<>(account, HttpStatus.OK);
             }
             else {
-                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+                entity = new ResponseEntity<>("Invalid token", HttpStatus.BAD_REQUEST);
             }
 
         } catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
 
     @DeleteMapping("/account/delete/{accountNumber}")
     public ResponseEntity<?> deleteAccount(@PathVariable("accountNumber") String accountNumber) {
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             accountService.deleteAccount(accountNumber);
-            entity = new ResponseEntity<String>("Account deleted", HttpStatus.OK);
+            entity = new ResponseEntity<>("Account deleted", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
 
     @PutMapping("/account/update/{accountNumber}")
     public ResponseEntity<?> updateAccount(@PathVariable("accountNumber") String accountNumber, @RequestBody AccountModel account) {
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             accountService.updateAccount(accountNumber, account);
-            entity = new ResponseEntity<String>("Account updated successfully", HttpStatus.OK);
+            entity = new ResponseEntity<>("Account updated successfully", HttpStatus.OK);
         }
         catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
@@ -198,71 +196,45 @@ public class Controller {
     */
 
     @PostMapping("/transfer")
-    public ResponseEntity<?> initiateTransfer(@RequestHeader Map<String, String> headers, @RequestBody TransactionModel model) {
+    public ResponseEntity<?> initiateTransfer(@RequestHeader Map<String, String> headers, @RequestBody TransactionModel requestModel) {
         String token = headers.get("token");
         User user = interService.getUserDetails(token);
-        ResponseEntity<?> entity = null;
+        ResponseEntity<?> entity;
         try {
             if(user != null) {
-                boolean checkSender = transactionService.verifyAccount(model.getSenderAccountNumber().getAccountNumber());
-                boolean checkReceiver = transactionService.verifyAccount(model.getReceiverAccountNumber());
-                if(checkSender && checkReceiver) {
-                    String MT101 = generateMT101(model);
+                boolean checkSender = transactionService.verifyAccount(requestModel.getSenderAccountNumber());
+                boolean checkReceiver = transactionService.verifyAccount(requestModel.getReceiverAccountNumber());
+                boolean checkBalance = transactionService.checkBalance(requestModel.getSenderAccountNumber(), requestModel.getDebit());
+                if(checkSender && checkReceiver && checkBalance) {
+                    String MT101 = swiftOperation.generateMT101(requestModel);
+
+                    System.out.println("----------MT101-----------");
                     System.out.println(MT101);
-                    if(interService.initiateTransaction(MT101)) {
-                        
-                        entity = new ResponseEntity<String>("Transfer success", HttpStatus.OK);
+                    System.out.println("--------------------------");
+
+                    transactionService.addTransactionDetails(requestModel, MT101);
+                    TransactionModel transactionModel = interService.initiateTransaction(requestModel);
+                    if(transactionModel.getStatus().equals("ACK")) {
+                        transactionService.updateStatus(requestModel.getTransactionId(), "ACK");
+                        transactionService.executeDebit(transactionModel.getMessage());
+                        entity = new ResponseEntity<>("Transfer success", HttpStatus.OK);
                     }
                     else {
-                        entity = new ResponseEntity<String>("Transfer failed", HttpStatus.BAD_REQUEST);
+                        transactionService.updateStatus(requestModel.getTransactionId(), "NACK");
+                        entity = new ResponseEntity<>("Transfer failed", HttpStatus.BAD_REQUEST);
                     }
                 }
                 else {
-                    entity = new ResponseEntity<String>("Invalid details", HttpStatus.BAD_REQUEST);
+                    entity = new ResponseEntity<>("Invalid details", HttpStatus.BAD_REQUEST);
                 }
             }
             else {
-                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
+                entity = new ResponseEntity<>("Invalid token", HttpStatus.BAD_REQUEST);
             }
         }
-        catch (CustomException e) {
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        catch (CustomException | IOException e) {
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return entity;
     }
-
-    private String generateMT101(TransactionModel model) {
-        MT101 mt101 = new MT101();
-        mt101.setSender(model.getSenderAccountNumber().getAccountNumber());
-        mt101.setReceiver(model.getReceiverAccountNumber());
-        mt101.addField(new Field20(generateRandom("MT101")));
-        mt101.addField(new Field28D("1/1"));
-        mt101.addField(new Field30(gererateDate()));
-        mt101.addField(new Field21(generateRandom("")));
-        Field32B fieldF32B = new Field32B();
-        fieldF32B.setCurrency("USD");
-        fieldF32B.setAmount(model.getDebit());
-        mt101.addField(fieldF32B);
-        Field50F field50F = new Field50F();
-        field50F.setNameAndAddress1(model.getSenderLocation());
-        mt101.addField(field50F);
-        mt101.addField(new Field52A(generateRandom("")));
-        Field59F field59F = new Field59F();
-        field59F.setNameAndAddress1(model.getReceiverLocation());
-        mt101.addField(new Field71A("SHA"));
-        return mt101.message();
-    }
-
-    private String generateRandom(String s) {
-        String random = s + RandomStringUtils.randomAlphanumeric(5);
-        return random;
-    }
-
-    private String gererateDate() {
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yy/MM/dd");
-        String date = today.format(dateTimeFormatter);
-        return date;
-    }
-
 }

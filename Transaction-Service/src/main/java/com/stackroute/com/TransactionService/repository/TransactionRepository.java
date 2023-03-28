@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface TransactionRepository extends JpaRepository<TransactionModel,String>{
-	public Optional<List<TransactionModel>> findAllByAccountNumber(String AccountNumber);
+	public Optional<List<TransactionModel>> findAllBySenderAccountNumber(String AccountNumber);
 
 }
