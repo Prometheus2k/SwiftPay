@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("product-webapp")
 public class Controller {
-
-    @GetMapping("/site")
     public String webapp() {
         return "index.html";
     }
