@@ -25,32 +25,28 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
             exposedHeaders: "*"
-        add-to-simple-url-handler-mapping: true
-      routes:
-        - id: user-service
-          uri: http://localhost:8090
-          predicates:
-            - Path=/api/v1/**
-          filters:
-            - RewritePath=/api/v1(?<segment>/?.*), $\{segment}
-
-        - id: product-web-app
-          uri: http://localhost:4000
-          predicates:
-            - Path=/ap1/v1/**
-          filters:
-            - RewritePath=/ap1/v1(?<segment>/?.*), $\{segment}
-
-        - id: bank-service
-          uri: http://localhost:8070
-          predicates:
-            - Path=/ap1/v1/**
-          filters:
-            - RewritePath=/ap1/v1(?<segment>/?.*), $\{segment}
-
-        - id: transaction-service
-          uri: http://localhost:8060
-          predicates:
-            - Path=/ap1/v1/**
-          filters:
-            - RewritePath=/ap1/v1(?<segment>/?.*), $\{segment}
+#      routes:
+#        - id: bank-service
+#          uri: http://localhost:8070
+#          predicates:
+#            - Path=/api/v1/**
+#          filters:
+#            - RewritePath=/api/v1(?<segment>/?.*), $\{segment}
+#        - id: user-service
+#          uri: http://localhost:8090
+#          predicates:
+#            - Path=/api/v1/**
+#          filters:
+#            - RewritePath=/api/v1(?<segment>/?.*), $\{segment}
+#        - id: product-web-app
+#          uri: http://localhost:4000
+#          predicates:
+#            - Path=/api/v1/**
+#          filters:
+#            - RewritePath=/api/v1(?<segment>/?.*), $\{segment}
+#        - id: transaction-service
+#          uri: http://localhost:8060
+#          predicates:
+#            - Path=/api/v1/**
+#          filters:
+#            - RewritePath=/api/v1(?<segment>/?.*), $\{segment}
