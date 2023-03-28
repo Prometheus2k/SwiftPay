@@ -17,6 +17,8 @@ services:
     hostname: localhost
     network_mode: host
     restart: always
+    ports:
+      - 8761:8761
 
   product-web-app:
     image: product-web-app

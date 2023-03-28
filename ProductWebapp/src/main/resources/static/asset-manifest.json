@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.ac6a4d4c.css",
-    "main.js": "/static/js/main.2c31a134.js",
+    "main.css": "/static/css/main.6a566d13.css",
+    "main.js": "/static/js/main.02cdee3e.js",
     "static/js/787.994511a4.chunk.js": "/static/js/787.994511a4.chunk.js",
     "static/media/swift_image.jpg": "/static/media/swift_image.680803ecae43f8181664.jpg",
+    "static/media/swiftPay.png": "/static/media/swiftPay.7fa5f79ec6dc08ea406d.png",
+    "static/media/dollar.png": "/static/media/dollar.cdfd193eb81d30b9cfcb.png",
     "index.html": "/index.html",
     "static/media/arrow_right.svg": "/static/media/arrow_right.775db4fa771ded80861d27f7e481ab6b.svg",
-    "main.ac6a4d4c.css.map": "/static/css/main.ac6a4d4c.css.map",
-    "main.2c31a134.js.map": "/static/js/main.2c31a134.js.map",
+    "main.6a566d13.css.map": "/static/css/main.6a566d13.css.map",
+    "main.02cdee3e.js.map": "/static/js/main.02cdee3e.js.map",
     "787.994511a4.chunk.js.map": "/static/js/787.994511a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac6a4d4c.css",
-    "static/js/main.2c31a134.js"
+    "static/css/main.6a566d13.css",
+    "static/js/main.02cdee3e.js"
   ]
 }
