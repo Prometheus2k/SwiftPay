@@ -113,7 +113,7 @@ export default function Login() {
               src={img}
               style={{
                 width: "100%",
-                height: "100%",
+                height: "90%",
                 objectFit: "cover",
               }}
             />
@@ -181,7 +181,7 @@ export default function Login() {
 
                 <Button
                   type="submit"
-                  fullWidth
+                  
                   variant="contained"
                   id="loginBtn"
                   sx={{ mt: 3, mb: 2, height: 50 }}

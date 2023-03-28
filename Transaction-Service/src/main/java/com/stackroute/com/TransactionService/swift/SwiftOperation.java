@@ -21,7 +21,7 @@ public class SwiftOperation {
         mt900.addField(new Field21(mt101.getField21().get(0).asTag().getValue()));
         mt900.addField(new Field32A().setDate(mt101.getField30().getDate())
                 .setCurrency(mt101.getField32B().get(0).getCurrency())
-                .setAmount(mt101.getField32B().get(0).getCurrency()));
+                .setAmount(mt101.getField32B().get(0).getAmount()));
         return mt900.message();
     }
 
