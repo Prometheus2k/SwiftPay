@@ -19,15 +19,9 @@ import axios from "axios";
 const theme = createTheme();
 
 export default function Login() {
-<<<<<<< HEAD
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isValid, setIsValid] = useState(false);
-=======
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isValid, setIsValid] = useState('');
->>>>>>> 5d8f47588998b597be07fa4f50d68f71de9412c8
+  const [isValid, setIsValid] = useState("");
 
   const isDisabled = !email || !password || !isValid;
 
@@ -54,7 +48,7 @@ export default function Login() {
     // console.log(mapData);
 
     axios
-      .post("http://localhost:8080/user-service/login", mapData)
+      .post("http://localhost:8090/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);
@@ -137,7 +131,6 @@ export default function Login() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  
                   value={email}
                   onChange={handleChange}
                   InputProps={{
