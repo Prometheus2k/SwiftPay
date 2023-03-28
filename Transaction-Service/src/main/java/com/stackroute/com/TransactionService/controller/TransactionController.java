@@ -84,7 +84,6 @@ Function to Add a Transaction to the history*/
 		return entity;
 	}
 
-<<<<<<< HEAD
 	@GetMapping("/transactions/get")
 	public ResponseEntity<?> getTransactions(@RequestHeader Map<String, String> headers  ) {
 		String token = headers.get("token");
@@ -107,15 +106,12 @@ Function to Add a Transaction to the history*/
 		}
 		return entity;
 	}
-=======
 	/*
 	 * For transfer
 	 */
-	@PostMapping("/transfer")
-	public ResponseEntity<?> initiateTransfer() {
+//	@PostMapping("/transfer")
+//	public ResponseEntity<?> initiateTransfer() {
+//
+//	}
 
-	}
-
-
->>>>>>> 93f821a305863f4cd4579a91a019d40010765528
 }
