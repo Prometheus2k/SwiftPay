@@ -16,7 +16,6 @@ import {
 import axios from "axios";
 import { Details } from "@mui/icons-material";
 
-
 export default function BankDetails() {
   const [accountDetails, setAccountDetails] = useState();
   let token = localStorage.getItem("token");
@@ -107,7 +106,7 @@ export default function BankDetails() {
                                   fontSize: 20,
                                   paddingTop: 2,
                                   fontWeight: "bold",
-                                  textAlign: "left"
+                                  textAlign: "left",
                                 }}
                               >
                                 Bank Name
@@ -130,15 +129,12 @@ export default function BankDetails() {
 
                               <TextField
                                 id="outlined-read-only-input"
-
                                 defaultValue={accountDetails.bankModel.bankName}
                                 InputProps={{
                                   readOnly: true,
                                 }}
-                                
                                 fullWidth
                               />
-
                             </Grid>
                           </Grid>
                           <Divider />{" "}
@@ -152,7 +148,7 @@ export default function BankDetails() {
                                   fontSize: 20,
                                   paddingTop: 2,
                                   fontWeight: "bold",
-                                  textAlign: "left"
+                                  textAlign: "left",
                                 }}
                               >
                                 Account Number
@@ -175,15 +171,12 @@ export default function BankDetails() {
 
                               <TextField
                                 id="outlined-read-only-input"
-
                                 defaultValue={accountDetails.accountNumber}
                                 InputProps={{
                                   readOnly: true,
                                 }}
-                                
                                 fullWidth
                               />
-
                             </Grid>
                           </Grid>
                           <Divider />{" "}
@@ -199,7 +192,7 @@ export default function BankDetails() {
                                   fontSize: 20,
                                   paddingTop: 2,
                                   fontWeight: "bold",
-                                  textAlign: "left"
+                                  textAlign: "left",
                                 }}
                               >
                                 Bank Branch
@@ -222,15 +215,12 @@ export default function BankDetails() {
 
                               <TextField
                                 id="outlined-read-only-input"
-
                                 defaultValue={accountDetails.bankBranch}
                                 InputProps={{
                                   readOnly: true,
                                 }}
-                                
                                 fullWidth
                               />
-
                             </Grid>
                           </Grid>
                           <Divider />{" "}
@@ -244,7 +234,7 @@ export default function BankDetails() {
                                   fontSize: 20,
                                   paddingTop: 2,
                                   fontWeight: "bold",
-                                  textAlign: "left"
+                                  textAlign: "left",
                                 }}
                               >
                                 Account Type
@@ -267,15 +257,12 @@ export default function BankDetails() {
 
                               <TextField
                                 id="outlined-read-only-input"
-
                                 defaultValue={accountDetails.accountType}
                                 InputProps={{
                                   readOnly: true,
                                 }}
-                                
                                 fullWidth
                               />
-
                             </Grid>
                           </Grid>
                           <Divider />{" "}
@@ -289,7 +276,7 @@ export default function BankDetails() {
                                   fontSize: 20,
                                   paddingTop: 2,
                                   fontWeight: "bold",
-                                  textAlign: "left"
+                                  textAlign: "left",
                                 }}
                               >
                                 SWIFT Code
@@ -312,15 +299,14 @@ export default function BankDetails() {
 
                               <TextField
                                 id="outlined-read-only-input"
-
-                                defaultValue={accountDetails.bankModel.bankSwiftCode}
+                                defaultValue={
+                                  accountDetails.bankModel.bankSwiftCode
+                                }
                                 InputProps={{
                                   readOnly: true,
                                 }}
-                                
                                 fullWidth
                               />
-
                             </Grid>
                           </Grid>
                           <Grid
@@ -333,7 +319,7 @@ export default function BankDetails() {
                                   fontSize: 20,
                                   paddingTop: 2,
                                   fontWeight: "bold",
-                                  textAlign: "left"
+                                  textAlign: "left",
                                 }}
                               >
                                 Balance
@@ -356,189 +342,23 @@ export default function BankDetails() {
 
                               <TextField
                                 id="outlined-read-only-input"
-
                                 defaultValue={accountDetails.balance}
                                 InputProps={{
                                   readOnly: true,
                                 }}
-                                
                                 fullWidth
                               />
-
                             </Grid>
                           </Grid>
                         </Grid>
-                        <Divider />{" "}
-                        <Grid
-                          container
-                          sx={{ margin: "10px", textAlign: "center" }}
-                        >
-                          <Grid item xs="6">
-                            <Typography
-                              sx={{
-                                fontSize: 20,
-                                paddingTop: 2,
-                                fontWeight: "bold",
-                              }}
-                            >
-                              Account Number
-                            </Typography>
-                          </Grid>
-
-                          <Grid item xs="6">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                              }}
-                            >
-                              {accountDetails.accountNumber}
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                        <Divider />{" "}
-                      
-                      <Grid container>
-                        <Grid
-                          container
-                          sx={{ margin: "10px", textAlign: "center" }}
-                        >
-                          <Grid item xs="6">
-                            <Typography
-                              sx={{
-                                fontSize: 20,
-                                paddingTop: 2,
-                                fontWeight: "bold",
-                              }}CardContent
-                            >
-                              Bank Branch
-                            </Typography>
-                          </Grid>
-
-                          <Grid item xs="6">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                              }}
-                            >
-                              {accountDetails.bankBranch}
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                        <Divider />{" "}
-                        <Grid
-                          container
-                          sx={{ margin: "10px", textAlign: "center" }}
-                        >
-                          <Grid item xs="6">
-                            <Typography
-                              sx={{
-                                fontSize: 20,
-                                paddingTop: 2,
-                                fontWeight: "bold",
-                              }}
-                            >
-                              Account Type
-                            </Typography>
-                          </Grid>
-
-                          <Grid item xs="6">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                              }}
-                            >
-                              {accountDetails.accountType}
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                        <Divider />{" "}
-                        <Grid
-                          container
-                          sx={{ margin: "10px", textAlign: "center" }}
-                        >
-                          <Grid item xs="6">
-                            <Typography
-                              sx={{
-                                fontSize: 20,
-                                paddingTop: 2,
-                                fontWeight: "bold",
-                              }}
-                            >
-                              SWIFT Code
-                            </Typography>
-                          </Grid>
-
-                          <Grid item xs="6">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                              }}
-                            >
-                              {accountDetails.bankModel.bankSwiftCode +
-                                accountDetails.branchSwiftCode}
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                        <Grid
-                          container
-                          sx={{ margin: "10px", textAlign: "center" }}
-                        >
-                          <Grid item xs="6">
-                            <Typography
-                              sx={{
-                                fontSize: 20,
-                                paddingTop: 2,
-                                fontWeight: "bold",
-                              }}
-                            >
-                              Balance
-                            </Typography>
-                          </Grid>
-
-                          <Grid item xs="6">
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h1"
-                              sx={{
-                                fontSize: 18,
-                                paddingTop: 2,
-                                color: "black",
-                              }}
-                            >
-                              {accountDetails.balance}
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </Grid>{" "}
                 </Grid>{" "}
-              </Grid>{" "}
-            </section>
+              </section>
+            </Box>
           </Box>
-        </Box>
-      </div>
-    </>
-  );
+        </div>
+      </>
+    );
 }

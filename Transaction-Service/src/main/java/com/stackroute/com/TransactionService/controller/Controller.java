@@ -3,27 +3,17 @@ package com.stackroute.com.TransactionService.controller;
 import com.stackroute.com.TransactionService.exceptions.CustomException;
 import com.stackroute.com.TransactionService.model.AccountModel;
 import com.stackroute.com.TransactionService.model.TransactionModel;
-<<<<<<< HEAD:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/Controller.java
-import com.stackroute.com.TransactionService.service.Scheduler;
-import com.stackroute.com.TransactionService.service.TransactionServiceInterface;
-import com.stackroute.com.TransactionService.swift.SwiftOperation;
-=======
 import com.stackroute.com.TransactionService.model.User;
 import com.stackroute.com.TransactionService.service.AccountServiceInterface;
 import com.stackroute.com.TransactionService.service.TransactionServiceInterface;
 import com.stackroute.com.TransactionService.interservice.InterService;
->>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/TransactionController.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/Controller.java
-import java.io.IOException;
-=======
 
 
->>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/TransactionController.java
 import java.util.List;
 import java.util.Map;
 
@@ -38,13 +28,6 @@ public class Controller {
 	@Autowired
 	private TransactionServiceInterface transactionService;
 
-<<<<<<< HEAD:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/Controller.java
-	@Autowired
-	private SwiftOperation swiftOperation;
-
-	@Autowired
-	private Scheduler scheduler;
-=======
 
 
 	@Autowired
@@ -53,7 +36,6 @@ public class Controller {
 	@Autowired
 	private AccountServiceInterface accountService;
 
->>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/TransactionController.java
 
 	/*
 	Function To test Get ALL Transaction History
@@ -127,37 +109,9 @@ Function to Add a Transaction to the history*/
 	/*
 	 * For transfer
 	 */
-<<<<<<< HEAD:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/Controller.java
-	@PostMapping("/transfer")
-	public ResponseEntity<?> initiateTransfer(TransactionModel transactionModel) {
-		ResponseEntity<?> entity = null;
-		try {
-			boolean checkMessage = transactionService.checkMT101(transactionModel.getMessage());
-			if(checkMessage) {
-				transactionModel.setStatus("ACK");
-				transactionService.addTransaction(transactionModel);
-				String MT900 = swiftOperation.generateMT900(transactionModel.getMessage());
-
-				System.out.println("------------MT900----------");
-				System.out.println(MT900);
-				System.out.println("----------------------------");
-
-				transactionModel.setMessage(MT900);
-				entity = new ResponseEntity<>(transactionModel, HttpStatus.OK);
-			}
-		}
-		catch (CustomException | IOException e) {
-			transactionModel.setStatus("NACK");
-			entity = new ResponseEntity<>(transactionModel, HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
-
-=======
 //	@PostMapping("/transfer")
 //	public ResponseEntity<?> initiateTransfer() {
 //
 //	}
->>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40:Transaction-Service/src/main/java/com/stackroute/com/TransactionService/controller/TransactionController.java
 
 }
