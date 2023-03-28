@@ -5,16 +5,15 @@ import Navbar from "../components/Navbar";
 import "../styles/transactionHistory.css";
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-const url = "http://localhost:8081/transaction-service/transaction/history";
+const url = "http://localhost:8060/transaction-service/transactions/get";
 
 export default function Transactions() {
-
-  const genData = require("../generated.json");
-  let genRows = genData.transactions;
-
+  // const genData = require("../generated.json");
+  // let genRows = genData.transactions;
+  let token = localStorage.getItem("token");
   const columns = [
     {
-      field: "receiverSwiftCode",
+      field: "transactionId",
       headerName: "Transaction Id",
       headerAlign: "center",
       width: 120,
@@ -30,8 +29,6 @@ export default function Transactions() {
       headerName: " Description",
       headerAlign: "center",
       width: 300,
-
-
     },
     {
       field: "receiverAccountNumber",
@@ -56,43 +53,47 @@ export default function Transactions() {
       field: "credit",
       headerName: "Credit",
       headerAlign: "center",
-
     },
     {
       field: "debit",
       headerName: "Debit",
       headerAlign: "center",
-
     },
     {
       field: "status",
       headerName: "Status",
       headerAlign: "center",
       flex: 0,
-
     },
   ];
 
   const [rows, setRows] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(url).then((response) => {
-      setRows(response.data);
-    });
+    axios
+      .get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+      })
+      .then((response) => {
+        setRows(response.data);
+      });
   }, []);
   console.log(rows);
 
   return (
     <>
       <div className="bg-color">
-        {console.log(genData)}
+        {/* {console.log(genData)} */}
         <Navbar />
         <Box height={30} />
         <Box sx={{ display: "flex" }}>
           <Sidenav />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <div className="transactionDiv">
-              {/* <h1>Transaction History</h1> */}
+              <h1>Transaction History</h1>
               <Box
                 sx={{ height: " 82vh", width: "100%", alignItems: "center" }}
               >
@@ -100,11 +101,11 @@ export default function Transactions() {
                   sx={{ m: 2, overflowX: "scroll" }}
                   disableRowSelectionOnClick
                   autoHeight
-                  //rows={rows}
-                  rows={genRows}
+                  rows={rows}
+                  // rows={genRows}
                   columns={columns}
                   getRowId={(row) =>
-                    row.receiverSwiftCode +
+                    row.transactionId +
                     row.timeStamp +
                     row.message +
                     row.receiverAccountNumber +
@@ -117,11 +118,11 @@ export default function Transactions() {
                   initialState={{
                     pagination: {
                       paginationModel: {
-                        pageSize: 5,
+                        pageSize: 20,
                       },
                     },
                   }}
-                  pageSizeOptions={[5, 10, 15, 25]}
+                  pageSizeOptions={[25, 30, 35, 40]}
                   slots={{
                     toolbar: GridToolbar,
                   }}

@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import arrow from "./arrow_right.svg"
 import axios from "axios";
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 
 export default function Transfer() {
 
@@ -27,6 +27,7 @@ export default function Transfer() {
     bankName: "",
     branchName: ""
   })
+  // <img src={arrow} alt="right arrow" height={140} width={140} />
 
   const [recieverAccNumber, setRecieverAccNumber] = useState("")
 
@@ -67,6 +68,10 @@ export default function Transfer() {
     // addExpenses()
   }
 
+  const isFormValid = () => {
+    return Object.values(form).every(value => value !== '');
+  }
+
   const resetButton = () => {
     setForm({
       accNumber: "",
@@ -80,7 +85,6 @@ export default function Transfer() {
     setRecieverAccNumber("")
   }
 
-  // <Grid container justify="center" alignContent="center" margin={4} ></Grid>
 
   return (
     <>
@@ -88,10 +92,11 @@ export default function Transfer() {
       <Box height={30} />
       <Box sx={{ display: "flex" }}>
         <Sidenav />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "100vh", paddingTop: 20 }} style={{ backgroundColor: "#F0F0F0" }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "100vh", paddingTop: 15 }} style={{ backgroundColor: "#F0F0F0" }}>
           <form onSubmit={handleSubmit} style={{ backgroundColor: "#FFFFFF" }}>
-            <Grid container alignItems='center' spacing={3} padding={5}>
-              <Grid item xs={5} rowSpacing={4}>
+            <Typography variant="h6" sx={{ padding: 2, textAlign: "center", fontSize: 30, fontWeight: "bold" }}>Transfer</Typography>
+            <Grid container alignItems='center' padding={5}>
+              <Grid item xs={5} >
                 <Typography variant="h6" sx={{ paddingBottom: 2 }}>Sender Information</Typography>
                 <TextField
                   fullWidth
@@ -118,12 +123,13 @@ export default function Transfer() {
                   sx={{ paddingBottom: 2 }}
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={2} >
                 <Box textAlign='center' >
-                  <img src={arrow} alt="right arrow" height={150} width={150} />
+                  <ArrowCircleRightOutlinedIcon sx={{fontSize:130}} />
                 </Box>
               </Grid>
-              <Grid container item xs={5} spacing={5}>
+
+              <Grid container item xs={5}>
                 <Typography variant="h6" sx={{ paddingBottom: 2 }}>Beneficiary Information</Typography>
                 <TextField
                   fullWidth
@@ -172,7 +178,7 @@ export default function Transfer() {
               </Grid>
               <Grid item xs={12} >
                 <Box textAlign='center'>
-                  <Button variant="contained" style={{backgroundColor:"#005555"}} type="submit">
+                  <Button variant="contained" style={{ backgroundColor: "#005555", width: 150, height: 50 }} type="submit" disabled={!isFormValid()}>
                     Submit
                   </Button>
                 </Box>
