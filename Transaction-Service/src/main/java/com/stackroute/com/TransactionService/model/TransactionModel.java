@@ -1,7 +1,6 @@
 package com.stackroute.com.TransactionService.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.stackroute.com.TransactionService.constants.BankName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,13 +40,15 @@ public class TransactionModel {
 	@Column(name="receiver_swift_code",nullable = false,length = 8)
 	private String receiverSwiftCode;
 	@Column(name="bank_name",nullable = false)
-	@Enumerated(EnumType.STRING)
-	private BankName bankName;
+	private String bankName;
 	@Column(name="credit",nullable = false)
 	private float credit;
 	@Column(name="debit",nullable = false)
 	private float debit;
 	@Column(name="message",nullable = false)
 	private String message;
+
+	@Column(name = "status", nullable = false)
+	private String status;
 
 }

@@ -6,13 +6,13 @@ import com.stackroute.com.BankService.model.BankModel;
 import java.util.List;
 
 public interface BankServiceInterface {
-    public void addBankDetails(BankModel bank) throws CustomException;
+    void addBankDetails(BankModel bank) throws CustomException;
 
-    public List<BankModel> getAllBankDetails();
+    List<BankModel> getAllBankDetails();
 
-    public BankModel getBankById(int bankId) throws CustomException;
+    BankModel getBankById(int bankId) throws CustomException;
 
-    public void deleteBankByBankId(int bankId) throws CustomException;
+    void deleteBankByBankId(int bankId) throws CustomException;
 
-    public void updateBankById(int bankId, BankModel bank) throws CustomException;
+    void updateBankById(int bankId, BankModel bank) throws CustomException;
 }
