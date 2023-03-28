@@ -20,27 +20,27 @@ public class ApiGatewayApplication {
 	}
 
 
-//	@Bean
-//	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
-//		return builder.routes()
-//				.route(r -> r.path("/user-service/**")
-//						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
-//						.uri("lb://USER-SERVICE")
-//				)
-//				.route(r -> r.path("/bank-service/**")
-//						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
-//						.uri("lb://BANK-SERVICE")
-//				)
-//				.route(r -> r.path("/transaction-service/**")
-//						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
-//						.uri("lb://TRANSACTION-SERVICE")
-//				)
-//				.route(r -> r.path("/**")
-//						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
-//						.uri("lb://PRODUCT-WEBAPP-SERVICE")
-//				)
-//				.build();
-//
-//	}
+	@Bean
+	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
+		return builder.routes()
+				.route(r -> r.path("/user-service/**")
+						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
+						.uri("lb://USER-SERVICE")
+				)
+				.route(r -> r.path("/bank-service/**")
+						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
+						.uri("lb://BANK-SERVICE")
+				)
+				.route(r -> r.path("/transaction-service/**")
+						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
+						.uri("lb://TRANSACTION-SERVICE")
+				)
+				.route(r -> r.path("/**")
+						.filters(f->f.dedupeResponseHeader("Access-Control-Allow-Origin","RETAIN_UNIQUE"))
+						.uri("lb://PRODUCT-WEBAPP-SERVICE")
+				)
+				.build();
+
+	}
 
 }
