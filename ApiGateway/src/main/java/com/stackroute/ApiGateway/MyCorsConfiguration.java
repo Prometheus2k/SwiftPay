@@ -15,11 +15,7 @@ import reactor.core.publisher.Mono;
 public class MyCorsConfiguration {
     private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type, Content-Length, Authorization, credential, X-XSRF-TOKEN";
     private static final String ALLOWED_METHODS = "GET, PUT, POST, DELETE, OPTIONS, PATCH";
-<<<<<<< HEAD
-    private static final String ALLOWED_ORIGIN = "http://localhost:3000";
-=======
     private static final String ALLOWED_ORIGIN = "http://localhost:3000/";
->>>>>>> 5d8f47588998b597be07fa4f50d68f71de9412c8
     private static final String MAX_AGE = "7200"; //2 hours (2 * 60 * 60)
     @Bean
     public WebFilter corsFilter() {
