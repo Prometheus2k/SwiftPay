@@ -21,7 +21,7 @@ const theme = createTheme();
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState('');
 
   const isDisabled = !email || !password || !isValid;
 
@@ -132,7 +132,7 @@ export default function Login() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  autoFocus
+                  
                   value={email}
                   onChange={handleChange}
                   InputProps={{
