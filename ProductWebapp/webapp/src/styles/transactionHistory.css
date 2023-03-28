@@ -4,7 +4,7 @@ h1 {
   size: 3em;
 }
 .transactionDiv {
-  margin-top: 10vh;
+  margin-bottom: 0vh;
   width: 100%;
 }
 .MuiDataGrid-cellContent {
@@ -35,5 +35,3 @@ h1 {
   color: rgb(255, 255, 255);
 }
 
-.MuiButtonBase-root.MuiButton-root {
-}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidenav from "../components/Sidenav";
 import Navbar from "../components/Navbar";
-import "../styles/Dashboard.css";
 import "../styles/Bankdetails.css";
 import {
   Card,
@@ -351,12 +350,20 @@ export default function BankDetails() {
                             </Grid>
                           </Grid>
                         </Grid>
+<<<<<<< HEAD
                       </CardContent>
                     </Card>
                   </Grid>{" "}
                 </Grid>{" "}
               </section>
             </Box>
+=======
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+            </section>
+>>>>>>> 6d8302a9784b41c1fa66a8fb49cc243ec1bc3bd1
           </Box>
         </div>
       </>
