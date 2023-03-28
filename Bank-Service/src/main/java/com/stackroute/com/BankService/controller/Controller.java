@@ -279,6 +279,9 @@ public class Controller {
     //             .setAmount(model.getDebit());
     //     mt103.addField(f32A);
     //     return mt103.message();
+    private String generateMT910(TransactionModel model){
+
+    }
 
     // }
     // private String generateRandom(String s) {
