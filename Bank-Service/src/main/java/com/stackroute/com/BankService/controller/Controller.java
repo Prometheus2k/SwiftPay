@@ -6,6 +6,7 @@ import com.prowidesoftware.swift.model.SwiftBlock1;
 import com.prowidesoftware.swift.model.field.*;
 import com.prowidesoftware.swift.model.mt.mt1xx.MT101;
 import com.prowidesoftware.swift.model.mt.mt1xx.MT103;
+
 import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.BankModel;
@@ -31,8 +32,8 @@ import java.util.*;
 import javax.transaction.Transaction;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("bank-service")
+//@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("user-service")
 public class Controller {
     /*
      * Function to check whether the endpoint is working.
@@ -205,6 +206,7 @@ public class Controller {
         ResponseEntity<?> entity;
         try {
             if(user != null) {
+                System.out.println("***************Inside controller transfer*************");
                 boolean checkSender = transactionService.verifyAccount(requestModel.getSenderAccountNumber());
                 boolean checkReceiver = transactionService.verifyAccount(requestModel.getReceiverAccountNumber());
                 boolean checkBalance = transactionService.checkBalance(requestModel.getSenderAccountNumber(), requestModel.getDebit());
@@ -217,6 +219,7 @@ public class Controller {
 
                     transactionService.addTransactionDetails(requestModel, MT101);
                     TransactionModel transactionModel = interService.initiateTransaction(requestModel);
+                    System.out.println("*******************Back in controller transfer from transaction service************");
                     if(transactionModel.getStatus().equals("ACK")) {
                         transactionService.updateStatus(requestModel.getTransactionId(), "ACK");
                         transactionService.executeDebit(transactionModel.getMessage());

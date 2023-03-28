@@ -352,8 +352,8 @@ export default function BankDetails() {
                         </Grid>
                       </CardContent>
                     </Card>
-                  </Grid>{" "}
-                </Grid>{" "}
+                  </Grid>
+                </Grid>
               </section>
             </Box>
           </Box>

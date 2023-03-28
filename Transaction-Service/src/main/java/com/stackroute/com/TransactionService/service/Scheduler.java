@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class Scheduler {
 
-    @Scheduled(cron = "* */2 * * * *")
+//    @Scheduled(cron = "* */2 * * * *")
     public void schedule() {
         System.out.println("Inside scheduler----------");
     }
