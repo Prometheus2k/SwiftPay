@@ -1,5 +1,7 @@
 package com.stackroute.com.BankService.interservice;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.com.BankService.model.TransactionModel;
 import com.stackroute.com.BankService.model.User;
 import org.springframework.http.*;
@@ -25,16 +27,27 @@ public class InterService {
         return entity.getBody();
     }
 
-    public TransactionModel initiateTransaction(TransactionModel model) {
+    public TransactionModel initiateTransaction(TransactionModel model) throws JsonProcessingException {
+        System.out.println("***********Inside initiate transaction 1****************");
         RestTemplate restTemplate = new RestTemplate();
+        System.out.println("***********Inside initiate transaction 2****************");
         HttpHeaders headers = new HttpHeaders();
+        System.out.println("***********Inside initiate transaction 3****************");
         headers.setContentType(MediaType.APPLICATION_JSON);
-        MultiValueMap<String, TransactionModel> map = new LinkedMultiValueMap<String, TransactionModel>();
-        map.add("object", model);
-        HttpEntity<MultiValueMap<String, TransactionModel>> httpEntity = new HttpEntity<MultiValueMap<String, TransactionModel>>(map, headers);
+        System.out.println("***********Inside initiate transaction 4****************");
+        //MultiValueMap<String, TransactionModel> map = new LinkedMultiValueMap<String, TransactionModel>();
+        System.out.println("***********Inside initiate transaction 5****************");
+        //map.add("object", model);
+        HttpEntity<TransactionModel> httpEntity = new HttpEntity<TransactionModel>(model, headers);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        HttpEntity<?> httpEntity = new HttpEntity<Object>(objectMapper.writeValueAsString(model), headers);
+        System.out.println("***********Inside initiate transaction 6****************");
         String uri = "http://localhost:8060/transaction-service/transfer";
-        ResponseEntity<TransactionModel> entity = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, TransactionModel.class);
-        return entity.getBody();
+        System.out.println("***********Inside initiate transaction 7****************");
+//        ResponseEntity<TransactionModel> entity = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, TransactionModel.class);
+        TransactionModel entity = restTemplate.postForObject(uri, model, TransactionModel.class);
+        System.out.println("***********Inside initiate transaction 8****************");
+        return entity;
     }
 
 }

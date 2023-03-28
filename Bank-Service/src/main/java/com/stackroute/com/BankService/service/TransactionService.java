@@ -24,6 +24,7 @@ public class TransactionService implements TransactionServiceInterface {
 
     @Override
     public void addTransactionDetails(TransactionModel transactionModel, String MT101) {
+        System.out.println("*********Inside transaction service add method************");
         transactionModel.setMessage(MT101);
         transactionRepository.save(transactionModel);
     }

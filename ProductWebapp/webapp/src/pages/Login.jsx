@@ -10,24 +10,20 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
+import batonlogo from '../images/baton.png'
 import axios from "axios";
 
 const theme = createTheme();
 
 export default function Login() {
-<<<<<<< HEAD
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isValid, setIsValid] = useState(false);
-=======
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isValid, setIsValid] = useState('');
->>>>>>> 5d8f47588998b597be07fa4f50d68f71de9412c8
+  const [isValid, setIsValid] = useState("");
 
   const isDisabled = !email || !password || !isValid;
 
@@ -54,7 +50,7 @@ export default function Login() {
     // console.log(mapData);
 
     axios
-      .post("http://localhost:8080/user-service/login", mapData)
+      .post("http://localhost:8090/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);
@@ -72,9 +68,9 @@ export default function Login() {
     <ThemeProvider theme={theme}>
       <Card
         style={{
-          padding: "100px",
-
-          height: "80vh",
+          marginTop:"40px",
+          height: "88vh",
+          padding:"85px",
           border: "2px solid grey",
           boxShadow: " 10px 10px 5px 1px #005555",
         }}
@@ -86,6 +82,18 @@ export default function Login() {
           alignItems: "center",
         }}
       >
+        <div>
+        
+        <h1 style={{fontSize:"40px"}}>
+          <img 
+            src={batonlogo}
+            alt="baton_logo"
+            style={{width:"60px",height:"55px"}}
+           />
+          &nbsp;SwiftPay
+        </h1>
+        </div>
+        
         <Grid container component="main" sx={{ height: "100vh" }}>
           <CssBaseline />
           <Grid
@@ -137,7 +145,6 @@ export default function Login() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  
                   value={email}
                   onChange={handleChange}
                   InputProps={{

@@ -4,6 +4,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import  { useState } from 'react';
+import batonlogo from '../images/baton.png'
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -81,9 +83,8 @@ export default function SignUp() {
     <ThemeProvider theme={theme}>
       <Card
         style={{
-          padding: "100px",
-          height: "80vh",
-          borderColor: "black",
+          marginTop:"40px",
+          height: "88vh",
           border: "2px solid grey",
           boxShadow:" 10px 10px 5px 1px #005555"
         }}
@@ -95,6 +96,16 @@ export default function SignUp() {
           alignItems: "center",
         }}
       >
+        <div>
+        <h1 style={{fontSize:"40px"}}>
+          <img 
+            src={batonlogo}
+            alt="baton_logo"
+            style={{width:"60px",height:"55px"}}
+           />
+          &nbsp;SwiftPay
+        </h1>
+        </div>
         <Grid container component="main" sx={{ height: "100vh" }}>
           <CssBaseline />
           <Grid
@@ -121,7 +132,8 @@ export default function SignUp() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                padding: "5px",
+                padding:"50px"
+                
               }}
             />
           </Grid>
@@ -132,7 +144,7 @@ export default function SignUp() {
             md={12}
             lg={6}
             square
-            style={{ padding: "50px" }}
+            style={{ padding: "35px" }}
           >
             <Box>
               <Typography component="h1" variant="h4">

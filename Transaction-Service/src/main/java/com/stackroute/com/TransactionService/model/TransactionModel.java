@@ -30,21 +30,14 @@ public class TransactionModel {
 	private String receiverAccountNumber;
 	@Column
 	private String receiverSwiftCode;
-<<<<<<< HEAD
 	@Column
 	private String receiverBankName;
 	@Column
-=======
-	@Column(name="bank_name",nullable = false)
-	private String bankName;
-	@Column(name="credit",nullable = false)
->>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40
 	private float credit;
 	@Column
 	private float debit;
 	@Column
 	private String message;
-<<<<<<< HEAD
 	@Column
 	private String senderLocation;
 	@Column
@@ -52,10 +45,3 @@ public class TransactionModel {
 	@Column
 	private String status;
 }
-=======
-
-	@Column(name = "status", nullable = false)
-	private String status;
-
-}
->>>>>>> 2402b8b02f964a4d9f83417de9baab5504ab6d40
