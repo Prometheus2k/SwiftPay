@@ -40,6 +40,7 @@ public class SwiftOperation {
     private String generateDate() {
         LocalDate today = LocalDate.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yy/MM/dd");
-        return today.format(dateTimeFormatter);
+        String date = today.format(dateTimeFormatter).replace("/", "");
+        return date;
     }
 }

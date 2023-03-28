@@ -38,10 +38,12 @@ public class TransactionService implements TransactionServiceInterface {
         }
         model.setStatus(status);
         transactionRepository.save(model);
+        System.out.println("************inside update status in transaction service************");
     }
 
     @Override
     public boolean verifyAccount(String accountNumber) throws CustomException {
+        System.out.println(accountNumber);
         Optional<AccountModel> optional = accountRepository.findByAccountNumber(accountNumber);
         AccountModel model = optional.isEmpty() ? null : optional.get();
         if(model == null) {
@@ -68,14 +70,22 @@ public class TransactionService implements TransactionServiceInterface {
     }
 
     @Override
-    public void executeDebit(String MT900) throws IOException {
-        AbstractMT abstractMT = AbstractMT.parse(MT900);
+    public void executeDebit(String message) throws IOException {
+        System.out.println(message);
+        AbstractMT abstractMT = AbstractMT.parse(message);
         MT900 mt900 = (MT900) abstractMT;
+        System.out.println("****AFTER MT900****" + mt900.message());
         String debitAmount = String.valueOf(mt900.getField32A().getAmount()).replace(",", "");
-        String accountNumber = mt900.getField25().getAccount();
+        System.out.println(1 + "-------" + debitAmount);
+        String accountNumber = mt900.getField25().getComponent1().replace("A", "");
+        System.out.println(2 + "----------" + accountNumber);
         Optional<AccountModel> optional = accountRepository.findByAccountNumber(accountNumber);
+        System.out.println(3);
         AccountModel accountModel = optional.isEmpty() ? null : optional.get();
+        System.out.println(4 + "------------" + accountModel.toString());
         accountModel.setBalance(accountModel.getBalance() - Long.parseLong(debitAmount));
+        System.out.println(5);
         accountRepository.save(accountModel);
+        System.out.println("************inside DEBIT in transaction service************");
     }
 }
