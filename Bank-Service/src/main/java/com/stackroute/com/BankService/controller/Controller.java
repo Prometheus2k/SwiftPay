@@ -6,6 +6,7 @@ import com.prowidesoftware.swift.model.SwiftBlock1;
 import com.prowidesoftware.swift.model.field.*;
 import com.prowidesoftware.swift.model.mt.mt1xx.MT101;
 import com.prowidesoftware.swift.model.mt.mt1xx.MT103;
+
 import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.BankModel;
@@ -31,8 +32,8 @@ import java.util.*;
 import javax.transaction.Transaction;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("bank-service")
+//@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("user-service")
 public class Controller {
     /*
      * Function to check whether the endpoint is working.
