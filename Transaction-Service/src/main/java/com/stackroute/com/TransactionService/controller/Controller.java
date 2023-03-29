@@ -5,6 +5,7 @@ import com.stackroute.com.TransactionService.model.AccountModel;
 import com.stackroute.com.TransactionService.model.TransactionModel;
 import com.stackroute.com.TransactionService.model.User;
 import com.stackroute.com.TransactionService.service.AccountServiceInterface;
+import com.stackroute.com.TransactionService.service.QueueServiceInterface;
 import com.stackroute.com.TransactionService.service.TransactionServiceInterface;
 import com.stackroute.com.TransactionService.interservice.InterService;
 import com.stackroute.com.TransactionService.swift.SwiftOperation;
@@ -23,19 +24,17 @@ import java.util.Map;
 @RequestMapping("transaction-service")
 public class Controller {
 
-
-
-
 	@Autowired
 	private TransactionServiceInterface transactionService;
-
-
 
 	@Autowired
 	private InterService interService;
 
 	@Autowired
 	private AccountServiceInterface accountService;
+
+	@Autowired
+	private QueueServiceInterface queueService;
 
 	@Autowired
 	private SwiftOperation swiftOperation;
@@ -112,10 +111,6 @@ Function to Add a Transaction to the history*/
 	/*
 	 * For transfer
 	 */
-//	@PostMapping("/transfer")
-//	public ResponseEntity<?> initiateTransfer() {
-//
-//	}
 
 	@PostMapping("/transfer")
 	public ResponseEntity<?> initiateTransfer(@RequestBody TransactionModel transactionModel) {
@@ -123,6 +118,7 @@ Function to Add a Transaction to the history*/
 		try {
 			boolean checkMessage = transactionService.checkMT101(transactionModel.getMessage());
 			if(checkMessage) {
+				queueService.saveQueue(transactionModel.getMessage());
 				transactionModel.setStatus("ACK");
 				transactionService.addTransaction(transactionModel);
 
@@ -133,7 +129,6 @@ Function to Add a Transaction to the history*/
 				System.out.println("----------------------------");
 
 				transactionModel.setMessage(MT900);
-
 				System.out.println("display "+transactionModel.toString());
 				entity = new ResponseEntity<>(transactionModel, HttpStatus.OK);
 			}

@@ -245,4 +245,22 @@ public class Controller {
         }
         return entity;
     }
+
+    @PostMapping("/credit")
+    public ResponseEntity<?> credit(@RequestBody String message) {
+        ResponseEntity<?> entity = null;
+
+        System.out.println("----------------MT910------------------");
+        System.out.println(message);
+        System.out.println("---------------------------------------");
+
+
+        try {
+            transactionService.executeCredit(message);
+            entity = new ResponseEntity<>("Credit done", HttpStatus.OK);
+        } catch (IOException e) {
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return entity;
+    }
 }

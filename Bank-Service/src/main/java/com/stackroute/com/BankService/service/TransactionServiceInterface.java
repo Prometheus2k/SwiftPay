@@ -15,6 +15,8 @@ public interface TransactionServiceInterface {
 
     boolean checkBalance(String accountNumber, float balance) throws CustomException;
 
-    void executeDebit(String MT900) throws IOException;
+    void executeDebit(String message) throws IOException;
+
+    void executeCredit(String message) throws IOException;
 
 }
