@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.ws.rs.core.Application;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin("*")
 @RequestMapping("user-service")
 public class UserController {
 

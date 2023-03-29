@@ -28,16 +28,12 @@ export default function Transfer() {
     message: "",
     senderLocation: "",
     receiverLocation: "",
-<<<<<<< HEAD
     status: "bla",
-=======
->>>>>>> 60dc5a39dcf520a5aa90410a197c61dbb6a95f69
   });
   // <img src={arrow} alt="right arrow" height={140} width={140} />
 
   const [receiverAccountNumber, setReceiverAccountNumber] = useState("");
 
-<<<<<<< HEAD
   const url = "http://localhost:8080/bank-service/transfer/";
   let token = localStorage.getItem("token");
 
@@ -73,22 +69,6 @@ export default function Transfer() {
         }
       })
       .catch((error) => console.log(error));
-=======
-  const url = "http://localhost:8080/bank-serivce/transfer";
-
-  const transfer = () => {
-    console.log(form);
-    // axios
-    //   .post(url, form)
-    //   .then((response) => {
-    //     console.log(response);
-    //     console.log(response.status);
-    //     if (response.status === 201) {
-    //       alert("Transfer add added");
-    //     }
-    //   })
-    //   .catch((error) => console.log(error));
->>>>>>> 60dc5a39dcf520a5aa90410a197c61dbb6a95f69
   };
 
   const handleChange = (e) => {
@@ -129,10 +109,7 @@ export default function Transfer() {
       message: "",
       senderLocation: "",
       receiverLocation: "",
-<<<<<<< HEAD
       status: "",
-=======
->>>>>>> 60dc5a39dcf520a5aa90410a197c61dbb6a95f69
     });
     setReceiverAccountNumber("");
   };

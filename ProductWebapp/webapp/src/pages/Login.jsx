@@ -104,10 +104,6 @@ export default function Login() {
         }}
       >
         <div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b8f5bcd798267982e1934413a199eaba00a1f9c
           <h1 style={{ fontSize: "40px" }}>
             <img
               src={batonlogo}
@@ -205,10 +201,6 @@ export default function Login() {
 
                 <Button
                   type="submit"
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b8f5bcd798267982e1934413a199eaba00a1f9c
                   variant="contained"
                   id="loginBtn"
                   sx={{ mt: 3, mb: 2, height: 50 }}
@@ -219,17 +211,7 @@ export default function Login() {
                 </Button>
                 <Grid container>
                   <Grid item>
-<<<<<<< HEAD
-                    <Link
-                      to="/signup"
-                      onClick={(e) => {
-                        navigate("/signup");
-                      }}
-                      variant="body2"
-                    >
-=======
                     <Link to='/signup' onClick={(e) => { navigate("/signup") }} variant="body2">
->>>>>>> 4b8f5bcd798267982e1934413a199eaba00a1f9c
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>
