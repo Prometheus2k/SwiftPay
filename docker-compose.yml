@@ -1,5 +1,16 @@
 version: "2"
 services:
+  mysql:
+    image: mysql
+    container_name: mysql-container
+    hostname: localhost
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Chennai@123'
+      MYSQL_USERNAME: 'root'
+
   api-gateway:
     image: api-gateway
     container_name: api-gateway-container
@@ -39,6 +50,7 @@ services:
     restart: always
     depends_on:
       - eureka-server
+      - mysql
 
   user-service:
     image: user-service
@@ -49,6 +61,7 @@ services:
     restart: always
     depends_on:
       - eureka-server
+      - mysql
 
   bank-service:
     image: bank-service
@@ -59,3 +72,4 @@ services:
     restart: always
     depends_on:
       - eureka-server
+      - mysql

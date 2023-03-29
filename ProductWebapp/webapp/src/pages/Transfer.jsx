@@ -30,6 +30,10 @@ export default function Transfer() {
     message: "",
     senderLocation: "",
     receiverLocation: "",
+<<<<<<< HEAD
+=======
+    status: "bla",
+>>>>>>> 1c509084cf320e0ea6f516d902eaf51d9fd9c05f
   });
   // <img src={arrow} alt="right arrow" height={140} width={140} />
 
@@ -69,9 +73,13 @@ export default function Transfer() {
           toast.success("Transfer add added");
         }
       })
+<<<<<<< HEAD
       .catch((error) => {
         toast.error(error.response.data);
       });
+=======
+      .catch((error) => console.log(error));
+>>>>>>> 1c509084cf320e0ea6f516d902eaf51d9fd9c05f
   };
 
   const handleChange = (e) => {

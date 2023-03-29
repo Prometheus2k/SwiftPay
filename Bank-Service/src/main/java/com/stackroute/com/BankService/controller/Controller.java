@@ -128,6 +128,10 @@ public class Controller {
         try {
             accountService.addAccountDetails(account);
             entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c509084cf320e0ea6f516d902eaf51d9fd9c05f
         } catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
