@@ -2,6 +2,7 @@ package com.stackroute.com.BankService.service;
 
 import com.prowidesoftware.swift.model.mt.AbstractMT;
 import com.prowidesoftware.swift.model.mt.mt9xx.MT900;
+import com.prowidesoftware.swift.model.mt.mt9xx.MT910;
 import com.stackroute.com.BankService.exceptions.CustomException;
 import com.stackroute.com.BankService.model.AccountModel;
 import com.stackroute.com.BankService.model.TransactionModel;
@@ -88,4 +89,18 @@ public class TransactionService implements TransactionServiceInterface {
         accountRepository.save(accountModel);
         System.out.println("************inside DEBIT in transaction service************");
     }
+
+    @Override
+    public void executeCredit(String message) throws IOException {
+        AbstractMT abstractMT = AbstractMT.parse(message);
+        MT910 mt910 = (MT910) abstractMT;
+        String creditAmount = String.valueOf(mt910.getField32A().getAmount()).replace(",", "");
+        String accountNumber = mt910.getField25().getComponent1().replace("A", "");
+        Optional<AccountModel> optional = accountRepository.findByAccountNumber(accountNumber);
+        AccountModel accountModel = optional.isEmpty() ? null : optional.get();
+        accountModel.setBalance(accountModel.getBalance() + Long.parseLong(creditAmount));
+        accountRepository.save(accountModel);
+    }
+
+
 }

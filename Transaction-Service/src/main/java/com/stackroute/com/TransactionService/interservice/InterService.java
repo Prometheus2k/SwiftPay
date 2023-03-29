@@ -18,4 +18,14 @@ public class InterService {
         ResponseEntity<User> entity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, User.class);
         return entity.getBody();
     }
+
+    public void executeCredit(String message) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> httpEntity = new HttpEntity<String>(message, headers);
+        String uri = "http://localhost:8070/bank-service/credit";
+        restTemplate.exchange(uri, HttpMethod.POST, httpEntity, String.class);
+    }
+
 }
