@@ -10,13 +10,15 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
-import batonlogo from '../images/baton.png'
+import batonlogo from "../images/baton.png";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const theme = createTheme({
   components: {
@@ -52,6 +54,7 @@ export default function Login() {
     return regex.test(email);
   };
 
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,7 +64,9 @@ export default function Login() {
       password: data.get("password"),
     };
 
-    // console.log(mapData);
+    console.log(mapData);
+
+
 
     axios
       .post("http://localhost:8080/user-service/login", mapData)
@@ -74,12 +79,14 @@ export default function Login() {
         localStorage.setItem("email", mapData.emailId);
       })
       .catch(function (error) {
+        toast.error("Enter a valid Email Id or Password");
         console.log(error.response.data);
       });
   };
 
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer position="top-center" />
       <Card
         style={{
           marginTop: "40px",
@@ -97,7 +104,10 @@ export default function Login() {
         }}
       >
         <div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4b8f5bcd798267982e1934413a199eaba00a1f9c
           <h1 style={{ fontSize: "40px" }}>
             <img
               src={batonlogo}
@@ -195,7 +205,10 @@ export default function Login() {
 
                 <Button
                   type="submit"
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4b8f5bcd798267982e1934413a199eaba00a1f9c
                   variant="contained"
                   id="loginBtn"
                   sx={{ mt: 3, mb: 2, height: 50 }}
@@ -206,7 +219,17 @@ export default function Login() {
                 </Button>
                 <Grid container>
                   <Grid item>
+<<<<<<< HEAD
+                    <Link
+                      to="/signup"
+                      onClick={(e) => {
+                        navigate("/signup");
+                      }}
+                      variant="body2"
+                    >
+=======
                     <Link to='/signup' onClick={(e) => { navigate("/signup") }} variant="body2">
+>>>>>>> 4b8f5bcd798267982e1934413a199eaba00a1f9c
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>

@@ -13,7 +13,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useAppStore } from "../appStore";
 import { useNavigate } from "react-router-dom";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import axios from "axios";
 
 const AppBar = styled(
@@ -22,8 +22,6 @@ const AppBar = styled(
 )(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
 }));
-
-
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -66,7 +64,7 @@ export default function Navbar() {
     let token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:8090/user-service/users/verify", {
+      .get("http://localhost:8080/user-service/users/verify", {
         headers: {
           "Content-Type": "application/json",
           token: token,
@@ -102,12 +100,12 @@ export default function Navbar() {
       PaperProps={{
         style: {
           width: 150,
-        }
+        },
       }}
     >
       <MenuItem onClick={handleMenuProfile}>Profile</MenuItem>
       <MenuItem onClick={handleMenulogout}>Log Out</MenuItem>
-    </Menu >
+    </Menu>
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -134,8 +132,7 @@ export default function Navbar() {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-        >
-        </IconButton>
+        ></IconButton>
         <p>Profile</p>
       </MenuItem>
       <MenuItem onClick={handleMenulogout}>
@@ -145,8 +142,7 @@ export default function Navbar() {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-        >
-        </IconButton>
+        ></IconButton>
         <p>Log out</p>
       </MenuItem>
     </Menu>
@@ -190,7 +186,7 @@ export default function Navbar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle style={{fontSize: 35}} />
+              <AccountCircle style={{ fontSize: 35 }} />
               <ArrowDropDownIcon />
             </IconButton>
           </Box>

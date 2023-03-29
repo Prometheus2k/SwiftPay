@@ -21,6 +21,8 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import { style } from "@mui/system";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
 
@@ -93,11 +95,13 @@ export default function SignUp() {
         }
       })
       .catch(function (error) {
+        toast.error(error.response.data);
         console.log(error.response.data);
       });
   };
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer position="top-center" />
       <Card
         style={{
           marginTop: "40px",

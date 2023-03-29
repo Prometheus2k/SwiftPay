@@ -22,7 +22,7 @@ export default function Userprofile() {
   let email = localStorage.getItem("email");
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/user-service/users/${email}`)
+      .get(`http://localhost:8080/user-service/users/${email}`)
       .then((res) => {
         console.log(res.data);
         SetData(res.data);
@@ -37,7 +37,7 @@ export default function Userprofile() {
       <Navbar />
       <Box sx={{ display: "flex" }}>
         <Sidenav />
-        <RightSideNav/>
+        <RightSideNav />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <section className="user">
             <Grid container direction="row" spacing={10}>
@@ -59,7 +59,7 @@ export default function Userprofile() {
                       <Grid item xs="9">
                         <Typography
                           variant="h5"
-                          sx={{ fontFamily: "sans-serif"}}
+                          sx={{ fontFamily: "sans-serif" }}
                         >
                           Name
                         </Typography>
@@ -67,7 +67,7 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
+                          sx={{ fontFamily: "sans-serif", textAlign: "left" }}
                         >
                           {data.nameOfTheUser}
                         </Typography>
@@ -85,7 +85,7 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
+                          sx={{ fontFamily: "sans-serif", textAlign: "left" }}
                         >
                           {data.emailId}
                         </Typography>
@@ -121,7 +121,7 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
+                          sx={{ fontFamily: "sans-serif", textAlign: "left" }}
                         >
                           {data.mobileNumber}
                         </Typography>
@@ -139,13 +139,13 @@ export default function Userprofile() {
                       <Grid item xs="3">
                         <Typography
                           variant="h6"
-                          sx={{ fontFamily: "sans-serif", textAlign: 'left' }}
+                          sx={{ fontFamily: "sans-serif", textAlign: "left" }}
                         >
                           {data.location}
                         </Typography>
                       </Grid>
                     </Grid>
-                    
+
                     <Box
                       m={1}
                       display="flex"
@@ -171,7 +171,6 @@ export default function Userprofile() {
                   </CardContent>
                 </Card>
               </Grid>
-             
             </Grid>
           </section>
         </Box>
