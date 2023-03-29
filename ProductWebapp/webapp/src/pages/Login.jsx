@@ -17,6 +17,8 @@ import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
 import batonlogo from '../images/baton.png'
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const theme = createTheme({
   components: {
@@ -52,6 +54,7 @@ export default function Login() {
     return regex.test(email);
   };
 
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,7 +64,9 @@ export default function Login() {
       password: data.get("password"),
     };
 
-    // console.log(mapData);
+    console.log(mapData);
+
+
 
     axios
       .post("http://localhost:8080/user-service/login", mapData)
@@ -74,12 +79,14 @@ export default function Login() {
         localStorage.setItem("email", mapData.emailId);
       })
       .catch(function (error) {
+        toast.error("Enter a valid Email Id or Password");
         console.log(error.response.data);
       });
   };
 
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer position="top-center" />
       <Card
         style={{
           marginTop: "40px",
