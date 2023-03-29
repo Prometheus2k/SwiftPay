@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.6a566d13.css",
-    "main.js": "/static/js/main.02cdee3e.js",
+    "main.css": "/static/css/main.9520369c.css",
+    "main.js": "/static/js/main.652af4b9.js",
     "static/js/787.994511a4.chunk.js": "/static/js/787.994511a4.chunk.js",
     "static/media/swift_image.jpg": "/static/media/swift_image.680803ecae43f8181664.jpg",
-    "static/media/swiftPay.png": "/static/media/swiftPay.7fa5f79ec6dc08ea406d.png",
-    "static/media/dollar.png": "/static/media/dollar.cdfd193eb81d30b9cfcb.png",
+    "static/media/baton.png": "/static/media/baton.1debd1fa0e6ef13fd10a.png",
+    "static/media/logo.png": "/static/media/logo.489217af661fbb49e406.png",
     "index.html": "/index.html",
     "static/media/arrow_right.svg": "/static/media/arrow_right.775db4fa771ded80861d27f7e481ab6b.svg",
-    "main.6a566d13.css.map": "/static/css/main.6a566d13.css.map",
-    "main.02cdee3e.js.map": "/static/js/main.02cdee3e.js.map",
+    "main.9520369c.css.map": "/static/css/main.9520369c.css.map",
+    "main.652af4b9.js.map": "/static/js/main.652af4b9.js.map",
     "787.994511a4.chunk.js.map": "/static/js/787.994511a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a566d13.css",
-    "static/js/main.02cdee3e.js"
+    "static/css/main.9520369c.css",
+    "static/js/main.652af4b9.js"
   ]
 }

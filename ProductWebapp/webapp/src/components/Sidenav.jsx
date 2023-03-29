@@ -211,36 +211,7 @@ export default function Sidenav() {
               />
             </ListItemButton>
           </ListItem>
-          <ListItem
-            
-            sx={{ display: "block" }}
-            onClick={() => {
-              navigate("/addbank");
-            }}
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 70,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  color: 'white',
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <AddchartIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Add Bank"
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
-          </ListItem>
+          
         </List>
       </Drawer>
     </Box>

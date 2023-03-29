@@ -92,7 +92,7 @@ export default function Transfer() {
       <Box height={30} />
       <Box sx={{ display: "flex" }}>
         <Sidenav />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "100vh", paddingTop: 15 }} style={{ backgroundColor: "#F0F0F0" }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, height: "96.5vh", paddingTop: 15 }} style={{ backgroundColor: "#F0F0F0" }}>
           <form onSubmit={handleSubmit} style={{ backgroundColor: "#FFFFFF" }}>
             <Typography variant="h4" sx={{ padding: 2, textAlign: "center", size: "3em", fontWeight: "bold", color: "#005555" }}>Transfer</Typography>
             <Grid container alignItems='center' padding={5}>
