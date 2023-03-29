@@ -10,12 +10,12 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
 import { useNavigate } from "react-router-dom";
-import batonlogo from '../images/baton.png'
+import batonlogo from "../images/baton.png";
 import axios from "axios";
 
 const theme = createTheme();
@@ -68,9 +68,9 @@ export default function Login() {
     <ThemeProvider theme={theme}>
       <Card
         style={{
-          marginTop:"40px",
+          marginTop: "40px",
           height: "88vh",
-          padding:"85px",
+          padding: "85px",
           border: "2px solid grey",
           boxShadow: " 10px 10px 5px 1px #005555",
         }}
@@ -83,17 +83,16 @@ export default function Login() {
         }}
       >
         <div>
-        
-        <h1 style={{fontSize:"40px"}}>
-          <img 
-            src={batonlogo}
-            alt="baton_logo"
-            style={{width:"60px",height:"55px"}}
-           />
-          &nbsp;SwiftPay
-        </h1>
+          <h1 style={{ fontSize: "40px" }}>
+            <img
+              src={batonlogo}
+              alt="baton_logo"
+              style={{ width: "60px", height: "55px" }}
+            />
+            &nbsp;SwiftPay
+          </h1>
         </div>
-        
+
         <Grid container component="main" sx={{ height: "100vh" }}>
           <CssBaseline />
           <Grid
@@ -181,7 +180,6 @@ export default function Login() {
 
                 <Button
                   type="submit"
-                  
                   variant="contained"
                   id="loginBtn"
                   sx={{ mt: 3, mb: 2, height: 50 }}
@@ -192,7 +190,13 @@ export default function Login() {
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link to='/signup' onClick={(e)=> {navigate("/signup")}} variant="body2">
+                    <Link
+                      to="/signup"
+                      onClick={(e) => {
+                        navigate("/signup");
+                      }}
+                      variant="body2"
+                    >
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>
