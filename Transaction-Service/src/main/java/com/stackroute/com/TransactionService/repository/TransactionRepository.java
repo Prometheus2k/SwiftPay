@@ -12,4 +12,6 @@ import java.util.Optional;
 public interface TransactionRepository extends JpaRepository<TransactionModel,String>{
 	public Optional<List<TransactionModel>> findAllBySenderAccountNumber(String AccountNumber);
 
+	public Optional<List<TransactionModel>> findAllByReceiverAccountNumber(String AccountNumber);
+
 }

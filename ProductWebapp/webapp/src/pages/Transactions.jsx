@@ -10,7 +10,29 @@ const url = "http://localhost:8080/transaction-service/transactions/get";
 export default function Transactions() {
   // const genData = require("../generated.json");
   // let genRows = genData.transactions;
+
   let token = localStorage.getItem("token");
+
+  const accountNumber = () => {
+    return new Promise(function (resolve, reject) {
+      axios
+        .get("http://localhost:8080/bank-service/account/get", {
+          headers: {
+            "Content-Type": "application/json",
+            token: token,
+          },
+        })
+        .then(
+          (response) => {
+            resolve(response.data.accountNumber);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  };
+
   const columns = [
     {
       field: "transactionId",
@@ -78,7 +100,23 @@ export default function Transactions() {
         },
       })
       .then((response) => {
-        setRows(response.data);
+        accountNumber().then((result) => {
+          for (let index = 0; index < response.data.length; index++) {
+            if (response.data[index].senderAccountNumber == result) {
+              console.log(
+                "credit   " +
+                  response.data[index].credit +
+                  "   debit  " +
+                  response.data[index].debit
+              );
+
+              response.data[index].credit = response.data[index].debit;
+              response.data[index].debit = 0;
+            }
+          }
+          setRows(response.data);
+          console.log(result);
+        });
       });
   }, []);
   console.log(rows);

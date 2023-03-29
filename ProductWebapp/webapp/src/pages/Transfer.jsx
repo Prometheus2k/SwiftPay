@@ -15,6 +15,8 @@ import {
 import arrow from "./arrow_right.svg";
 import axios from "axios";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Transfer() {
   const [form, setForm] = useState({
@@ -23,21 +25,16 @@ export default function Transfer() {
     receiverAccountNumber: "",
     receiverSwiftCode: "",
     receiverBankName: "",
-    credit: "0",
+    credit: "",
     debit: "",
     message: "",
     senderLocation: "",
     receiverLocation: "",
-<<<<<<< HEAD
-    status: "bla",
-=======
->>>>>>> 60dc5a39dcf520a5aa90410a197c61dbb6a95f69
   });
   // <img src={arrow} alt="right arrow" height={140} width={140} />
 
   const [receiverAccountNumber, setReceiverAccountNumber] = useState("");
 
-<<<<<<< HEAD
   const url = "http://localhost:8080/bank-service/transfer/";
   let token = localStorage.getItem("token");
 
@@ -68,27 +65,13 @@ export default function Transfer() {
       .then((response) => {
         console.log(response);
         console.log(response.status);
-        if (response.status === 201) {
-          alert("Transfer add added");
+        if (response.status === 200) {
+          toast.success("Transfer add added");
         }
       })
-      .catch((error) => console.log(error));
-=======
-  const url = "http://localhost:8080/bank-serivce/transfer";
-
-  const transfer = () => {
-    console.log(form);
-    // axios
-    //   .post(url, form)
-    //   .then((response) => {
-    //     console.log(response);
-    //     console.log(response.status);
-    //     if (response.status === 201) {
-    //       alert("Transfer add added");
-    //     }
-    //   })
-    //   .catch((error) => console.log(error));
->>>>>>> 60dc5a39dcf520a5aa90410a197c61dbb6a95f69
+      .catch((error) => {
+        toast.error(error.response.data);
+      });
   };
 
   const handleChange = (e) => {
@@ -104,13 +87,12 @@ export default function Transfer() {
     e.preventDefault();
     console.log(receiverAccountNumber, form.receiverAccountNumber);
     if (receiverAccountNumber !== form.receiverAccountNumber) {
-      alert("Provide correct Benefiatiary Account Number");
-      throw console.error("Wrong confirm account number");
+      toast.error("Provide correct Benefiatiary Account Number");
     } else {
       console.log(form);
       resetButton();
+      transfer();
     }
-    transfer();
   };
 
   const isFormValid = () => {
@@ -129,10 +111,7 @@ export default function Transfer() {
       message: "",
       senderLocation: "",
       receiverLocation: "",
-<<<<<<< HEAD
       status: "",
-=======
->>>>>>> 60dc5a39dcf520a5aa90410a197c61dbb6a95f69
     });
     setReceiverAccountNumber("");
   };
@@ -148,6 +127,7 @@ export default function Transfer() {
           sx={{ flexGrow: 1, p: 3, height: "96.5vh", paddingTop: 15 }}
           style={{ backgroundColor: "#F0F0F0" }}
         >
+          <ToastContainer position="top-center" />
           <form onSubmit={handleSubmit} style={{ backgroundColor: "#FFFFFF" }}>
             <Typography
               variant="h4"
@@ -284,7 +264,7 @@ export default function Transfer() {
                       height: 50,
                     }}
                     type="submit"
-                    disabled={!isFormValid()}
+                    // disabled={!isFormValid()}
                   >
                     Submit
                   </Button>

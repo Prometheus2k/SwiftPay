@@ -14,5 +14,7 @@ public interface TransactionServiceInterface  {
 
 	public List<TransactionModel> getTransactionsByAccountNumber(String AccountNumber) throws CustomException;
 
+
+	public List<TransactionModel> getTransactionsByReceiverAccountNumber(String AccountNumber) throws CustomException;
 	public boolean checkMT101(String message) throws IOException;
 }

@@ -27,8 +27,9 @@ public class SwiftOperation {
         field50F.setNameAndAddress1(model.getSenderLocation());
         mt101.addField(field50F);
         mt101.addField(new Field52A(generateRandom("")));
-        Field59F field59F = new Field59F();
-        field59F.setNameAndAddress1(model.getReceiverLocation());
+        Field59A field59A = new Field59A();
+        field59A.setAccount(model.getReceiverAccountNumber());
+        field59A.setComponent1(model.getReceiverLocation());
         mt101.addField(new Field71A("SHA"));
         return mt101.message();
     }
