@@ -88,7 +88,7 @@ export default function SignUp() {
     };
     console.log(mapData);
     axios
-      .post("http://localhost:8080/user-service/register", mapData)
+      .post("https://swiftpay.stackroute.io/user-service/register", mapData)
       .then((res) => {
         if (res.status == 201) {
           navigate("/");

@@ -22,7 +22,7 @@ export default function Userprofile() {
   let email = localStorage.getItem("email");
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/user-service/users/${email}`)
+      .get(`https://swiftpay.stackroute.io/user-service/users/${email}`)
       .then((res) => {
         console.log(res.data);
         SetData(res.data);
