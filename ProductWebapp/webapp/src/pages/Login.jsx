@@ -10,7 +10,6 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
@@ -19,6 +18,7 @@ import batonlogo from "../images/baton.png";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "../styles/Login.css"
 
 const theme = createTheme({
   components: {
@@ -203,14 +203,15 @@ export default function Login() {
                   type="submit"
                   variant="contained"
                   id="loginBtn"
-                  sx={{ mt: 3, mb: 2, height: 50 }}
+                  sx={{ width: 150, mt: 3, height: 50, fontSize: 18, marginInline: 25, }}
+                  //sx={{ mt: 3, mb: 2, height: 50 }}
                   style={{ backgroundColor: "#005555" }}
                   disabled={isDisabled}
                 >
                   Login
                 </Button>
                 <Grid container>
-                  <Grid item>
+                  <Grid item sx={{ marginBlockStart: 2, marginInline: 22 }} >
                     <Link to='/signup' onClick={(e) => { navigate("/signup") }} variant="body2">
                       {"Don't have an account? Sign Up"}
                     </Link>
@@ -221,6 +222,6 @@ export default function Login() {
           </Grid>
         </Grid>
       </Card>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
