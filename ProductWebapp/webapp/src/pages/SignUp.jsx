@@ -21,8 +21,25 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import { style } from "@mui/system";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-const theme = createTheme();
+
 export default function SignUp() {
+
+
+  const theme = createTheme({
+    components: {
+      MuiLink: {
+        styleOverrides: {
+          root: {
+            textDecoration: "none",
+            ":hover": {
+              textDecoration: "underline",
+              cursor: "pointer"
+            },
+          },
+        },
+      },
+    },
+  });
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -96,8 +113,8 @@ export default function SignUp() {
           alignItems: "center",
         }}
       >
-        <div style={{margin: "10px auto"}}>
-          <h1 style={{ fontSize: "40px"}}>
+        <div style={{ margin: "10px auto" }}>
+          <h1 style={{ fontSize: "40px" }}>
             <img
               src={batonlogo}
               alt="baton_logo"
@@ -144,7 +161,7 @@ export default function SignUp() {
             md={12}
             lg={5}
             square
-            style={{ paddingLeft: "2vh", paddingRight: "10vh", paddingBottom: "5vh"}}
+            style={{ paddingLeft: "2vh", paddingRight: "10vh", paddingBottom: "5vh" }}
           >
             <Box>
               <Typography component="h1" variant="h4">
@@ -239,17 +256,17 @@ export default function SignUp() {
 
                 <Button
                   type="submit"
-                  
+
                   variant="contained"
                   sx={{ mt: 3, mb: 2, height: 50 }}
-                  style={{ backgroundColor: "#005555"}}
+                  style={{ backgroundColor: "#005555" }}
                   disabled={isDisabled}
                 >
                   Sign Up
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link to='/login' onClick={(e)=> {navigate("/login")}} variant="body2">
+                    <Link to='/login' onClick={(e) => { navigate("/login") }} variant="body2">
                       {"Already have an account ? Login "}
                     </Link>
                   </Grid>

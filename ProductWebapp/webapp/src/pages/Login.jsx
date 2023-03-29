@@ -18,7 +18,21 @@ import { useNavigate } from "react-router-dom";
 import batonlogo from '../images/baton.png'
 import axios from "axios";
 
-const theme = createTheme();
+const theme = createTheme({
+  components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+          ":hover": {
+            textDecoration: "underline",
+            cursor: "pointer"
+          },
+        },
+      },
+    },
+  },
+});
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -68,9 +82,9 @@ export default function Login() {
     <ThemeProvider theme={theme}>
       <Card
         style={{
-          marginTop:"40px",
+          marginTop: "40px",
           height: "88vh",
-          padding:"85px",
+          padding: "85px",
           border: "2px solid grey",
           boxShadow: " 10px 10px 5px 1px #005555",
         }}
@@ -83,17 +97,17 @@ export default function Login() {
         }}
       >
         <div>
-        
-        <h1 style={{fontSize:"40px"}}>
-          <img 
-            src={batonlogo}
-            alt="baton_logo"
-            style={{width:"60px",height:"55px"}}
-           />
-          &nbsp;SwiftPay
-        </h1>
+
+          <h1 style={{ fontSize: "40px" }}>
+            <img
+              src={batonlogo}
+              alt="baton_logo"
+              style={{ width: "60px", height: "55px" }}
+            />
+            &nbsp;SwiftPay
+          </h1>
         </div>
-        
+
         <Grid container component="main" sx={{ height: "100vh" }}>
           <CssBaseline />
           <Grid
@@ -103,11 +117,11 @@ export default function Login() {
             md={false}
             lg={6}
 
-            // sx={{
-            //   backgroundImage: `url(${img})`,
-            //   backgroundPosition: 'center',
-            //   maxWidth: '200px'
-            // }}
+          // sx={{
+          //   backgroundImage: `url(${img})`,
+          //   backgroundPosition: 'center',
+          //   maxWidth: '200px'
+          // }}
           >
             <img
               src={img}
@@ -181,7 +195,7 @@ export default function Login() {
 
                 <Button
                   type="submit"
-                  
+
                   variant="contained"
                   id="loginBtn"
                   sx={{ mt: 3, mb: 2, height: 50 }}
@@ -192,7 +206,7 @@ export default function Login() {
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link to='/signup' onClick={(e)=> {navigate("/signup")}} variant="body2">
+                    <Link to='/signup' onClick={(e) => { navigate("/signup") }} variant="body2">
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>
