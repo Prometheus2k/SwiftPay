@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Sidenav from "../components/Sidenav";
 import "../styles/Userprofile.css";
 import RightSideNav from "../components/RightSideNav";
+import { MuiTelInput } from "mui-tel-input";
 import {
   Button,
   Card,
@@ -11,13 +12,20 @@ import {
   Grid,
   Typography,
   Box,
+  TextField,
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Userprofile() {
   const [data, SetData] = useState([]);
+  const [isFocused, setIsFocused] = useState(false);
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [location, setLocation] = useState("");
+  const [pannumber, setPannumber] = useState("");
   const navigate = useNavigate();
+  // let email = localStorage.getItem("email");
   let token = localStorage.getItem("token");
   useEffect(() => {
     axios
@@ -35,14 +43,37 @@ export default function Userprofile() {
         console.log(error.response.data);
       });
   }, []);
-  console.log(data.emailId);
+  // console.log(data.emailId);
+
+  let mapData = {
+    emailId: data.emailId,
+    password: data.password,
+    nameOfTheUser: data.nameOfTheUser,
+    mobileNumber: mobileNumber,
+    location: location,
+    panNumber: pannumber,
+  };
+  const update = () => {
+    axios
+      .put(`http://localhost:8080/user-service/users/${data.emailId}`, mapData)
+      .then((res) => {
+        // console.log(res.data);
+        // console.log("----put method----");
+        SetData(res.data);
+
+        toast.success("User updated successfully");
+      })
+      .catch(function (error) {
+        console.log(error.response.data);
+      });
+  };
   return (
     <div className="bg-color">
       <Navbar />
       <Box sx={{ display: "flex" }}>
         <Sidenav />
         <RightSideNav />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 5 }}>
           <section className="user">
             <Grid container direction="row" spacing={10}>
               <Grid item xs="6">
@@ -54,12 +85,13 @@ export default function Userprofile() {
                     sx={{
                       maxWidth: "170px",
                       margin: "0px auto",
+                      paddingRight: "15px",
                       borderRadius: "100%",
                       borderColor: "grey.500 ",
                     }}
                   />
                   <CardContent>
-                    <Grid container sx={{ margin: "1%" }}>
+                    <Grid container sx={{ margin: "1%", paddingRight: 5 }}>
                       <Grid item xs="9">
                         <Typography
                           variant="h5"
@@ -77,7 +109,7 @@ export default function Userprofile() {
                         </Typography>
                       </Grid>
                     </Grid>
-                    <Grid container sx={{ margin: "1%" }}>
+                    <Grid container sx={{ margin: "1%", paddingRight: 5 }}>
                       <Grid item xs="9">
                         <Typography
                           variant="h5"
@@ -93,9 +125,22 @@ export default function Userprofile() {
                         >
                           {data.emailId}
                         </Typography>
+
+                        {/* <TextField
+                          variant="standard"
+                          sx={{ fontSize: 10 }}
+                          id="outlined-read-only-input"
+                          value={data.emailId}
+                          defaultValue={data.emailId}
+                          InputProps={{
+                            readOnly: true,
+                            disableUnderline: true,
+                          }}
+                          fullWidth
+                        /> */}
                       </Grid>
                     </Grid>
-                    <Grid container sx={{ margin: "1%" }}>
+                    <Grid container sx={{ margin: "1%", paddingRight: 5 }}>
                       <Grid item xs="9">
                         <Typography
                           variant="h5"
@@ -114,25 +159,50 @@ export default function Userprofile() {
                       </Grid>
                     </Grid>
                     <Grid container sx={{ margin: "1%" }}>
-                      <Grid item xs="9">
+                      <Grid item xs="8">
                         <Typography
                           variant="h5"
                           sx={{ fontFamily: "sans-serif" }}
                         >
-                          Phone
+                          Mobile Number
                         </Typography>
                       </Grid>
-                      <Grid item xs="3">
-                        <Typography
-                          variant="h6"
-                          sx={{ fontFamily: "sans-serif", textAlign: "left" }}
-                        >
-                          {data.mobileNumber}
-                        </Typography>
+                      <Grid item xs="4">
+                        {!isFocused ? (
+                          <Typography
+                            variant="h6"
+                            value={mobileNumber}
+                            sx={{
+                              fontFamily: "sans-serif",
+                              paddingLeft: 2,
+                            }}
+                          >
+                            {data.mobileNumber}
+                          </Typography>
+                        ) : (
+                          <TextField
+                            autoFocus
+                            variant="standard"
+                            value={mobileNumber}
+                            placeholder={data.mobileNumber}
+                            sx={{
+                              fontFamily: "sans-serif",
+                            }}
+                            onChange={(event) =>
+                              setMobileNumber(event.target.value)
+                            }
+                            InputProps={{
+                              style: {
+                                fontSize: 20,
+                                paddingLeft: 15,
+                              },
+                            }}
+                          />
+                        )}
                       </Grid>
                     </Grid>
                     <Grid container sx={{ margin: "1%" }}>
-                      <Grid item xs="9">
+                      <Grid item xs="8">
                         <Typography
                           variant="h5"
                           sx={{ fontFamily: "sans-serif" }}
@@ -140,38 +210,142 @@ export default function Userprofile() {
                           Location
                         </Typography>
                       </Grid>
-                      <Grid item xs="3">
-                        <Typography
-                          variant="h6"
-                          sx={{ fontFamily: "sans-serif", textAlign: "left" }}
-                        >
-                          {data.location}
-                        </Typography>
+                      <Grid item xs="4">
+                        {!isFocused ? (
+                          <Typography
+                            variant="h6"
+                            value={location}
+                            sx={{
+                              fontFamily: "sans-serif",
+                              paddingLeft: 2,
+                            }}
+                          >
+                            {data.location}
+                          </Typography>
+                        ) : (
+                          <TextField
+                            autoFocus
+                            variant="standard"
+                            value={location}
+                            placeholder={data.location}
+                            sx={{
+                              fontFamily: "sans-serif",
+                            }}
+                            onChange={(event) =>
+                              setLocation(event.target.value)
+                            }
+                            InputProps={{
+                              style: {
+                                fontSize: 20,
+                                paddingLeft: 15,
+                              },
+                            }}
+                          />
+                        )}
                       </Grid>
                     </Grid>
-
-                    <Box
-                      m={1}
-                      display="flex"
-                      justifyContent="flex-start"
-                      alignItems="flex-start"
-                    >
-                      <Button
-                        onClick={() => navigate("/bank-details")}
-                        variant="contained"
-                        sx={{
-                          height: 40,
-                          backgroundColor: "#005555",
-                          ":hover": {
-                            color: "white",
-                            backgroundColor: "#005555",
-                          },
-                          margin: "3vh auto",
-                        }}
-                      >
-                        Check Balance
-                      </Button>
-                    </Box>
+                    <Grid container sx={{ margin: "1%" }}>
+                      <Grid item xs="8">
+                        <Typography
+                          variant="h5"
+                          value={pannumber}
+                          sx={{ fontFamily: "sans-serif" }}
+                        >
+                          Pan Number
+                        </Typography>
+                      </Grid>
+                      <Grid item xs="4">
+                        {!isFocused ? (
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              fontFamily: "sans-serif",
+                              paddingLeft: 2,
+                            }}
+                          >
+                            {data.panNumber}
+                          </Typography>
+                        ) : (
+                          <TextField
+                            autoFocus
+                            variant="standard"
+                            value={pannumber}
+                            placeholder={data.panNumber}
+                            sx={{
+                              fontFamily: "sans-serif",
+                            }}
+                            onChange={(event) =>
+                              setPannumber(event.target.value)
+                            }
+                            InputProps={{
+                              style: {
+                                fontSize: 20,
+                                paddingLeft: 15,
+                              },
+                            }}
+                          />
+                        )}
+                      </Grid>
+                    </Grid>
+                    <Grid container sx={{ margin: "1%" }}>
+                      <Grid item xs="6">
+                        <Box
+                          m={1}
+                          display="flex"
+                          justifyContent="flex-start"
+                          alignItems="flex-start"
+                        >
+                          <Button
+                            onClick={() => {
+                              setIsFocused(true);
+                              // navigate("/bank-details");
+                            }}
+                            variant="contained"
+                            sx={{
+                              height: 40,
+                              width: 100,
+                              backgroundColor: "#005555",
+                              ":hover": {
+                                color: "white",
+                                backgroundColor: "#005555",
+                              },
+                              margin: "3vh auto",
+                            }}
+                          >
+                            Edit
+                          </Button>
+                        </Box>
+                      </Grid>
+                      <Grid item xs="6">
+                        <Box
+                          m={1}
+                          display="flex"
+                          justifyContent="flex-start"
+                          alignItems="flex-start"
+                        >
+                          <Button
+                            onClick={() => {
+                              setIsFocused(false);
+                              update();
+                              // navigate("/bank-details");
+                            }}
+                            variant="contained"
+                            sx={{
+                              height: 40,
+                              width: 100,
+                              backgroundColor: "#005555",
+                              ":hover": {
+                                color: "white",
+                                backgroundColor: "#005555",
+                              },
+                              margin: "3vh auto",
+                            }}
+                          >
+                            Update
+                          </Button>
+                        </Box>
+                      </Grid>
+                    </Grid>
                   </CardContent>
                 </Card>
               </Grid>

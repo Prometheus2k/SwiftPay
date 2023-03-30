@@ -99,21 +99,23 @@ export default function Transactions() {
           token: token,
         },
       })
+      .then((res) => {
+        return res.data;
+      })
       .then((response) => {
-        console.log(response.data);
-
         accountNumber().then((result) => {
           console.log(result);
-          for (let index = 0; index < response.data.length; index++) {
-            if (response.data[index].senderAccountNumber != result) {
-              response.data[index].credit = response.data[index].debit;
-              response.data[index].debit = 0;
+          for (let index = 0; index < response.length; index++) {
+            if (response[index].senderAccountNumber != result) {
+              response[index].credit = response[index].debit;
+              response[index].debit = 0;
             }
           }
-          setRows(response.data);
         });
+        setRows(response);
       });
   }, []);
+
   console.log(rows);
 
   return (

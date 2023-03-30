@@ -10,7 +10,6 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
@@ -172,11 +171,6 @@ export default function Login() {
                     ),
                   }}
                 />
-                {isValid ? (
-                  <p style={{ color: "green" }}>Valid Email</p>
-                ) : (
-                  <p style={{ color: "red" }}>Invalid Email!</p>
-                )}
                 <TextField
                   margin="normal"
                   required
@@ -195,6 +189,7 @@ export default function Login() {
                     ),
                   }}
                 />
+                <Box sx={{ paddingTop: 2 }}></Box>
 
                 <Button
                   type="submit"

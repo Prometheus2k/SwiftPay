@@ -5,8 +5,6 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import { useState } from "react";
 import batonlogo from "../images/baton.png";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -18,11 +16,11 @@ import axios from "axios";
 import { Card, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import { style } from "@mui/system";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import validator from "validator";
 
 export default function SignUp() {
   const theme = createTheme({
@@ -43,15 +41,20 @@ export default function SignUp() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confPassword, setConfPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [location, setLocation] = useState("");
-  const [value, setValue] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  // const [location, setLocation] = useState("");
+  // const [value, setValue] = useState("");
+  // const [isValid, setIsValid] = useState(false);
 
   const handleEmailChange = (event) => {
     const input = event.target.value;
     setEmail(input);
-    setIsValid(validateEmail(input));
+
+    // setIsValid(validateEmail(input));
+    validateEmail(input)
+      ? toast.success("Valid Email")
+      : toast.error("Invalid Email!");
   };
 
   const validateEmail = (email) => {
@@ -59,38 +62,74 @@ export default function SignUp() {
     return regex.test(email);
   };
 
-  const isDisabled =
-    !email || !password || !username || !value || !location || !isValid;
+  const validate = (value) => {
+    if (
+      validator.isStrongPassword(value, {
+        minLength: 8,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+    ) {
+      toast.success("Is Strong Password");
+    } else {
+      toast.error("Is Not Strong Password");
+    }
+  };
+
+  // const isDisabled =
+  //   !email || !password || !username || !value || !location || !isValid;
+  console.log(email);
+  console.log(password);
+  console.log(confPassword);
+  console.log(username);
+
+  const isDisabled = !email || !password || !confPassword || !username;
 
   const navigate = useNavigate();
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
+  // const handleChange = (newValue) => {
+  //   setValue(newValue);
+  // };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    let mapData = {
-      emailId: data.get("email"),
-      password: data.get("password"),
-      nameOfTheUser: data.get("name"),
-      mobileNumber: value,
-      location: data.get("location"),
-      panNumber: null,
-      profilePassword: null,
-    };
-    console.log(mapData);
-    axios
-      .post("http://localhost:8080/user-service/register", mapData)
-      .then((res) => {
-        if (res.status == 201) {
-          navigate("/");
-        }
-      })
-      .catch(function (error) {
-        toast.error(error.response.data);
-        console.log(error.response.data);
-      });
+    // let mapData = {
+    //   emailId: data.get("email"),
+    //   password: data.get("password"),
+    //   nameOfTheUser: data.get("name"),
+    //   mobileNumber: value,
+    //   location: data.get("location"),
+    //   panNumber: null,
+    //   profilePassword: null,
+    // };
+
+    if (password != confPassword) {
+      toast.error("Password doesnot match");
+    } else {
+      let mapData = {
+        emailId: data.get("email"),
+        password: data.get("password"),
+        nameOfTheUser: data.get("name"),
+        mobileNumber: "",
+        location: "",
+        panNumber: "",
+        profilePassword: "",
+      };
+      console.log(mapData);
+      axios
+        .post("http://localhost:8080/user-service/register", mapData)
+        .then((res) => {
+          if (res.status == 201) {
+            navigate("/");
+          }
+        })
+        .catch(function (error) {
+          toast.error(error.response.data);
+          console.log(error.response.data);
+        });
+    }
   };
   return (
     <ThemeProvider theme={theme}>
@@ -163,11 +202,16 @@ export default function SignUp() {
               paddingBottom: "5vh",
             }}
           >
-            <Box>
+            <Box sx={{ paddingTop: 5 }}>
               <Typography component="h1" variant="h4">
                 SIGN UP
               </Typography>
-              <Box component="form" noValidate onSubmit={handleSubmit}>
+              <Box
+                sx={{ paddingTop: 3 }}
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+              >
                 <TextField
                   margin="normal"
                   required
@@ -176,7 +220,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  onChange={handleEmailChange}
+                  onBlur={handleEmailChange}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -185,11 +229,7 @@ export default function SignUp() {
                     ),
                   }}
                 />
-                {isValid ? (
-                  <p style={{ color: "green" }}>Valid Email</p>
-                ) : (
-                  <p style={{ color: "red" }}>Invalid Email!</p>
-                )}
+
                 <TextField
                   margin="normal"
                   required
@@ -199,7 +239,30 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onBlur={(e) => {
+                    validate(e.target.value);
+                    setPassword(e.target.value);
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <KeyIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="confPassword"
+                  label="Confirm Password"
+                  type="password"
+                  id="confPassword"
+                  autoComplete="current-password"
+                  onBlur={(e) => {
+                    setConfPassword(e.target.value);
+                  }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -225,7 +288,7 @@ export default function SignUp() {
                     ),
                   }}
                 />
-                <MuiTelInput
+                {/* <MuiTelInput
                   margin="normal"
                   id="phone"
                   placeholder="Phone"
@@ -252,7 +315,7 @@ export default function SignUp() {
                       </InputAdornment>
                     ),
                   }}
-                />
+                /> */}
 
                 <Button
                   type="submit"

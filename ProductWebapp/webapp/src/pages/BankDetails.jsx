@@ -62,7 +62,10 @@ export default function BankDetails() {
           <Box height={30} />
           <Box sx={{ display: "flex" }}>
             <Sidenav />
-            <Box component="main" sx={{ flexGrow: 0.5, p: 3, marginLeft: 20 }}>
+            <Box
+              component="main"
+              sx={{ flexGrow: 0.5, p: 4.5, marginLeft: 20 }}
+            >
               <section className="bankdetails">
                 <Grid
                   container
