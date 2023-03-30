@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("transaction-service")
 public class Controller {
 
@@ -73,18 +74,18 @@ Function to Add a Transaction to the history*/
 		return entity;
 	}
 
-	@GetMapping("/transaction/history/{accountNumber}")
-	public ResponseEntity<?> getTransactionsByAccountNumber(@PathVariable("accountNumber") String accountNumber) {
-		ResponseEntity<?> entity = null;
-		try {
-			List<TransactionModel> transaction = transactionService.getTransactionsByAccountNumber(accountNumber);
-			entity = new ResponseEntity<>(transaction, HttpStatus.OK);
-		} catch (CustomException e) {
-			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-		}
-
-		return entity;
-	}
+//	@GetMapping("/transaction/history/{accountNumber}")
+//	public ResponseEntity<?> getTransactionsByAccountNumber(@PathVariable("accountNumber") String accountNumber) {
+//		ResponseEntity<?> entity = null;
+//		try {
+//			List<TransactionModel> transaction = transactionService.getTransactionsByAccountNumber(accountNumber);
+//			entity = new ResponseEntity<>(transaction, HttpStatus.OK);
+//		} catch (CustomException e) {
+//			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+//		}
+//
+//		return entity;
+//	}
 
 	@GetMapping("/transactions/get")
 	public ResponseEntity<?> getTransactions(@RequestHeader Map<String, String> headers  ) {
@@ -97,7 +98,13 @@ Function to Add a Transaction to the history*/
 		try {
 			if(user != null){
 				account = accountService.getAccountByUserEmailId(user.getEmailId());
-				List<TransactionModel> transaction = transactionService.getTransactionsByAccountNumber(account.getAccountNumber());
+				List<TransactionModel> transactionCredit = transactionService.getTransactionsByAccountNumber(account.getAccountNumber());
+				List<TransactionModel> transactionDebit = transactionService.getTransactionsByReceiverAccountNumber(account.getAccountNumber());
+				List<TransactionModel> transaction = new ArrayList<>();
+				transaction.addAll(transactionCredit);
+				transaction.addAll(transactionDebit);
+
+				System.out.println("----------"+transactionDebit.size());
 				entity = new ResponseEntity<List<TransactionModel>>(transaction, HttpStatus.OK);
 			}
 			else {

@@ -92,10 +92,15 @@ public class TransactionService implements TransactionServiceInterface {
 
     @Override
     public void executeCredit(String message) throws IOException {
+        System.out.println("INSIDE CREDIT");
         AbstractMT abstractMT = AbstractMT.parse(message);
+        System.out.println(1);
         MT910 mt910 = (MT910) abstractMT;
+        System.out.println(2);
         String creditAmount = String.valueOf(mt910.getField32A().getAmount()).replace(",", "");
-        String accountNumber = mt910.getField25().getComponent1().replace("A", "");
+        System.out.println(creditAmount);
+        String accountNumber = mt910.getField25().getValue().replace("X", "");
+        System.out.println(accountNumber);
         Optional<AccountModel> optional = accountRepository.findByAccountNumber(accountNumber);
         AccountModel accountModel = optional.isEmpty() ? null : optional.get();
         accountModel.setBalance(accountModel.getBalance() + Long.parseLong(creditAmount));

@@ -23,15 +23,16 @@ public class Scheduler {
     @Autowired
     private InterService interService;
 
-    @Scheduled(cron = "*/120 * * * * *")
+    @Scheduled(cron = "*/5 * * * * *")
     public void scheduler() {
         List<QueueModel> listOfPending = queueRepository.findByStatus("PENDING");
+        System.out.println(listOfPending.size());
         try {
             if(listOfPending.size() != 0) {
                 for (QueueModel model : listOfPending) {
-
+                    System.out.println("Inside for  " + model.getMessage());
                     String MT103 = swiftOperation.generateMT103FromMT101(model.getMessage());
-
+                    System.out.println("Check");
                     System.out.println("-------------MT103----------------");
                     System.out.println(MT103);
                     System.out.println("-----------------------------------");

@@ -45,6 +45,19 @@ public class TransactionService implements TransactionServiceInterface{
 	}
 
 	@Override
+	public List<TransactionModel> getTransactionsByReceiverAccountNumber(String accountNumber) throws CustomException {
+		Optional<List<TransactionModel>> optional = repository.findAllByReceiverAccountNumber(accountNumber);
+		List<TransactionModel> model = optional.isEmpty() ? null : optional.get();
+		if(model==null)
+		{
+			throw new CustomException("No transaction related to the Account Number Exists ");
+		}
+		else {
+			return model;
+		}
+	}
+
+	@Override
 	public boolean checkMT101(String message) throws IOException {
 		AbstractMT abstractMT = AbstractMT.parse(message);
 		return true;

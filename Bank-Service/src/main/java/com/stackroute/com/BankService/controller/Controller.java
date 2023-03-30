@@ -123,19 +123,15 @@ public class Controller {
      */
 
     @PostMapping("/account/add/")
-    public ResponseEntity<?> addAccountDetails(@RequestHeader Map<String, String> headers,
-            @RequestBody AccountModel account) {
-        String token = headers.get("token");
-        User user = interService.getUserDetails(token);
+    public ResponseEntity<?> addAccountDetails(@RequestBody AccountModel account) {
         ResponseEntity<?> entity;
         try {
-            if(user != null) {
-                System.out.println("in /account/add/ " + token);
-                accountService.addAccountDetails(account);
-                entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
-            } else {
-                entity = new ResponseEntity<String>("Invalid token", HttpStatus.BAD_REQUEST);
-            }
+            accountService.addAccountDetails(account);
+            entity = new ResponseEntity<String>("Account details added successfully", HttpStatus.OK);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c509084cf320e0ea6f516d902eaf51d9fd9c05f
         } catch (CustomException e) {
             entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -248,6 +244,8 @@ public class Controller {
 
     @PostMapping("/credit")
     public ResponseEntity<?> credit(@RequestBody String message) {
+
+        System.out.println("INSIDE CREDIT IN BANK SERVICE");
         ResponseEntity<?> entity = null;
 
         System.out.println("----------------MT910------------------");

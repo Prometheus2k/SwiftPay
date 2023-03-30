@@ -28,7 +28,7 @@ export default function BankDetails() {
         },
       })
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setAccountDetails(response.data);
       });
   };

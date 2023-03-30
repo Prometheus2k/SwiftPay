@@ -88,7 +88,7 @@ export default function SignUp() {
     };
     console.log(mapData);
     axios
-      .post("http://localhost:8080/user-service/register", mapData)
+      .post("https://swiftpay.stackroute.io/user-service/register", mapData)
       .then((res) => {
         if (res.status == 201) {
           navigate("/");
@@ -262,14 +262,15 @@ export default function SignUp() {
                   type="submit"
 
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, height: 50 }}
+                  sx={{ width: 150, mt: 3, height: 50, fontSize: 18, marginInline: 22, }}
+                  // sx={{ mt: 3, mb: 2, height: 50 }}
                   style={{ backgroundColor: "#005555" }}
                   disabled={isDisabled}
                 >
                   Sign Up
                 </Button>
                 <Grid container>
-                  <Grid item>
+                  <Grid item sx={{ marginBlockStart: 2, marginInline: 18 }}>
                     <Link to='/login' onClick={(e) => { navigate("/login") }} variant="body2">
                       {"Already have an account ? Login "}
                     </Link>
