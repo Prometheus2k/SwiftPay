@@ -100,34 +100,17 @@ export default function Transactions() {
         },
       })
       .then((response) => {
-<<<<<<< HEAD
         console.log(response.data);
 
         accountNumber().then((result) => {
           console.log(result);
           for (let index = 0; index < response.data.length; index++) {
             if (response.data[index].senderAccountNumber != result) {
-=======
-        accountNumber().then((result) => {
-          for (let index = 0; index < response.data.length; index++) {
-            if (response.data[index].senderAccountNumber == result) {
-              console.log(
-                "credit   " +
-                  response.data[index].credit +
-                  "   debit  " +
-                  response.data[index].debit
-              );
-
->>>>>>> 0a46700c567138d143ea3592fd3b7d31ca0624bd
               response.data[index].credit = response.data[index].debit;
               response.data[index].debit = 0;
             }
           }
           setRows(response.data);
-<<<<<<< HEAD
-=======
-          console.log(result);
->>>>>>> 0a46700c567138d143ea3592fd3b7d31ca0624bd
         });
       });
   }, []);

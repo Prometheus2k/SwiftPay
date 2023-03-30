@@ -18,13 +18,17 @@ import axios from "axios";
 export default function Userprofile() {
   const [data, SetData] = useState([]);
   const navigate = useNavigate();
-  let userData;
-  let email = localStorage.getItem("email");
+  let token = localStorage.getItem("token");
   useEffect(() => {
     axios
-      .get(`https://swiftpay.stackroute.io/user-service/users/${email}`)
+      .get(`http://localhost:8080/user-service/users/verify`, {
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+      })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         SetData(res.data);
       })
       .catch(function (error) {

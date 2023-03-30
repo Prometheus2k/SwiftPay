@@ -10,6 +10,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import KeyIcon from "@mui/icons-material/Key";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import img from "../images/swift_image.jpg";
@@ -17,16 +18,7 @@ import { useNavigate } from "react-router-dom";
 import batonlogo from "../images/baton.png";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-<<<<<<< HEAD
 import "react-toastify/dist/ReactToastify.css";
-=======
-<<<<<<< HEAD
-import "react-toastify/dist/ReactToastify.css";
-=======
-import 'react-toastify/dist/ReactToastify.css';
-import "../styles/Login.css"
->>>>>>> 1c509084cf320e0ea6f516d902eaf51d9fd9c05f
->>>>>>> 0a46700c567138d143ea3592fd3b7d31ca0624bd
 
 const theme = createTheme({
   components: {
@@ -74,7 +66,7 @@ export default function Login() {
     console.log(mapData);
 
     axios
-      .post("https://swiftpay.stackroute.io/user-service/login", mapData)
+      .post("http://localhost:8080/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);
@@ -208,18 +200,13 @@ export default function Login() {
                   type="submit"
                   variant="contained"
                   id="loginBtn"
-                  sx={{ width: 150, mt: 3, height: 50, fontSize: 18, marginInline: 25, }}
-                  //sx={{ mt: 3, mb: 2, height: 50 }}
+                  sx={{ mt: 3, mb: 2, height: 50 }}
                   style={{ backgroundColor: "#005555" }}
                   disabled={isDisabled}
                 >
                   Login
                 </Button>
                 <Grid container>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 0a46700c567138d143ea3592fd3b7d31ca0624bd
                   <Grid item>
                     <Link
                       to="/signup"
@@ -228,13 +215,6 @@ export default function Login() {
                       }}
                       variant="body2"
                     >
-<<<<<<< HEAD
-=======
-=======
-                  <Grid item sx={{ marginBlockStart: 2, marginInline: 22 }} >
-                    <Link to='/signup' onClick={(e) => { navigate("/signup") }} variant="body2">
->>>>>>> 1c509084cf320e0ea6f516d902eaf51d9fd9c05f
->>>>>>> 0a46700c567138d143ea3592fd3b7d31ca0624bd
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>
@@ -244,6 +224,6 @@ export default function Login() {
           </Grid>
         </Grid>
       </Card>
-    </ThemeProvider >
+    </ThemeProvider>
   );
 }
