@@ -99,7 +99,7 @@ public class TransactionService implements TransactionServiceInterface {
         System.out.println(2);
         String creditAmount = String.valueOf(mt910.getField32A().getAmount()).replace(",", "");
         System.out.println(creditAmount);
-        String accountNumber = mt910.getField25().getValue().replace("X", "");
+        String accountNumber = mt910.getField25().getValue().replace("X", "").replace("N", "");
         System.out.println(accountNumber);
         Optional<AccountModel> optional = accountRepository.findByAccountNumber(accountNumber);
         AccountModel accountModel = optional.isEmpty() ? null : optional.get();
