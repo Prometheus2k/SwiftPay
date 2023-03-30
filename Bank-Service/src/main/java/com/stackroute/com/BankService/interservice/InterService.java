@@ -22,7 +22,7 @@ public class InterService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("token", token);
         HttpEntity<?> httpEntity = new HttpEntity<>(headers);
-        String uri = "http://localhost:8090/user-service/users/verify/";
+        String uri = "https://swiftpay.stackroute.io/user-service/users/verify/";
         ResponseEntity<User> entity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, User.class);
         return entity.getBody();
     }
@@ -33,7 +33,7 @@ public class InterService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<TransactionModel> httpEntity = new HttpEntity<TransactionModel>(model, headers);
-        String uri = "http://localhost:8060/transaction-service/transfer";
+        String uri = "https://swiftpay.stackroute.io/transaction-service/transfer";
         ResponseEntity<TransactionModel> entity = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, TransactionModel.class);
         System.out.println("***********Inside initiate transaction 8****************" + entity.getBody().toString());
         return entity.getBody();

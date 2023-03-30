@@ -14,7 +14,7 @@ public class InterService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("token", token);
         HttpEntity<?> httpEntity = new HttpEntity<>(headers);
-        String uri = "http://localhost:8090/user-service/users/verify/";
+        String uri = "https://swiftpay.stackroute.io/user-service/users/verify/";
         ResponseEntity<User> entity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, User.class);
         return entity.getBody();
     }
@@ -24,7 +24,7 @@ public class InterService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> httpEntity = new HttpEntity<String>(message, headers);
-        String uri = "http://localhost:8070/bank-service/credit";
+        String uri = "https://swiftpay.stackroute.io/bank-service/credit";
         restTemplate.exchange(uri, HttpMethod.POST, httpEntity, String.class);
     }
 

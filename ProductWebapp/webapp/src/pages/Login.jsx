@@ -65,7 +65,7 @@ export default function Login() {
     console.log(mapData);
 
     axios
-      .post("http://localhost:8080/user-service/login", mapData)
+      .post("https://swiftpay.stackroute.io/user-service/login", mapData)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);

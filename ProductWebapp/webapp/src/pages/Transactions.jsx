@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import "../styles/transactionHistory.css";
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-const url = "http://localhost:8080/transaction-service/transactions/get";
+const url = "https://swiftpay.stackroute.io/transaction-service/transactions/get";
 
 export default function Transactions() {
   // const genData = require("../generated.json");
@@ -16,7 +16,7 @@ export default function Transactions() {
   const accountNumber = () => {
     return new Promise(function (resolve, reject) {
       axios
-        .get("http://localhost:8080/bank-service/account/get", {
+        .get("https://swiftpay.stackroute.io/bank-service/account/get", {
           headers: {
             "Content-Type": "application/json",
             token: token,
