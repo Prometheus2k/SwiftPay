@@ -3,8 +3,6 @@ package com.stackroute.com.TransactionService.controller;
 import com.stackroute.com.TransactionService.exceptions.CustomException;
 import com.stackroute.com.TransactionService.model.AccountModel;
 import com.stackroute.com.TransactionService.model.TransactionModel;
-import com.stackroute.com.TransactionService.model.User;
-import com.stackroute.com.TransactionService.service.AccountServiceInterface;
 import com.stackroute.com.TransactionService.service.QueueServiceInterface;
 import com.stackroute.com.TransactionService.service.TransactionServiceInterface;
 import com.stackroute.com.TransactionService.interservice.InterService;
@@ -30,9 +28,7 @@ public class Controller {
 
 	@Autowired
 	private InterService interService;
-
-	@Autowired
-	private AccountServiceInterface accountService;
+	
 
 	@Autowired
 	private QueueServiceInterface queueService;
@@ -91,13 +87,12 @@ Function to Add a Transaction to the history*/
 	public ResponseEntity<?> getTransactions(@RequestHeader Map<String, String> headers  ) {
 		String token = headers.get("token");
 		System.out.println(token);
-		User user = interService.getUserDetails(token);
+		AccountModel account = interService.getAccountDetails(token);
 		ResponseEntity<?> entity = null;
-		AccountModel account = null;
 
 		try {
-			if(user != null){
-				account = accountService.getAccountByUserEmailId(user.getEmailId());
+			if(account != null){
+				System.out.println(account);
 				List<TransactionModel> transactionCredit = transactionService.getTransactionsByAccountNumber(account.getAccountNumber());
 				List<TransactionModel> transactionDebit = transactionService.getTransactionsByReceiverAccountNumber(account.getAccountNumber());
 				List<TransactionModel> transaction = new ArrayList<>();

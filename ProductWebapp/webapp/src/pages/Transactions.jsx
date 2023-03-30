@@ -111,8 +111,8 @@ export default function Transactions() {
               response[index].debit = 0;
             }
           }
+          setRows(response);
         });
-        setRows(response);
       });
   }, []);
 
