@@ -64,7 +64,7 @@ export default function Navbar() {
     let token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:8080/user-service/users/verify", {
+      .get("https://swiftpay.stackroute.io/user-service/users/verify", {
         headers: {
           "Content-Type": "application/json",
           token: token,

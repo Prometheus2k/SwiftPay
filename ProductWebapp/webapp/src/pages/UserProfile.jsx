@@ -29,7 +29,7 @@ export default function Userprofile() {
   let token = localStorage.getItem("token");
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/user-service/users/verify`, {
+      .get(`https://swiftpay.stackroute.io/user-service/users/verify`, {
         headers: {
           "Content-Type": "application/json",
           token: token,
@@ -55,7 +55,7 @@ export default function Userprofile() {
   };
   const update = () => {
     axios
-      .put(`http://localhost:8080/user-service/users/${data.emailId}`, mapData)
+      .put(`https://swiftpay.stackroute.io/user-service/users/${data.emailId}`, mapData)
       .then((res) => {
         // console.log(res.data);
         // console.log("----put method----");

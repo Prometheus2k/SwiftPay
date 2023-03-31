@@ -36,7 +36,7 @@ export default function Transfer() {
 
   const [receiverAccountNumber, setReceiverAccountNumber] = useState("");
 
-  const url = "http://localhost:8080/bank-service/transfer/";
+  const url = "https://swiftpay.stackroute.io/bank-service/transfer/";
   let token = localStorage.getItem("token");
 
   const transfer = () => {
